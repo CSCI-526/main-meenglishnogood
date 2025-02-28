@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,13 +15,25 @@ public class DayNightController : MonoBehaviour
     //public PlayerHealth playerHealth;
     public Camera mainCamera;
 
+    private bool isTransitioning = false;
+
     void Start()
     {
-        InvokeRepeating("ToggleDayNight", 0, 10f); // Switch every 45 seconds
+        sunSprite.color = isDay ? dayColor : nightColor;
+        mainCamera.backgroundColor = isDay ? dayBackgroundColor : nightBackgroundColor;
+        UpdateInvisibleWallsState();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q) && !isTransitioning) // Detect if "Q" key is pressed
+        {
+            ToggleDayNight();
+        }
+    }
     void ToggleDayNight()
     {
+        if (isTransitioning) return;
         isDay = !isDay;
         StartCoroutine(ChangeColor(isDay ? dayColor : nightColor));
         StartCoroutine(ChangeBackgroundColor(isDay ? dayBackgroundColor : nightBackgroundColor));
@@ -56,17 +69,58 @@ public class DayNightController : MonoBehaviour
 
     IEnumerator ChangeColor(Color targetColor)
     {
+        isTransitioning = true;
+        InvisibleWalls[] invisibleWalls = FindObjectsOfType<InvisibleWalls>();
         Color startColor = sunSprite.color;
         float elapsedTime = 0f;
-
+        if (!isDay)
+        {
+            foreach (InvisibleWalls wall in invisibleWalls)
+            {
+                if (wall.mode == 2)
+                {
+                    wall.GetComponent<BoxCollider2D>().enabled = !isDay;
+                }
+            }
+        }
+        else if (isDay)
+        {
+            foreach (InvisibleWalls wall in invisibleWalls)
+            {
+                if (wall.mode == 1)
+                {
+                    wall.GetComponent<BoxCollider2D>().enabled = isDay;
+                }
+            }
+        }
         while (elapsedTime < transitionDuration)
         {
             elapsedTime += Time.deltaTime;
             sunSprite.color = Color.Lerp(startColor, targetColor, elapsedTime / transitionDuration);
             yield return null;
         }
-
         sunSprite.color = targetColor;
+        if (!isDay)
+        {
+            foreach (InvisibleWalls wall in invisibleWalls)
+            {
+                if (wall.mode == 1)
+                {
+                    wall.GetComponent<BoxCollider2D>().enabled = isDay;
+                }
+            }
+        }
+        else if (isDay)
+        {
+            foreach (InvisibleWalls wall in invisibleWalls)
+            {
+                if (wall.mode == 2)
+                {
+                    wall.GetComponent<BoxCollider2D>().enabled = !isDay;
+                }
+            }
+        }
+        isTransitioning = false;
     }
 
     IEnumerator ChangeBackgroundColor(Color targetColor)
@@ -83,4 +137,22 @@ public class DayNightController : MonoBehaviour
 
         mainCamera.backgroundColor = targetColor;
     }
+
+    void UpdateInvisibleWallsState()
+    {
+
+        InvisibleWalls[] invisibleWalls = FindObjectsOfType<InvisibleWalls>();
+        foreach (InvisibleWalls wall in invisibleWalls)
+        {
+            if (wall.mode == 1) 
+            {
+                wall.GetComponent<BoxCollider2D>().enabled = isDay;
+            }
+            else if (wall.mode == 2) 
+            {
+                wall.GetComponent<BoxCollider2D>().enabled = !isDay;  
+            }
+        }
+    }
+
 }

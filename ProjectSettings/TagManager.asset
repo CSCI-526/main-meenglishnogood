@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - InvisibleWall
-  - Triangle
+  - ShrinkTriangle
+  - GrowTriangle
+  - AntiGravityZone
+  - Ceiling
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - Water
   - UI
   - GroundLayer
-  - 
+  - Ceilling
   - 
   - 
   - 

@@ -9,6 +9,8 @@ TagManager:
   - GrowTriangle
   - AntiGravityZone
   - Ceiling
+  - Ability
+  - Ability_Use
   layers:
   - Default
   - TransparentFX

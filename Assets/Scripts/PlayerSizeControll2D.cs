@@ -253,21 +253,38 @@ public class PlayerSizeControl2D : MonoBehaviour
         Debug.Log("玩家已缩小！");
     }
 
+    // private void GrowPlayer()
+    // {
+    //     if (transform.localScale.x < originalSize.x)
+    //     {
+    //         transform.localScale *= growFactor;
+    //         hasShrunk = false;
+    //         if (playerController != null)
+    //         {
+    //             playerController.SetSmallState(false);
+    //         }
+    //         Debug.Log("玩家已变大！");
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("玩家已是原始大小，不能再变大！");
+    //     }
+    // }
     private void GrowPlayer()
     {
         if (transform.localScale.x < originalSize.x)
         {
             transform.localScale *= growFactor;
             hasShrunk = false;
+            
             if (playerController != null)
             {
                 playerController.SetSmallState(false);
+                playerController.ResetGravity(); // **新方法：重置重力**
+                Debug.Log("✅ GrowPlayer() 被调用！isSmall: " + playerController.IsSmall());
             }
-            Debug.Log("玩家已变大！");
-        }
-        else
-        {
-            Debug.Log("玩家已是原始大小，不能再变大！");
         }
     }
+    
+
 }

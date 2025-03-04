@@ -232,15 +232,24 @@ public class PlayerController : MonoBehaviour
     // **进入反重力区域**
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("AntiGravityZone") && isSmall) // **只有缩小时才触发**
+        if (other.CompareTag("AntiGravityZone"))
         {
-            isInAntiGravity = true;
-            rb.gravityScale = -1f;
-            FlipGroundCheck();
-            rb.velocity = new Vector2(rb.velocity.x, 5f); // **立即向上吸**
-            Debug.Log("玩家缩小，进入反重力区域！");
+            if (isSmall) // **只有缩小时才触发**
+            {
+                isInAntiGravity = true;
+                rb.gravityScale = -1f;
+                FlipGroundCheck();
+                rb.velocity = new Vector2(rb.velocity.x, 5f); // **立即向上吸**
+                Debug.Log("✅ 玩家缩小，进入反重力区域！");
+            }
+            else
+            {
+                Debug.Log("❌ 玩家太大，不受反重力影响！");
+            }
         }
     }
+
+
 
     // **离开反重力区域**
     private void OnTriggerExit2D(Collider2D other)
@@ -277,4 +286,12 @@ public class PlayerController : MonoBehaviour
     {
         return isSmall;
     }
+    public void ResetGravity()
+    {
+        isInAntiGravity = false;
+        rb.gravityScale = 1f; // **恢复正常重力**
+        FlipGroundCheck(); // **恢复 groundCheck 位置**
+        Debug.Log("🛠 ResetGravity() 被调用，重力恢复正常！");
+    }
+
 }

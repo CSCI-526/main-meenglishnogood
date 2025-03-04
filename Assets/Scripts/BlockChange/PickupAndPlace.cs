@@ -27,16 +27,19 @@ public class PickupAndPlace : MonoBehaviour
             if (persistentAbilityPrefab != null && abilityNum>0)
             {
                 Debug.Log("place ability");
-                // 判断玩家当前重力类型，物体需要跟随玩家重力
-                Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
-                targetRb = persistentAbilityPrefab.GetComponent<Rigidbody2D>();
-
-                targetRb.gravityScale = playerRb.gravityScale; // 将重力赋值给ability
+                
 
                // persistentAbilityPrefab.tag = "Ability"; // 设置为使用标签
 
-                Instantiate(persistentAbilityPrefab, 
+                GameObject newAbility = Instantiate(persistentAbilityPrefab, 
                     transform.position + transform.right * instantiateDistance, Quaternion.identity);
+                
+                // 判断玩家当前重力类型，物体需要跟随玩家重力
+                Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
+                targetRb = newAbility.GetComponent<Rigidbody2D>();
+
+                targetRb.gravityScale = playerRb.gravityScale; // 将重力赋值给ability
+
                 abilityNum--;
             }
         }

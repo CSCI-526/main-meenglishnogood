@@ -8,6 +8,8 @@ public class AbilityFeature : MonoBehaviour
     void Start()
     {
         // gameObject.tag = "Ability";
+        // Rigidbody2D Rb = gameObject.GetComponent<Rigidbody2D>();
+        // Rb.gravityScale = 1;
     }
 
     // Update is called once per frame

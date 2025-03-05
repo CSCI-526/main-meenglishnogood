@@ -9,7 +9,6 @@ public class Trap : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            Debug.Log("Player 碰到了陷阱，游戏即将重新开始...");
             Invoke("RestartGame", restartDelay); 
         }
     }

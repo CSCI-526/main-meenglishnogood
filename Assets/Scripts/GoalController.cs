@@ -5,6 +5,7 @@ using UnityEngine;
 public class GoalController : MonoBehaviour
 {
 
+    public GameObject endUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,9 @@ public class GoalController : MonoBehaviour
         {
 
             Destroy(gameObject);
+
+            endUI.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 }

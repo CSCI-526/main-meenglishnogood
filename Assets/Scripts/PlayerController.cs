@@ -1,8 +1,8 @@
 ﻿//Jump function tutorial: https://www.youtube.com/watch?v=XhwRYNie-aI
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
 // public class PlayerController : MonoBehaviour
 // {
@@ -200,7 +200,10 @@ public class PlayerController : MonoBehaviour
 
         if (!isInAntiGravity)
         {
-            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            //This method causes the player jump twice when the player closes to obstacles
+            //isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+            //Use ray to detect ground vertically under the player
+            isGrounded = Physics2D.Raycast(transform.position + Vector3.down * 0.4f, Vector2.down, 0.1f, groundLayer);
             isCeiling = false;
         }
         else

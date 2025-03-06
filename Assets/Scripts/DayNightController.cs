@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class DayNightController : MonoBehaviour
@@ -11,17 +12,18 @@ public class DayNightController : MonoBehaviour
     public Color nightBackgroundColor = new Color(0.05f, 0.05f, 0.2f); // Dark night sky
     public float transitionDuration = 2.0f; // Time for smooth transition
 
-    private bool isDay = true;
+    public bool isDay = true;
     //public PlayerHealth playerHealth;
     public Camera mainCamera;
 
-    private bool isTransitioning = false;
+    public bool isTransitioning = false;
 
     void Start()
     {
         sunSprite.color = isDay ? dayColor : nightColor;
         mainCamera.backgroundColor = isDay ? dayBackgroundColor : nightBackgroundColor;
         UpdateInvisibleWallsState();
+        UpdatePortalState();
     }
 
     private void Update()
@@ -42,6 +44,15 @@ public class DayNightController : MonoBehaviour
         //playerHealth.setNightTime(!isDay);
 
         // Update Hidden Paths Visibility Based on Time
+        PortalController[] portals = FindObjectsByType<PortalController>(FindObjectsSortMode.None);
+        foreach (PortalController portal in portals)
+        {
+            if (portal.otherPortal != null)
+            {
+
+                portal.Update();
+            }
+        }
         HiddenPathController[] hiddenPaths = FindObjectsByType<HiddenPathController>(FindObjectsSortMode.None);
         foreach (HiddenPathController path in hiddenPaths)
         {
@@ -65,12 +76,14 @@ public class DayNightController : MonoBehaviour
         {
             obs.SetNightMode(isDay);
         }
+
     }
 
     IEnumerator ChangeColor(Color targetColor)
     {
         isTransitioning = true;
         InvisibleWalls[] invisibleWalls = FindObjectsOfType<InvisibleWalls>();
+        PortalController[] portals = FindObjectsOfType<PortalController>();
         Color startColor = sunSprite.color;
         float elapsedTime = 0f;
         if (!isDay)
@@ -82,6 +95,13 @@ public class DayNightController : MonoBehaviour
                     wall.GetComponent<BoxCollider2D>().enabled = !isDay;
                 }
             }
+            foreach (PortalController portal in portals)
+            {
+                if (portal.mode == 2)
+                {
+                    portal.GetComponent<BoxCollider2D>().enabled = !isDay;
+                }
+            }
         }
         else if (isDay)
         {
@@ -92,7 +112,15 @@ public class DayNightController : MonoBehaviour
                     wall.GetComponent<BoxCollider2D>().enabled = isDay;
                 }
             }
+            foreach (PortalController portal in portals)
+            {
+                if (portal.mode == 1)
+                {
+                    portal.GetComponent<BoxCollider2D>().enabled = isDay;
+                }
+            }
         }
+
         while (elapsedTime < transitionDuration)
         {
             elapsedTime += Time.deltaTime;
@@ -100,6 +128,7 @@ public class DayNightController : MonoBehaviour
             yield return null;
         }
         sunSprite.color = targetColor;
+
         if (!isDay)
         {
             foreach (InvisibleWalls wall in invisibleWalls)
@@ -107,6 +136,13 @@ public class DayNightController : MonoBehaviour
                 if (wall.mode == 1)
                 {
                     wall.GetComponent<BoxCollider2D>().enabled = isDay;
+                }
+            }
+            foreach (PortalController portal in portals)
+            {
+                if (portal.mode == 1)
+                {
+                    portal.GetComponent<BoxCollider2D>().enabled = isDay;
                 }
             }
         }
@@ -117,6 +153,13 @@ public class DayNightController : MonoBehaviour
                 if (wall.mode == 2)
                 {
                     wall.GetComponent<BoxCollider2D>().enabled = !isDay;
+                }
+            }
+            foreach (PortalController portal in portals)
+            {
+                if (portal.mode == 2)
+                {
+                    portal.GetComponent<BoxCollider2D>().enabled = !isDay;
                 }
             }
         }
@@ -154,5 +197,20 @@ public class DayNightController : MonoBehaviour
             }
         }
     }
+    void UpdatePortalState()
+    {
 
+        PortalController[] portals = FindObjectsByType<PortalController>(FindObjectsSortMode.None);
+        foreach (PortalController portal in portals)
+        {
+            if (portal.mode == 1)
+            {
+                portal.GetComponent<BoxCollider2D>().enabled = isDay;
+            }
+            else if (portal.mode == 2)
+            {
+                portal.GetComponent<BoxCollider2D>().enabled = !isDay;
+            }
+        }
+    }
 }

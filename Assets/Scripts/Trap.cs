@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Trap : MonoBehaviour
 {
-    public float restartDelay = 1.5f; 
+    public float restartDelay = 0f; 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

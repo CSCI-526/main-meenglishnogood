@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584aea2b25323784182b003afe729aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restartDelay: 1.5
+  restartDelay: 0
 --- !u!60 &4850101
 PolygonCollider2D:
   m_ObjectHideFlags: 0

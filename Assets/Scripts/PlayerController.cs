@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isCeiling;
     private bool isInAntiGravity = false;
-    private bool isSmall = false; // **是否缩小**
+    private bool isSmall = false; 
     private bool isFalling = false;
     [SerializeField] private float groundCheckRadius = 0.8f;
 
@@ -232,29 +232,29 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
     }
 
-    // **进入反重力区域**
+    // Enter anti-gravity zone
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("AntiGravityZone"))
         {
-            if (isSmall) // **只有缩小时才触发**
+            if (isSmall) 
             {
                 isInAntiGravity = true;
                 rb.gravityScale = -1f;
                 FlipGroundCheck();
-                rb.velocity = new Vector2(rb.velocity.x, 5f); // **立即向上吸**
-                Debug.Log("✅ 玩家缩小，进入反重力区域！");
+                rb.velocity = new Vector2(rb.velocity.x, 5f); // be pulled up
+                Debug.Log("The player has shrinked. Enter anti-gravity zone.");
             }
             else
             {
-                Debug.Log("❌ 玩家太大，不受反重力影响！");
+                Debug.Log("The player is too big to enter anti-gravity zone.");
             }
         }
     }
 
 
 
-    // **离开反重力区域**
+    // Leave anti-gravity zone
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("AntiGravityZone") && isSmall)
@@ -265,21 +265,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // **翻转 `groundCheck` 位置**
+    // flip groundCheck's position
     private void FlipGroundCheck()
     {
         if (groundCheck == null)
         {
-            Debug.LogError("groundCheck 未赋值！");
+            Debug.LogError("groundCheck is None！");
             return;
         }
 
         float newY = -groundCheck.localPosition.y; 
         groundCheck.localPosition = new Vector3(groundCheck.localPosition.x, newY, groundCheck.localPosition.z);
-        Debug.Log("groundCheck 翻转，当前 Y 位置: " + groundCheck.localPosition.y);
+        Debug.Log("groundCheck flips，current Y is: " + groundCheck.localPosition.y);
     }
 
-    // **设置 `isSmall` 状态**
     public void SetSmallState(bool small)
     {
         isSmall = small;
@@ -292,9 +291,9 @@ public class PlayerController : MonoBehaviour
     public void ResetGravity()
     {
         isInAntiGravity = false;
-        rb.gravityScale = 1f; // **恢复正常重力**
-        FlipGroundCheck(); // **恢复 groundCheck 位置**
-        Debug.Log("🛠 ResetGravity() 被调用，重力恢复正常！");
+        rb.gravityScale = 1f; // Restore gravity 
+        FlipGroundCheck(); // Restore groundCheck 
+        Debug.Log("ResetGravity() is using. Gravity is normal！");
     }
 
 }

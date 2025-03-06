@@ -25,7 +25,7 @@ public class PickupAndPlace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 玩家按 E 键尝试放置
+        // player push "E" to place
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (persistentAbilityPrefab != null && abilityNum>0)
@@ -33,16 +33,16 @@ public class PickupAndPlace : MonoBehaviour
                 Debug.Log("place ability");
                 
 
-               // persistentAbilityPrefab.tag = "Ability"; // 设置为使用标签
+               // persistentAbilityPrefab.tag = "Ability"; 
 
                 GameObject newAbility = Instantiate(persistentAbilityPrefab, 
                     transform.position + transform.right * instantiateDistance, Quaternion.identity);
                 
-                // 判断玩家当前重力类型，物体需要跟随玩家重力
+                // Get the player's gravity type. Game items need to follow the player's gravity.
                 Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
                 targetRb = newAbility.GetComponent<Rigidbody2D>();
 
-                targetRb.gravityScale = playerRb.gravityScale; // 将重力赋值给ability
+                targetRb.gravityScale = playerRb.gravityScale; // Give gravity value to game items
 
                 abilityNum--;
                 UpdatePowerupUI();

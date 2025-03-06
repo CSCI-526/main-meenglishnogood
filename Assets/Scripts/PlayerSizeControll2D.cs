@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
 // public class NewBehaviourScript : MonoBehaviour
 // {
@@ -143,7 +143,7 @@ using UnityEngine;
 //         }
 //     }
 // }
-using UnityEngine;
+//using UnityEngine;
 
 // public class PlayerSizeControl2D : MonoBehaviour
 // {
@@ -222,13 +222,13 @@ public class PlayerSizeControl2D : MonoBehaviour
 
         if (playerController == null)
         {
-            Debug.LogError("未找到 PlayerController 组件！");
+            Debug.LogError("No PlayerController!");
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("触发器检测到: " + other.gameObject.name);
+        Debug.Log("OnTriggerEnter2D is using: " + other.gameObject.name);
 
         if (other.CompareTag(shrinkTag) && !hasShrunk)
         {
@@ -250,7 +250,7 @@ public class PlayerSizeControl2D : MonoBehaviour
         {
             playerController.SetSmallState(true);
         }
-        Debug.Log("玩家已缩小！");
+        Debug.Log("Player has shrinked！");
     }
 
     // private void GrowPlayer()
@@ -280,8 +280,8 @@ public class PlayerSizeControl2D : MonoBehaviour
             if (playerController != null)
             {
                 playerController.SetSmallState(false);
-                playerController.ResetGravity(); // **新方法：重置重力**
-                Debug.Log("✅ GrowPlayer() 被调用！isSmall: " + playerController.IsSmall());
+                playerController.ResetGravity(); 
+                Debug.Log("GrowPlayer() is using! isSmall: " + playerController.IsSmall());
             }
         }
     }

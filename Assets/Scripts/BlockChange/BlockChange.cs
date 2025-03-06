@@ -25,16 +25,16 @@ public class BlockChange : MonoBehaviour
     {
         if (other.CompareTag("Ability") && gameObject.CompareTag("InvisibleWall"))
         {
-            position = transform.position; // 获得原来block的大小和位置
+            position = transform.position; // get the original size and position of blocks
             scale = transform.localScale;
 
-            // 销毁原来的block
+            // destroy original block
             Destroy(gameObject);
 
-            // 销毁使用过的ability
+            // destroy used ability
             Destroy(other.gameObject);
 
-            // 创建新的persistentblock
+            // create new persistentblock
             GameObject newBlock = Instantiate(persistentBlockPrefab, position, Quaternion.identity);
             newBlock.transform.localScale = scale;
 

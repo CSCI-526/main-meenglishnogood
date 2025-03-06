@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
 
 // public class AntiGravityZone : MonoBehaviour
 // {
@@ -67,22 +67,22 @@ public class AntiGravityZone : MonoBehaviour
 
             if (player != null)
             {
-                Debug.Log("检测 isSmall 值：" + player.IsSmall());
+                Debug.Log("isSmall：" + player.IsSmall());
 
-                if (player.IsSmall()) // **只有缩小时才进入反重力**
+                if (player.IsSmall()) // The player can enter anti-gravity when it is small
                 {
                     Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
                     if (rb != null)
                     {
                         originalGravityScale = rb.gravityScale;
-                        rb.gravityScale = antiGravityScale; // 只有缩小时才改变重力
-                        rb.velocity = new Vector2(rb.velocity.x, 5f); // 立即向上吸
-                        Debug.Log("玩家缩小，进入反重力区域！");
+                        rb.gravityScale = antiGravityScale; 
+                        rb.velocity = new Vector2(rb.velocity.x, 5f); 
+                        Debug.Log("The player is small. Enter anti-gravity zone.");
                     }
                 }
                 else
                 {
-                    Debug.Log("玩家太大，无法进入反重力区域！");
+                    Debug.Log("The player is too big to enter anti-gravity zone.");
                 }
             }
         }
@@ -124,13 +124,13 @@ public class AntiGravityZone : MonoBehaviour
         {
             PlayerController player = other.GetComponent<PlayerController>();
 
-            if (player != null && player.IsSmall()) // **只有缩小时才恢复重力**
+            if (player != null && player.IsSmall())
             {
                 Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
                     rb.gravityScale = originalGravityScale;
-                    Debug.Log("玩家离开反重力区域，恢复正常重力！");
+                    Debug.Log("The player leaves anti-gravity zone.");
                 }
             }
         }

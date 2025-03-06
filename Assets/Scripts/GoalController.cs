@@ -6,6 +6,10 @@ public class GoalController : MonoBehaviour
 {
 
     public GameObject endUI;
+    public PowerupStarCollisionTracking starTracking;
+    public GameObject leftStar;
+    public GameObject midStar;
+    public GameObject rightStar;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +29,18 @@ public class GoalController : MonoBehaviour
 
             Destroy(gameObject);
 
-            endUI.SetActive(true);
             Time.timeScale = 0f;
+            endUI.SetActive(true);
+            if (starTracking.starCount > 0) {
+                leftStar.SetActive(true);
+            }
+            if (starTracking.starCount > 1) {
+                midStar.SetActive(true);
+            }
+            if (starTracking.starCount > 2) {
+                rightStar.SetActive(true);
+            }
+
         }
     }
 }

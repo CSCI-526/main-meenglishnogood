@@ -10,6 +10,7 @@ TagManager:
   - AntiGravityZone
   - Ceiling
   - Ability
+  - Star
   layers:
   - Default
   - TransparentFX

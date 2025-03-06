@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class PickupAndPlace : MonoBehaviour
 {
@@ -9,13 +11,15 @@ public class PickupAndPlace : MonoBehaviour
     public GameObject persistentAbilityPrefab;
     public GameObject player;
 
+    public TextMeshProUGUI powerupText;
+
     private Rigidbody2D playerRb;
     private Rigidbody2D targetRb;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdatePowerupUI();
     }
 
     // Update is called once per frame
@@ -41,6 +45,7 @@ public class PickupAndPlace : MonoBehaviour
                 targetRb.gravityScale = playerRb.gravityScale; // 将重力赋值给ability
 
                 abilityNum--;
+                UpdatePowerupUI();
             }
         }
     }
@@ -52,7 +57,16 @@ public class PickupAndPlace : MonoBehaviour
         {
             Debug.Log("Collide with ability");
             abilityNum++;
+            UpdatePowerupUI();
             Destroy(other.gameObject);
+        }
+    }
+
+    void UpdatePowerupUI()
+    {
+        if (powerupText != null)
+        {
+            powerupText.text = "Platform changing item: " + abilityNum;
         }
     }
 

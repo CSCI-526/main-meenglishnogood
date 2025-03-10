@@ -4518,6 +4518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1479710978}
   - component: {fileID: 1479710979}
+  - component: {fileID: 1479710980}
   m_Layer: 5
   m_Name: Ability Slot
   m_TagString: Untagged
@@ -4597,6 +4598,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1479710980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479710977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6527b76a68127349b03b5f65b0df0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1524404500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5157,6 +5170,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2861095512305679093, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1644628924}
+    - targetCorrespondingSourceObject: {fileID: 2861095512305679093, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1644628925}
   m_SourcePrefab: {fileID: 100100000, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
 --- !u!1 &1644628915 stripped
 GameObject:
@@ -5194,6 +5210,19 @@ MonoBehaviour:
   consumUI: {fileID: 1479710977}
   consumText: {fileID: 371303688}
   starCount: 0
+--- !u!114 &1644628925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644628915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79f6aafa28d8a54197183cbf1bb6267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  db: {fileID: 1479710980}
 --- !u!1001 &1645396052
 PrefabInstance:
   m_ObjectHideFlags: 0

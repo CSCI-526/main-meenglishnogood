@@ -70,3 +70,10 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# https://github-wiki-see.page/m/interaction-lab/MoveToCode/wiki/Firebase-Setup
+/[Aa]ssets/Data*
+/[Aa]ssets/Firebase*
+
+# Custom gitignore
+*.json

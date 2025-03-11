@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GoalController : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class GoalController : MonoBehaviour
     public GameObject leftStar;
     public GameObject midStar;
     public GameObject rightStar;
+    //public Image leftStar;
+    //public Image midStar;
+    //public Image rightStar;
+    // 
     // Start is called before the first frame update
     void Start()
     {

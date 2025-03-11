@@ -19,7 +19,7 @@ public class PickupAndPlace : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdatePowerupUI();
+       // UpdatePowerupUI();
     }
 
     // Update is called once per frame
@@ -45,7 +45,7 @@ public class PickupAndPlace : MonoBehaviour
                 targetRb.gravityScale = playerRb.gravityScale; // Give gravity value to game items
 
                 abilityNum--;
-                UpdatePowerupUI();
+                // UpdatePowerupUI();
             }
         }
     }
@@ -57,7 +57,7 @@ public class PickupAndPlace : MonoBehaviour
         {
             Debug.Log("Collide with ability");
             abilityNum++;
-            UpdatePowerupUI();
+            // UpdatePowerupUI();
             Destroy(other.gameObject);
         }
     }

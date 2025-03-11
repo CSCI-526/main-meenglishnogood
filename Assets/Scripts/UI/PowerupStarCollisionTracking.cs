@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 using TMPro;
 
 public class PowerupStarCollisionTracking : MonoBehaviour
@@ -8,14 +9,15 @@ public class PowerupStarCollisionTracking : MonoBehaviour
     private int consumCount = 0;
     private Color consumColor = Color.black;
 
-    public GameObject consumUI;
+    // public GameObject consumUI;
+    public Image slotImage;
     public TextMeshProUGUI consumText;
 
     public int starCount = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        slotImage.color = Color.black;
     }
 
     // Update is called once per frame
@@ -53,12 +55,12 @@ public class PowerupStarCollisionTracking : MonoBehaviour
     private void UpdateUI()
     {
         if (consumCount > 0) {
-            consumUI.GetComponent<SpriteRenderer>().color = consumColor;
+            slotImage.color = consumColor;
             consumText.text = consumCount.ToString();
         } else {
             consumColor = Color.black;
             consumCount = 0;
-            consumUI.GetComponent<SpriteRenderer>().color = Color.black;
+            slotImage.color = Color.black;
             consumText.text = "";
         }
     }

@@ -10,14 +10,21 @@ public class PowerupStarCollisionTracking : MonoBehaviour
     private Color consumColor = Color.black;
 
     // public GameObject consumUI;
-    public Image slotImage;
+    public GameObject slotImageObject;
+    //public GameObject consumTextObject;
+
     public TextMeshProUGUI consumText;
+
+    private Image slotImage;
 
     public int starCount = 0;
     // Start is called before the first frame update
     void Start()
     {
+        slotImage =  slotImageObject.GetComponent<Image>();
         slotImage.color = Color.black;
+
+        //consumText = consumText.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame

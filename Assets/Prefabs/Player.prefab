@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: powerupText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4511653065212897567, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
+      propertyPath: instantiateDistance
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7898502166638945558, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_Color.b
       value: 0.7830189
@@ -116,6 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5b26f36d6587543b6b5c5dd20aa9bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotImage: {fileID: 0}
-  consumText: {fileID: 0}
+  slotImageObject: {fileID: 0}
+  consumTextObject: {fileID: 0}
   starCount: 0

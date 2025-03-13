@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
+  grayOut: {fileID: 0}
 --- !u!60 &2558711697139064339
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -161,3 +162,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
+  grayOut: {fileID: 6789904977947538571, guid: f1f9dc81f254a614387466b2c1eb923d, type: 3}

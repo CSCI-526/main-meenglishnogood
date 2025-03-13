@@ -7,7 +7,7 @@ using TMPro;
 public class PickupAndPlace : MonoBehaviour
 {
     private int abilityNum = 0;
-    public float instantiateDistance = 1.0f;
+    public float instantiateDistance = 1.2f;
     public GameObject persistentAbilityPrefab;
     public GameObject player;
 

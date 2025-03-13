@@ -25,7 +25,11 @@ public class PickupAndPlace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         // player push "E" to place
+
+        // press e to place powerup
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (persistentAbilityPrefab != null && abilityNum>0)
@@ -38,11 +42,19 @@ public class PickupAndPlace : MonoBehaviour
                 GameObject newAbility = Instantiate(persistentAbilityPrefab, 
                     transform.position + transform.right * instantiateDistance, Quaternion.identity);
                 
+
                 // Get the player's gravity type. Game items need to follow the player's gravity.
-                Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
+                playerRb = player.GetComponent<Rigidbody2D>();
                 targetRb = newAbility.GetComponent<Rigidbody2D>();
 
                 targetRb.gravityScale = playerRb.gravityScale; // Give gravity value to game items
+
+                //// get the current gravity of player, the powerup should have same gravity
+                //playerRb = player.GetComponent<Rigidbody2D>();
+                //targetRb = newAbility.GetComponent<Rigidbody2D>();
+
+                //targetRb.gravityScale = playerRb.gravityScale; 
+
 
                 abilityNum--;
                 // UpdatePowerupUI();

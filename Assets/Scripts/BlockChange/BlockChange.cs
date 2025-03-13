@@ -25,6 +25,7 @@ public class BlockChange : MonoBehaviour
     {
         if (other.CompareTag("Ability") && gameObject.CompareTag("InvisibleWall"))
         {
+
             position = transform.position; // get the original size and position of blocks
             scale = transform.localScale;
 
@@ -32,6 +33,15 @@ public class BlockChange : MonoBehaviour
             Destroy(gameObject);
 
             // destroy used ability
+
+            position = transform.position; // get the position of the block
+            scale = transform.localScale;
+
+            // destroy the original block
+            Destroy(gameObject);
+
+            // destroy the used ability
+
             Destroy(other.gameObject);
 
             // create new persistentblock

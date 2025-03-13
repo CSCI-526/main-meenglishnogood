@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 public class Trap : MonoBehaviour
 {
     public float restartDelay = 0f; 
+    public GameObject grayOut;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -15,6 +17,7 @@ public class Trap : MonoBehaviour
 
     void RestartGame()
     {
+        grayOut.SetActive(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

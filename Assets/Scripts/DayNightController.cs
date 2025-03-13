@@ -94,6 +94,10 @@ public class DayNightController : MonoBehaviour
                 {
                     wall.GetComponent<BoxCollider2D>().enabled = !isDay;
                 }
+                else if (wall.mode == 3)
+                {
+                    wall.spriteRenderer.color = !isDay ? dayBackgroundColor : nightBackgroundColor;
+                }
             }
             foreach (PortalController portal in portals)
             {
@@ -110,6 +114,10 @@ public class DayNightController : MonoBehaviour
                 if (wall.mode == 1)
                 {
                     wall.GetComponent<BoxCollider2D>().enabled = isDay;
+                }
+                else if (wall.mode == 3)
+                {
+                    wall.spriteRenderer.color = !isDay ? dayBackgroundColor : nightBackgroundColor;
                 }
             }
             foreach (PortalController portal in portals)
@@ -137,6 +145,7 @@ public class DayNightController : MonoBehaviour
                 {
                     wall.GetComponent<BoxCollider2D>().enabled = isDay;
                 }
+
             }
             foreach (PortalController portal in portals)
             {

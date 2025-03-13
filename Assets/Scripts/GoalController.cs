@@ -7,6 +7,7 @@ public class GoalController : MonoBehaviour
 {
 
     public GameObject endUI;
+    public GameObject menuUI;
     public PowerupStarCollisionTracking starTracking;
     public GameObject leftStar;
     public GameObject midStar;
@@ -14,6 +15,8 @@ public class GoalController : MonoBehaviour
     //public Image leftStar;
     //public Image midStar;
     //public Image rightStar;
+
+    public GameObject grayOut;
     // 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +39,7 @@ public class GoalController : MonoBehaviour
 
             Time.timeScale = 0f;
             endUI.SetActive(true);
+            grayOut.SetActive(true);
             if (starTracking.starCount > 0) {
                 leftStar.SetActive(true);
             }
@@ -45,7 +49,7 @@ public class GoalController : MonoBehaviour
             if (starTracking.starCount > 2) {
                 rightStar.SetActive(true);
             }
-
+            menuUI.SetActive(true);
         }
     }
 }

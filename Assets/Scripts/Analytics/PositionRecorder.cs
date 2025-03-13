@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PositionRecorder : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class PositionRecorder : MonoBehaviour
 
     IEnumerator LogPlayerPosition() {
         while (true) {
-            db.AddHeatmapData(transform.position.x, transform.position.y);
+            db.AddHeatmapData(transform.position.x, transform.position.y, SceneManager.GetActiveScene().name);
             
             // Logs every second
             yield return new WaitForSeconds(1f);

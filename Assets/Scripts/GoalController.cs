@@ -17,6 +17,7 @@ public class GoalController : MonoBehaviour
     //public Image rightStar;
 
     public GameObject grayOut;
+    public GameObject settingsButton;
     // 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,7 @@ public class GoalController : MonoBehaviour
                 rightStar.SetActive(true);
             }
             menuUI.SetActive(true);
+            settingsButton.SetActive(false);
         }
     }
 }

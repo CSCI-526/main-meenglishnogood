@@ -23,13 +23,14 @@ public class AnalyticsManager : MonoBehaviour
         //     }
         // });
     }
-    public void AddHeatmapData(float x, float y) {
+    public void AddHeatmapData(float x, float y, string level) {
         float gameTime = Time.time;
         // Create a dictionary with provided X and Y coordinates
         Dictionary<string, object> heatmapData = new Dictionary<string, object>
         {
             { "x", x },
             { "y", y },
+            { "level", level },
             { "gameTime", gameTime },
             { "sessionId", sessionId }
         };

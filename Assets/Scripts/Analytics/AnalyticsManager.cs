@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using static AnalyticsManager;
 
 public class AnalyticsManager : MonoBehaviour
 {
@@ -64,7 +65,8 @@ public class AnalyticsManager : MonoBehaviour
             sessionId = sessionId
         };
 
-        string json = JsonUtility.ToJson(collectibleData);
+        //string json = JsonUtility.ToJson(collectibleData);
+        string json = JsonUtility.ToJson(data);
         StartCoroutine(SendPayload("collectibles", json));
     }
 

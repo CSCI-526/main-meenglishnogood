@@ -763,8 +763,8 @@ Canvas:
   m_GameObject: {fileID: 244848428}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 414366927}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -775,7 +775,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &244848432
 RectTransform:
@@ -3610,11 +3610,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3374747622482415831, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.65
+      value: -10.76
       objectReference: {fileID: 0}
     - target: {fileID: 3374747622482415831, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.44
+      value: -4.28
       objectReference: {fileID: 0}
     - target: {fileID: 3374747622482415831, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5614,13 +5614,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endUI: {fileID: 1910745913}
-  menuUI: {fileID: 1727066914}
+  menuUI: {fileID: 475544398}
   starTracking: {fileID: 880532040}
   leftStar: {fileID: 275457013}
   midStar: {fileID: 1986534757}
   rightStar: {fileID: 733462806}
   grayOut: {fileID: 1076522816}
-  settingsButton: {fileID: 0}
+  settingsButton: {fileID: 1727066914}
 --- !u!61 &1199290834
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9513,6 +9513,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 669251279}
+  - {fileID: 880532038}
   - {fileID: 1846166767}
   - {fileID: 1152293943}
   - {fileID: 1160278195}
@@ -9524,7 +9525,6 @@ SceneRoots:
   - {fileID: 1890107067}
   - {fileID: 876952743}
   - {fileID: 1857304177}
-  - {fileID: 880532038}
   - {fileID: 244848432}
   - {fileID: 922526907}
   - {fileID: 1517470225}

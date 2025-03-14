@@ -889,6 +889,7 @@ GameObject:
   - component: {fileID: 262685794}
   - component: {fileID: 262685793}
   - component: {fileID: 262685792}
+  - component: {fileID: 262685795}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -959,7 +960,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 262685793}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 262685795}
+        m_TargetAssemblyTypeName: Quit, Assembly-CSharp
+        m_MethodName: MainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &262685793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,6 +1011,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262685790}
   m_CullTransparentMesh: 1
+--- !u!114 &262685795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262685790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa3dc63ba135e0944a58fb5f0ae9be04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &275457013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,7 +1969,7 @@ GameObject:
   - component: {fileID: 437589720}
   - component: {fileID: 437589719}
   - component: {fileID: 437589718}
-  - component: {fileID: 437589717}
+  - component: {fileID: 437589721}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1972,18 +1997,6 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: -250}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &437589717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437589715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1ba94f01fceb944893b9bf07d189fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &437589718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2028,8 +2041,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 437589717}
-        m_TargetAssemblyTypeName: Restart, Assembly-CSharp
+      - m_Target: {fileID: 437589721}
+        m_TargetAssemblyTypeName: RestartUpdated, Assembly-CSharp
         m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
@@ -2078,6 +2091,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437589715}
   m_CullTransparentMesh: 1
+--- !u!114 &437589721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437589715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0425bbe584bb57f478f46f13c89c094f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &451257849 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7824781055730121670, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
@@ -3637,6 +3662,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2861095512305679093, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 880532040}
+    - targetCorrespondingSourceObject: {fileID: 2861095512305679093, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 880532042}
   m_SourcePrefab: {fileID: 100100000, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
 --- !u!1 &880532039 stripped
 GameObject:
@@ -3674,6 +3702,19 @@ MonoBehaviour:
   growFactor: 2
   shrinkTag: ShrinkTriangle
   growTag: GrowTriangle
+--- !u!114 &880532042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880532039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79f6aafa28d8a54197183cbf1bb6267, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  db: {fileID: 908414331}
 --- !u!4 &886288522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7824781055730121670, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
@@ -3700,6 +3741,7 @@ GameObject:
   - component: {fileID: 908414328}
   - component: {fileID: 908414330}
   - component: {fileID: 908414329}
+  - component: {fileID: 908414331}
   m_Layer: 5
   m_Name: AbilitySlot
   m_TagString: Untagged
@@ -3764,6 +3806,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908414327}
   m_CullTransparentMesh: 1
+--- !u!114 &908414331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908414327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6527b76a68127349b03b5f65b0df0e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  URL: https://darklight-escape-default-rtdb.firebaseio.com/
 --- !u!4 &917645039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4268152251789038382, guid: 2bcea92db13dc9c45b19295ca7f4c36c, type: 3}
@@ -5565,6 +5620,7 @@ MonoBehaviour:
   midStar: {fileID: 1986534757}
   rightStar: {fileID: 733462806}
   grayOut: {fileID: 1076522816}
+  settingsButton: {fileID: 0}
 --- !u!61 &1199290834
 BoxCollider2D:
   m_ObjectHideFlags: 0

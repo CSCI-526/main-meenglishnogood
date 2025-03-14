@@ -18,6 +18,14 @@ public class Trap : MonoBehaviour
     void RestartGame()
     {
         // grayOut.SetActive(true);
-        SceneManager.LoadScene("Game_Over", LoadSceneMode.Additive);
+        if (!IsSceneLoaded("Game_Over")) {
+            SceneManager.LoadScene("Game_Over", LoadSceneMode.Additive);
+        }
+    }
+
+    bool IsSceneLoaded(string sceneName)
+    {
+        Scene scene = SceneManager.GetSceneByName(sceneName);
+        return scene.IsValid(); 
     }
 }

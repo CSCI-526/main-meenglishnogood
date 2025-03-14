@@ -11,6 +11,9 @@ public class Trap : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            PlayerPrefs.SetInt("LastLevel", SceneManager.GetActiveScene().buildIndex);
+            PlayerPrefs.Save();
+
             Invoke("RestartGame", restartDelay); 
         }
     }

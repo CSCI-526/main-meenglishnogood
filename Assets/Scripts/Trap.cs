@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class Trap : MonoBehaviour
 {
     public float restartDelay = 0f; 
-    public GameObject grayOut;
+    // public GameObject grayOut;
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -17,7 +17,15 @@ public class Trap : MonoBehaviour
 
     void RestartGame()
     {
-        grayOut.SetActive(true);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // grayOut.SetActive(true);
+        if (!IsSceneLoaded("Game_Over")) {
+            SceneManager.LoadScene("Game_Over", LoadSceneMode.Additive);
+        }
+    }
+
+    bool IsSceneLoaded(string sceneName)
+    {
+        Scene scene = SceneManager.GetSceneByName(sceneName);
+        return scene.IsValid(); 
     }
 }

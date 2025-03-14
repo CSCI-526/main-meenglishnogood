@@ -23,7 +23,9 @@ public class Trap : MonoBehaviour
             //GameObject SettingsButtonWrapper = GameObject.Find("SettingsButtonWrapper");
             GameObject SettingsButtonWrapper = GameObject.Find("Canvas")?.transform.Find("SettingsButtonWrapper")?.gameObject;
             Debug.Log("Found the object = " + SettingsButtonWrapper);
-            SettingsButtonWrapper.SetActive(false);
+            if (SettingsButtonWrapper != null) {
+                SettingsButtonWrapper.SetActive(false);
+            }
         }
     }
 

@@ -6384,6 +6384,10 @@ PrefabInstance:
       propertyPath: consumTextObject
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7090774303873617285, guid: 07d0432b5137417469900295a45b0053, type: 3}
+      propertyPath: orthographic size
+      value: 4.3973374
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6734,7 +6738,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1719916362}
   - {fileID: 1150221379}
-  - {fileID: 2045196316}
   - {fileID: 596274043}
   - {fileID: 186380750}
   - {fileID: 391966071}
@@ -6747,5 +6750,6 @@ SceneRoots:
   - {fileID: 1160110970}
   - {fileID: 2010469438}
   - {fileID: 1832667799}
+  - {fileID: 2045196316}
   - {fileID: 197660393}
   - {fileID: 999592356}

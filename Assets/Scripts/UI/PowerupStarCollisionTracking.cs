@@ -54,11 +54,6 @@ public class PowerupStarCollisionTracking : MonoBehaviour
         }
     }
 
-    public void UseConsumable()
-    {
-        
-    }
-
     private void UpdateUI()
     {
         if (consumCount > 0) {

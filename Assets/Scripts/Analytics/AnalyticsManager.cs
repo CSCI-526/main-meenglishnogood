@@ -23,6 +23,7 @@ public class AnalyticsManager : MonoBehaviour
         //     }
         // });
     }
+    
     public void AddHeatmapData(float x, float y, string level) {
         float gameTime = Time.time;
         // Create a dictionary with provided X and Y coordinates
@@ -37,6 +38,21 @@ public class AnalyticsManager : MonoBehaviour
 
         string json = JsonUtility.ToJson(heatmapData);
         SendPayload("positions", json);
+    }
+
+    public void AddCollectibleData(string item, string level) {
+        float gameTime = Time.time;
+        // Create a dictionary with provided item name
+        Dictionary<string, object> collectibleData = new Dictionary<string, object>
+        {
+            { "item", item },
+            { "level", level },
+            { "gameTime", gameTime },
+            { "sessionId", sessionId }
+        };
+
+        string json = JsonUtility.ToJson(collectibleData);
+        SendPayload("collectibles", json);
     }
 
     // Taken from class resources: how to send data to firebase real-time database

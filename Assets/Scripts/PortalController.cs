@@ -20,10 +20,13 @@ public class PortalController : MonoBehaviour
 
     public void Update()
     {
-        if (playerInPortal && otherPortal != null && FindObjectOfType<DayNightController>().isTransitioning)
+        if (playerInPortal && otherPortal != null && FindObjectOfType<DayNightController>().isTransitioning && !FindObjectOfType<DayNightController>().isDay && mode == 1)
         {
             TeleportPlayer();
-        }
+        }else if (playerInPortal && otherPortal != null && FindObjectOfType<DayNightController>().isTransitioning && FindObjectOfType<DayNightController>().isDay && mode == 2)
+            {
+                TeleportPlayer();
+            }
     }
 
     public void SetMode(int newMode)

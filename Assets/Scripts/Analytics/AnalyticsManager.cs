@@ -7,6 +7,23 @@ using UnityEngine.Networking;
 public class AnalyticsManager : MonoBehaviour
 {
     [SerializeField] private string URL = "https://darklight-escape-default-rtdb.firebaseio.com/";
+    [System.Serializable]
+    public class HeatmapData {
+        public float x;
+        public float y;
+        public string level;
+        public float gameTime;
+        public string sessionId;
+    }
+
+    // Similarly for collectibles
+    [System.Serializable]
+    public class CollectibleData {
+        public string item;
+        public string level;
+        public float gameTime;
+        public string sessionId;
+    }
     // [SerializeField] private string key = "lHPqSFZELuNPr1YR1jyCKQBJ4fNzpYnZZF022erF";
     private string sessionId;
 
@@ -26,33 +43,29 @@ public class AnalyticsManager : MonoBehaviour
     
     public void AddHeatmapData(float x, float y, string level) {
         float gameTime = Time.time;
-        // Create a dictionary with provided X and Y coordinates
-        Dictionary<string, object> heatmapData = new Dictionary<string, object>
-        {
-            { "x", x },
-            { "y", y },
-            { "level", level },
-            { "gameTime", gameTime },
-            { "sessionId", sessionId }
+        HeatmapData data = new HeatmapData {
+            x = x,
+            y = y,
+            level = level,
+            gameTime = gameTime,
+            sessionId = sessionId
         };
 
-        string json = JsonUtility.ToJson(heatmapData);
-        SendPayload("positions", json);
+        string json = JsonUtility.ToJson(data);
+        StartCoroutine(SendPayload("positions", json));
     }
 
     public void AddCollectibleData(string item, string level) {
         float gameTime = Time.time;
-        // Create a dictionary with provided item name
-        Dictionary<string, object> collectibleData = new Dictionary<string, object>
-        {
-            { "item", item },
-            { "level", level },
-            { "gameTime", gameTime },
-            { "sessionId", sessionId }
+        CollectibleData data = new CollectibleData {
+            item = item,
+            level = level,
+            gameTime = gameTime,
+            sessionId = sessionId
         };
 
         string json = JsonUtility.ToJson(collectibleData);
-        SendPayload("collectibles", json);
+        StartCoroutine(SendPayload("collectibles", json));
     }
 
     // Taken from class resources: how to send data to firebase real-time database

@@ -22,7 +22,9 @@ public class Trap : MonoBehaviour
             SceneManager.LoadScene("Game_Over", LoadSceneMode.Additive);
             GameObject SettingsButtonWrapper = GameObject.Find("SettingsButtonWrapper");
             Debug.Log("Found the object = " + SettingsButtonWrapper);
-            SettingsButtonWrapper.SetActive(false);
+            if (SettingsButtonWrapper != null) {
+                SettingsButtonWrapper.SetActive(false);
+            }
         }
     }
 

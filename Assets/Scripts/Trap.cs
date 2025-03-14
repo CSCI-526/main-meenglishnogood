@@ -20,6 +20,9 @@ public class Trap : MonoBehaviour
         // grayOut.SetActive(true);
         if (!IsSceneLoaded("Game_Over")) {
             SceneManager.LoadScene("Game_Over", LoadSceneMode.Additive);
+            GameObject SettingsButtonWrapper = GameObject.Find("SettingsButtonWrapper");
+            Debug.Log("Found the object = " + SettingsButtonWrapper);
+            SettingsButtonWrapper.SetActive(false);
         }
     }
 

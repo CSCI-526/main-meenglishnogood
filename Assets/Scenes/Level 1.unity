@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 328809493}
   - component: {fileID: 328809492}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5482,7 +5482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79f6aafa28d8a54197183cbf1bb6267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  db: {fileID: 0}
+  db: {fileID: 363827907}
 --- !u!1001 &1642349630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6611,11 +6611,11 @@ PrefabInstance:
     - target: {fileID: 4226886234001274065, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: consumText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 880211423}
     - target: {fileID: 4226886234001274065, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: slotImageObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 363827905}
     - target: {fileID: 4226886234001274065, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: consumTextObject
       value: 

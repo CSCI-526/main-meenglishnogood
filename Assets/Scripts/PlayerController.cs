@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("isCeiling: " + isCeiling + ", isSmall: " + isSmall);
+        // Debug.Log("isCeiling: " + isCeiling + ", isSmall: " + isSmall);
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         bool jumpInput = Input.GetButtonDown("Jump");
 

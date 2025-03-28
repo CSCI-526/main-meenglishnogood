@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class PowerupStarCollisionTracking : MonoBehaviour
@@ -18,6 +19,9 @@ public class PowerupStarCollisionTracking : MonoBehaviour
     private Image slotImage;
 
     public int starCount = 0;
+
+    public AnalyticsManager db;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +37,11 @@ public class PowerupStarCollisionTracking : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E)) {
             if (consumCount > 0) {
             consumCount--;
+            db.AddCollectibleData("Use " + consumColor.ToString(), SceneManager.GetActiveScene().name);
             UpdateUI();
             }
+        } else if (Input.GetKeyDown(KeyCode.Q)) {
+            db.AddCollectibleData("Q", SceneManager.GetActiveScene().name);
         }
     }
 
@@ -48,9 +55,18 @@ public class PowerupStarCollisionTracking : MonoBehaviour
             } else {
                 consumCount++;
             }
+            db.AddCollectibleData("Get " + consumColor.ToString(), SceneManager.GetActiveScene().name);
             UpdateUI();
         } else if (collision.CompareTag("Star")) {
             starCount++;
+            db.AddCollectibleData("Star", SceneManager.GetActiveScene().name);
+        } else if (collision.CompareTag("ShrinkTriangle")) {
+            db.AddCollectibleData("ShrinkTriangle", SceneManager.GetActiveScene().name);
+        } else if (collision.CompareTag("GrowTriangle")) {
+            db.AddCollectibleData("GrowTriangle", SceneManager.GetActiveScene().name);
+        } else if (collision.CompareTag("Portal")) {
+            // Debug.Log("Portal logged");
+            db.AddCollectibleData("Portal", SceneManager.GetActiveScene().name);
         }
     }
 

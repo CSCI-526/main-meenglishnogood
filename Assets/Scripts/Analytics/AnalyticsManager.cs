@@ -84,14 +84,14 @@ public class AnalyticsManager : MonoBehaviour
             //Send the request then wait here until it returns
             yield return uwr.SendWebRequest();
 
-            if (uwr.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log("Error While Sending: " + uwr.error);
-            }
-            else
-            {
-                Debug.Log("Data Received: " + uwr.downloadHandler.text);
-            }
+            // if (uwr.result != UnityWebRequest.Result.Success)
+            // {
+            //     Debug.Log("Error While Sending: " + uwr.error);
+            // }
+            // else
+            // {
+            //     Debug.Log("Data Received: " + uwr.downloadHandler.text);
+            // }
         }
     }
         // Add the document to the 'playerheatmap' collection

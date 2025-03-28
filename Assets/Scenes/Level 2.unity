@@ -222,7 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!114 &4850100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &4850101
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -367,7 +365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &39320888
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -429,7 +426,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &39320890
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -573,7 +569,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &83096048
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -635,7 +630,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &83096050
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1345,7 +1339,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &266791999
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1407,7 +1400,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &266792001
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1528,7 +1520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &277604271
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1590,7 +1581,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &277604273
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2363,7 +2353,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &498001499
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2425,7 +2414,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &498001501
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2842,7 +2830,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &612359826
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2904,7 +2891,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &612359828
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3454,7 +3440,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &819817796
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3516,7 +3501,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &819817798
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4363,7 +4347,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &1058549623
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4425,7 +4408,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &1058549625
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4596,7 +4578,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &1122772687
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4658,7 +4639,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &1122772689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5306,7 +5286,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &1242123226
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5368,7 +5347,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &1242123228
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6224,7 +6202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &1381489980
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6286,7 +6263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &1381489982
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6927,7 +6903,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &1510769360
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6989,7 +6964,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &1510769362
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7409,7 +7383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &1569290621
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7471,7 +7444,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &1569290623
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7572,7 +7544,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &1571747936
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7634,7 +7605,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &1571747938
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7829,7 +7799,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &1619691950
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7891,7 +7860,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &1619691952
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7992,7 +7960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &1624189830
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8054,7 +8021,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &1624189832
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8140,7 +8106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &1633170687
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8202,7 +8167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &1633170689
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8306,6 +8270,7 @@ MonoBehaviour:
   slotImageObject: {fileID: 95933149}
   consumText: {fileID: 371303688}
   starCount: 0
+  db: {fileID: 95933153}
 --- !u!114 &1644628931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8475,7 +8440,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &1755400802
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8537,7 +8501,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &1755400804
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9212,7 +9175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &1930258809
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -9274,7 +9236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &1930258811
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9567,7 +9528,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 0
-  grayOut: {fileID: 1230450387}
 --- !u!60 &2060692144
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -9629,7 +9589,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartDelay: 1.5
-  grayOut: {fileID: 0}
 --- !u!212 &2060692146
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -516,6 +516,10 @@ PrefabInstance:
       value: 2.05
       objectReference: {fileID: 0}
     - target: {fileID: 4226886234001274065, guid: 07d0432b5137417469900295a45b0053, type: 3}
+      propertyPath: db
+      value: 
+      objectReference: {fileID: 404507256}
+    - target: {fileID: 4226886234001274065, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: slotImage
       value: 
       objectReference: {fileID: 0}

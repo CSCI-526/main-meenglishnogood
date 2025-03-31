@@ -7686,6 +7686,10 @@ PrefabInstance:
       value: PlayerWithAbility
       objectReference: {fileID: 0}
     - target: {fileID: 3269336297203451587, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
+      propertyPath: jumpPower
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269336297203451587, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: ceilingLayer.m_Bits
       value: 128
       objectReference: {fileID: 0}

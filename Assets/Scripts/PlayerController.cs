@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector2 movement;
-    [SerializeField] private int jumpPower = 5;
+    [SerializeField] private float jumpPower = 6.5f;
     private bool isGrounded;
     private bool isCeiling;
     private bool isInAntiGravity = false;

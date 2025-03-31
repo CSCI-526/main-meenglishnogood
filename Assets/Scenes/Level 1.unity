@@ -6605,6 +6605,14 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2322718391680567665, guid: 07d0432b5137417469900295a45b0053, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322718391680567665, guid: 07d0432b5137417469900295a45b0053, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322718391680567665, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.6
       objectReference: {fileID: 0}
@@ -6626,7 +6634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7090774303873617285, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: orthographic size
-      value: 4.3973374
+      value: 4.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

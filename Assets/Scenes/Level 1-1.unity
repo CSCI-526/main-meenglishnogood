@@ -501,23 +501,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2322718391680567665, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.9365966
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 2322718391680567665, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.99911994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2322718391680567665, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.69468796
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2322718391680567665, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.03
+      value: 4.15
       objectReference: {fileID: 0}
     - target: {fileID: 2322718391680567665, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.05
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4226886234001274065, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: db
@@ -541,7 +541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7090774303873617285, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: orthographic size
-      value: 5.065802
+      value: 4.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

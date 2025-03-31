@@ -295,5 +295,14 @@ public class PlayerController : MonoBehaviour
         FlipGroundCheck(); // Restore groundCheck 
         Debug.Log("ResetGravity() is using. Gravity is normal！");
     }
+    public void Respawn()
+    {
+        if (CheckpointManager.Instance != null)
+        {
+            transform.position = CheckpointManager.Instance.GetLastCheckpoint();
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            Debug.Log("🔁 Player Respawned at checkpoint!");
+        }
+    }
 
 }

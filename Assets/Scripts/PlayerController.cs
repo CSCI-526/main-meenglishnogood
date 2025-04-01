@@ -220,7 +220,8 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             }
-            else if (isInAntiGravity && isCeiling && isSmall)
+            //else if (isInAntiGravity && isCeiling && isSmall)
+            else if (isInAntiGravity && isSmall)
             {
                 rb.velocity = new Vector2(rb.velocity.x, -jumpPower);
             }

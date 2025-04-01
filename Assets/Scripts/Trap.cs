@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine;
 
 // public class Trap : MonoBehaviour
 // {
@@ -79,9 +78,7 @@ using UnityEngine;
 //         return scene.IsValid(); 
 //     }
 // }
-using UnityEngine;
 
-using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
@@ -92,7 +89,7 @@ public class Trap : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             // 
-            PlayerPrefs.SetInt("LastLevel", UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+            PlayerPrefs.SetString("LastLevel", UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
             PlayerPrefs.Save();
 
             Invoke("RespawnPlayer", restartDelay); // 

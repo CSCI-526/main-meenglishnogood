@@ -5563,6 +5563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvisibleWall_changeable (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 2296833798467324761, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7824781055730121670, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
       propertyPath: m_LocalScale.x
       value: 6.404852
@@ -6336,15 +6340,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1548736583298694095, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.33
+      value: 26.97
       objectReference: {fileID: 0}
     - target: {fileID: 1548736583298694095, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.08
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 1548736583298694095, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1548736583298694095, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6641,6 +6645,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1719916362}
+  - {fileID: 2045196316}
   - {fileID: 1150221379}
   - {fileID: 596274043}
   - {fileID: 186380750}
@@ -6657,5 +6662,4 @@ SceneRoots:
   - {fileID: 594563359}
   - {fileID: 2140502207}
   - {fileID: 284057406470108825}
-  - {fileID: 2045196316}
   - {fileID: 1051399786}

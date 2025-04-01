@@ -11,7 +11,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void RestartButton() {
         //SceneManager.LoadScene("Level 1");
-        int lastLevel = PlayerPrefs.GetInt("LastLevel", 1); // 默认返回第一关
+        string lastLevel = PlayerPrefs.GetString("LastLevel", "Level 1-Beta"); // 默认返回第一关
         SceneManager.LoadScene(lastLevel);
     }
 

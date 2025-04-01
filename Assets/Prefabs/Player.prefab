@@ -76,6 +76,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.13220091
       objectReference: {fileID: 0}
+    - target: {fileID: 7898502166638945558, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7898502166638945558, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 668913995
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -121,5 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotImageObject: {fileID: 0}
-  consumTextObject: {fileID: 0}
+  consumText: {fileID: 0}
   starCount: 0
+  db: {fileID: 0}

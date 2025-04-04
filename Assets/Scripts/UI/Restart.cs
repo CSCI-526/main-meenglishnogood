@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Restart : MonoBehaviour
 {
+    //public Vector3 restartPoint;
+
     public void RestartLevel() {
+        //CheckpointManager.Instance.SetCheckpoint(restartPoint);  // rstart should start from the inital position, not the checkpoint
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
     }

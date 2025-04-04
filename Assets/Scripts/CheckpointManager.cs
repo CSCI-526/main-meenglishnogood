@@ -22,6 +22,8 @@ public class CheckpointManager : MonoBehaviour
     public static CheckpointManager Instance { get; private set; }
 
     private Vector3 lastCheckpointPosition;
+    private Vector3 lastLocalScale; // size of the object
+    private float lastGravityScale;
 
     private void Awake()
     {
@@ -35,6 +37,27 @@ public class CheckpointManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void SetGravityScale(float scale)
+    {
+        Debug.Log("CheckpointManager:Last Gravity Scale recorded: " + scale);
+        lastGravityScale = scale;
+    }
+
+    public float GetLastGravityScale()
+    {
+        return lastGravityScale;
+    }
+
+    public void SetLastLocalScale(Vector3 localScale)
+    {
+        lastLocalScale = localScale;
+    }
+
+    public Vector3 GetLastLocalScale()
+    {
+        return lastLocalScale;
     }
 
     public void SetCheckpoint(Vector3 position)

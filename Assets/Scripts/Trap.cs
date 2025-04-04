@@ -93,6 +93,8 @@ public class Trap : MonoBehaviour
             PlayerPrefs.Save();
 
             Invoke("RespawnPlayer", restartDelay); // 
+            //Invoke("RestartGame", restartDelay); // 
+
         }
     }
 
@@ -105,20 +107,23 @@ public class Trap : MonoBehaviour
             if (controller != null)
             {
                 controller.Respawn();
-                Debug.Log("🟦 Trap triggered respawn.");
+                Debug.Log("Trap triggered respawn.");
             }
         }
     }
-    // void RestartGame()
-    // {
-    //     if (!IsSceneLoaded("Game_Over")) {
-    //         SceneManager.LoadScene("Game_Over", LoadSceneMode.Additive);
-    //         GameObject SettingsButtonWrapper = GameObject.Find("Canvas")?.transform.Find("SettingsButtonWrapper")?.gameObject;
-    //         if (SettingsButtonWrapper != null) {
-    //             SettingsButtonWrapper.SetActive(false);
-    //         }
-    //     }
-    // }
+
+    void RestartGame()
+    {
+        if (!IsSceneLoaded("Game_Over"))
+        {
+            SceneManager.LoadScene("Game_Over", LoadSceneMode.Additive);
+            GameObject SettingsButtonWrapper = GameObject.Find("Canvas")?.transform.Find("SettingsButtonWrapper")?.gameObject;
+            if (SettingsButtonWrapper != null)
+            {
+                SettingsButtonWrapper.SetActive(false);
+            }
+        }
+    }
 
     bool IsSceneLoaded(string sceneName)
     {

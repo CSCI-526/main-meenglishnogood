@@ -203,7 +203,7 @@
 // }
 using UnityEngine;
 
-public class PlayerSizeControl2D : MonoBehaviour
+public class PlayerSizeControll2D : MonoBehaviour
 {
     [Header("Size Settings")]
     public float shrinkFactor = 0.5f;
@@ -212,7 +212,7 @@ public class PlayerSizeControl2D : MonoBehaviour
     public string growTag = "GrowTriangle";
 
     private Vector3 originalSize;
-    private bool hasShrunk = false;
+    public bool hasShrunk = false;
     private PlayerController playerController;
 
     private void Start()
@@ -233,12 +233,14 @@ public class PlayerSizeControl2D : MonoBehaviour
         if (other.CompareTag(shrinkTag) && !hasShrunk)
         {
             ShrinkPlayer();
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
         else if (other.CompareTag(growTag) && hasShrunk)
         {
             GrowPlayer();
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 

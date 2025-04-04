@@ -166,6 +166,7 @@
 
 // }
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -184,10 +185,24 @@ public class PlayerController : MonoBehaviour
     private bool isFalling = false;
     [SerializeField] private float groundCheckRadius = 0.8f;
 
+    private List<GameObject> shrinkTriangles = new List<GameObject>();
+    private List<GameObject> growTriangles = new List<GameObject>();
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        // record all size changing objects for reload when respawn from checkpoint
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ShrinkTriangle")) 
+        {
+            shrinkTriangles.Add(obj);
+        }
+
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("GrowTriangle"))
+        {
+            growTriangles.Add(obj);
+        }
     }
 
     void Update()
@@ -209,7 +224,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             isGrounded = false;
-            isCeiling = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, ceilingLayer);
+            //isCeiling = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, ceilingLayer);
+            isCeiling = Physics2D.Raycast(transform.position + Vector3.up * 0.4f, Vector2.up, 0.1f, groundLayer); 
         }
 
         movement = new Vector2(horizontalInput, 0);
@@ -220,8 +236,8 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             }
-            //else if (isInAntiGravity && isCeiling && isSmall)
-            else if (isInAntiGravity && isSmall)
+            else if (isInAntiGravity && isCeiling && isSmall)
+            //else if (isInAntiGravity && isSmall)
             {
                 rb.velocity = new Vector2(rb.velocity.x, -jumpPower);
             }
@@ -277,7 +293,7 @@ public class PlayerController : MonoBehaviour
 
         float newY = -groundCheck.localPosition.y; 
         groundCheck.localPosition = new Vector3(groundCheck.localPosition.x, newY, groundCheck.localPosition.z);
-        Debug.Log("groundCheck flips，current Y is: " + groundCheck.localPosition.y);
+        //Debug.Log("groundCheck flips，current Y is: " + groundCheck.localPosition.y);
     }
 
     public void SetSmallState(bool small)
@@ -300,7 +316,38 @@ public class PlayerController : MonoBehaviour
     {
         if (CheckpointManager.Instance != null)
         {
-            transform.position = CheckpointManager.Instance.GetLastCheckpoint();
+            transform.position = CheckpointManager.Instance.GetLastCheckpoint(); // respawn from checkpoint
+
+            transform.localScale = CheckpointManager.Instance.GetLastLocalScale(); // get last size
+            if(transform.localScale.x > 0.5f)  // if not shrinking
+            {
+                PlayerSizeControll2D controller = GetComponent<PlayerSizeControll2D>();
+                controller.hasShrunk = false;
+            }
+            
+
+            if(CheckpointManager.Instance.GetLastGravityScale() == 1f)
+            {
+                ResetGravity();
+                SetSmallState(false);
+            }
+            Debug.Log("Respawn: Get last gravity scale: " + CheckpointManager.Instance.GetLastGravityScale());
+            //Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            //rb.gravityScale = CheckpointManager.Instance.GetLastGravityScale(); 
+
+
+            // reload all size changing items
+            foreach (GameObject obj in shrinkTriangles)
+            {
+                obj.SetActive(true);
+                Debug.Log("Respawn: Reloaded Shrink Triangle");
+            }
+            foreach (GameObject obj in growTriangles)
+            {
+                obj.SetActive(true);
+            }
+
+
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             Debug.Log("🔁 Player Respawned at checkpoint!");
         }

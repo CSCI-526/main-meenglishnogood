@@ -21,9 +21,9 @@ public class CheckpointManager : MonoBehaviour
 {
     public static CheckpointManager Instance { get; private set; }
 
-    private Vector3 lastCheckpointPosition;
-    private Vector3 lastLocalScale; // size of the object
-    private float lastGravityScale;
+    public Vector3 lastCheckpointPosition = new Vector3(0f, 0f, 0f);
+    public Vector3 lastLocalScale = new Vector3(0.74f, 0.7f, 1f); // size of the object
+    public float lastGravityScale = 1f;
 
     private void Awake()
     {

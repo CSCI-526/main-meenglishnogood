@@ -2638,11 +2638,11 @@ PrefabInstance:
     - target: {fileID: 310376337421565212, guid: 937da2aef48ac164390849aea3c39f57, type: 3}
       propertyPath: endUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 774174951}
     - target: {fileID: 310376337421565212, guid: 937da2aef48ac164390849aea3c39f57, type: 3}
       propertyPath: menuUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1979557994}
     - target: {fileID: 310376337421565212, guid: 937da2aef48ac164390849aea3c39f57, type: 3}
       propertyPath: grayOut
       value: 
@@ -2650,15 +2650,15 @@ PrefabInstance:
     - target: {fileID: 310376337421565212, guid: 937da2aef48ac164390849aea3c39f57, type: 3}
       propertyPath: midStar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 263616186}
     - target: {fileID: 310376337421565212, guid: 937da2aef48ac164390849aea3c39f57, type: 3}
       propertyPath: leftStar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 960670301}
     - target: {fileID: 310376337421565212, guid: 937da2aef48ac164390849aea3c39f57, type: 3}
       propertyPath: rightStar
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2114182542}
     - target: {fileID: 310376337421565212, guid: 937da2aef48ac164390849aea3c39f57, type: 3}
       propertyPath: starTracking
       value: 
@@ -2666,7 +2666,7 @@ PrefabInstance:
     - target: {fileID: 310376337421565212, guid: 937da2aef48ac164390849aea3c39f57, type: 3}
       propertyPath: settingsButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 391124022}
     - target: {fileID: 3271166690866602393, guid: 937da2aef48ac164390849aea3c39f57, type: 3}
       propertyPath: m_Name
       value: Destination
@@ -6624,6 +6624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b73058021793a4088e90fa98e14939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastCheckpointPosition: {x: 0, y: 0, z: 0}
+  lastLocalScale: {x: 0.74, y: 0.7, z: 1}
+  lastGravityScale: 1
 --- !u!4 &2140502207
 Transform:
   m_ObjectHideFlags: 0

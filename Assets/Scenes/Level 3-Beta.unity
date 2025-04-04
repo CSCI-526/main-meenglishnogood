@@ -3693,6 +3693,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b73058021793a4088e90fa98e14939, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastCheckpointPosition: {x: 0, y: 0, z: 0}
+  lastLocalScale: {x: 0, y: 0, z: 0}
+  lastGravityScale: 0
 --- !u!4 &1176116513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7824781055730121670, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
@@ -5768,11 +5771,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3374747622482415831, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3374747622482415831, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.21
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3374747622482415831, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_LocalPosition.z

@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4838b83972de249839ca745a1d8af491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: Level 3
+  levelName: Level 3-Beta
 --- !u!114 &417390253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4838b83972de249839ca745a1d8af491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: Level 2
+  levelName: Level 2-Beta
 --- !u!114 &1674424251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4838b83972de249839ca745a1d8af491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: Level 1
+  levelName: Level 1-Beta
 --- !u!95 &2112883802
 Animator:
   serializedVersion: 5

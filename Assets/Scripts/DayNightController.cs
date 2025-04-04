@@ -141,7 +141,7 @@ public class DayNightController : MonoBehaviour
         {
             foreach (InvisibleWalls wall in invisibleWalls)
             {
-                if (wall.mode == 1)
+                if (wall != null && wall.mode == 1)
                 {
                     wall.GetComponent<BoxCollider2D>().enabled = isDay;
                 }

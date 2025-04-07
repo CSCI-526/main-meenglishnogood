@@ -19,4 +19,11 @@ public class PlayerState {
     public bool IsSmall() {
         return Size == Size.SMALL;
     }
+
+    public void Rollback(Checkpoint checkpoint) {
+        NumStars = checkpoint.NumStars;
+        NumAbilities = checkpoint.NumAbilities;
+        Size = checkpoint.PlayerSize;
+        GravityMode = checkpoint.PlayerGravityMode;
+    }
 }

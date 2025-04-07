@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
         gameState = InitGameState();
         playerState = InitPlayerState();
         rb = InitRigidbody();
+        SaveCheckpoint();
     }
 
     void Update() {
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour {
         } else if (other.CompareTag("Destination")) {
             ReachDestination();
         } else if (other.CompareTag("Checkpoint")) {
-            // SaveCheckpoint();
+            SaveCheckpoint();
         } else if (other.CompareTag("Portal")) {
             EnterPortal(other.GetComponent<Portal>());
         }
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour {
     
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.CompareTag("Spike")) {
-            // Invoke(nameof(Respawn), RespawnDelay); 
+            Respawn();
         }
     }
     
@@ -90,14 +91,6 @@ public class PlayerController : MonoBehaviour {
         
         newAbility.GetComponent<Rigidbody2D>().gravityScale = rb.gravityScale;
         --playerState.NumAbilities;
-    }
-    
-    public void ResetGravity() {
-        // Restore gravity 
-        playerState.GravityMode = NORMAL;
-        rb.gravityScale = NormalGravityScale; 
-        
-        Debug.Log("ResetGravity() is using. Gravity is normal！");
     }
 
     private void EnterAntiGravityZone() {
@@ -138,7 +131,7 @@ public class PlayerController : MonoBehaviour {
     
     private void ReachDestination() {
         
-        Destroy(gameObject);
+        // Destroy(gameObject);
 
         // Time.timeScale = 0f;
         // endUI.SetActive(true);
@@ -156,18 +149,11 @@ public class PlayerController : MonoBehaviour {
         // settingsButton.SetActive(false);
     }
     
-    // private void SaveCheckpoint() {
-    //     Debug.Log("🟢 Checkpoint Activated at: " + transform.position);
-    //
-    //     var offsetPosition = transform.position + new Vector3(0f, 0f, 0f);  // record position, a littl offset can be added to avoid bugs
-    //     CheckpointManager.Instance.SetCheckpoint(offsetPosition);
-    //
-    //     var playerRb = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();  // record gravity status
-    //     CheckpointManager.Instance.SetGravityScale(playerRb.gravityScale);
-    //
-    //     var playerLocalScale = GameObject.FindWithTag("Player").transform.localScale;
-    //     CheckpointManager.Instance.SetLastLocalScale(transform.localScale); // record size status
-    // }
+    private void SaveCheckpoint() {
+        Debug.Log("🟢 Checkpoint Activated at: " + transform.position);
+        gameState.SetCheckpoint(new Checkpoint(playerState.NumStars, playerState.NumAbilities, playerState.Size,
+            transform.position, playerState.GravityMode));
+    }
     
     public void Shrink() {
         if (playerState.IsBig()) {
@@ -201,30 +187,14 @@ public class PlayerController : MonoBehaviour {
         ++playerState.NumStars;
     }
     
-    // public void Respawn() {
-    //     gameState.RollBack();
-    //     playerState.RollBack();
-    //     if (CheckpointManager.Instance != null) {
-    //         transform.position = CheckpointManager.Instance.GetLastCheckpoint(); // Respawn from checkpoint
-    //
-    //         transform.localScale = CheckpointManager.Instance.GetLastLocalScale(); // get last size
-    //         // If not shrinking
-    //         if(transform.localScale.x > 0.5f) {
-    //             var controller = GetComponent<PlayerSizeControll2D>();
-    //             controller.hasShrunk = false;
-    //         }
-    //         
-    //         if(CheckpointManager.Instance.GetLastGravityScale() == 1f) {
-    //             ResetGravity();
-    //             playerState.Size = false;
-    //         }
-    //         
-    //         Debug.Log("Respawn: Get last gravity scale: " + CheckpointManager.Instance.GetLastGravityScale());
-    //         
-    //         rb.velocity = Vector2.zero;
-    //     }
-    //     Debug.Log("🔁 Player Respawned at checkpoint!");
-    // }
+    public void Respawn() {
+        var checkpoint = gameState.GetLastCheckPoint();
+        gameState.Rollback(checkpoint);
+        playerState.Rollback(checkpoint);
+        rb.velocity = Vector2.zero;
+        transform.position = checkpoint.PlayerPosition;
+        Debug.Log("🔁 Player Respawned at checkpoint!");
+    }
 
     // initialization
     private GameState InitGameState() {

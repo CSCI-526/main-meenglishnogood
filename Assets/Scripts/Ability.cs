@@ -14,5 +14,6 @@ public class Ability : MonoBehaviour, ICollectible {
         var platform = other.gameObject.GetComponent<Platform>();
         if (platform.IsPersistent()) return;
         platform.SetVisibilityMode(PERSISTENT);
+        gameObject.SetActive(false);
     }
 }

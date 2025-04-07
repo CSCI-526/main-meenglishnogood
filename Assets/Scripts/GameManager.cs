@@ -39,27 +39,41 @@ public class GameManager : MonoBehaviour  {
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Q)) {
-            ToggleDayNight();
+            StartCoroutine(ToggleDayNight());
         }
     }
     
-    void ToggleDayNight() {
-        if (GameState.TimeOfDay == ECLIPSE) return;
+    IEnumerator ToggleDayNight() {
+        if (GameState.TimeOfDay == ECLIPSE) yield break;
+        
         var newDayState = (GameState.TimeOfDay == DAY) ? NIGHT : DAY;
-        StartCoroutine(ChangeColor(newDayState == DAY ? DayColor : NightColor));
-        StartCoroutine(ChangeBackgroundColor(newDayState == DAY ? DayBackgroundColor : NightBackgroundColor));
+        GameState.TimeOfDay = ECLIPSE;
+        
         var dayNightMutableObjects = GameState.GetDayNightMutableObjects();
         foreach (var obj in dayNightMutableObjects) {
             var component = obj.GetComponent<IDayNightMutable>();
-            obj.SetActive(component.IsVisible(newDayState));
+            if (component.IsVisible(newDayState)) {
+                obj.SetActive(true);
+            }
         }
+        
+        yield return StartCoroutine(ChangeColor(newDayState == DAY ? DayColor : NightColor));
+        yield return StartCoroutine(ChangeBackgroundColor(newDayState == DAY ? DayBackgroundColor : NightBackgroundColor));
+        
+        foreach (var obj in dayNightMutableObjects) {
+            var component = obj.GetComponent<IDayNightMutable>();
+            if (!component.IsVisible(newDayState)) {
+                obj.SetActive(false);
+            }
+        }
+        
         GameState.TimeOfDay = newDayState;
     }
 
     IEnumerator ChangeColor(Color targetColor) {
-        GameState.TimeOfDay = ECLIPSE;
-        var startColor = GameState.SunSprite.color;
+        
         var elapsedTime = 0f;
+        var startColor = GameState.SunSprite.color;
 
         while (elapsedTime < TransitionDuration) {
             elapsedTime += Time.deltaTime;
@@ -79,7 +93,6 @@ public class GameManager : MonoBehaviour  {
             GameState.MainCamera.backgroundColor = Color.Lerp(startColor, targetColor, elapsedTime / TransitionDuration);
             yield return null;
         }
-
         GameState.MainCamera.backgroundColor = targetColor;
     }
 

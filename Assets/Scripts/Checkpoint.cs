@@ -3,18 +3,23 @@ using System.Collections.Generic;
 
 public class Checkpoint {
     
-    private int numStars;
-    private int numAbilities;
-    private Size playerSize;
-    private Vector3 playerPosition;
-    private GravityMode playerGravityMode;
-    private List<GameObject> changedObjects;
+    public readonly int NumStars;
+    public readonly int NumAbilities;
+    public readonly Size PlayerSize;
+    public Vector3 PlayerPosition { get; }
+    public readonly GravityMode PlayerGravityMode;
+    private readonly List<GameObject> changedObjects;
 
-    public Checkpoint(int numStars, int numAbilities, Size playerSize, GravityMode playerGravityMode) {
-        this.numStars = numStars;
-        this.numAbilities = numAbilities;
-        this.playerSize = playerSize;
-        this.playerGravityMode = playerGravityMode;
+    public Checkpoint(int numStars, int numAbilities, Size playerSize, Vector3 playerPosition, GravityMode playerGravityMode) {
+        NumStars = numStars;
+        NumAbilities = numAbilities;
+        PlayerSize = playerSize;
+        PlayerPosition = playerPosition; 
+        PlayerGravityMode = playerGravityMode;
         changedObjects = new List<GameObject>();
+    }
+
+    public List<GameObject> GetChangedObjects() {
+        return changedObjects;
     }
 }

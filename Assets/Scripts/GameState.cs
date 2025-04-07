@@ -7,26 +7,33 @@ public class GameState {
     public Camera MainCamera;
     private Checkpoint lastCheckPoint;
     public SpriteRenderer SunSprite;  
-    private List<GameObject> dayNightVisibilityObjects;
+    private List<GameObject> dayNightMutableObjects;
 
     public GameState(Camera mainCamera, SpriteRenderer sunSprite) {
         MainCamera = mainCamera;
         SunSprite = sunSprite;
     }
 
-    // private void RollBack() {
-    //     // Roll back all size collectibles
-    //     foreach (var obj in collectedCollectibles) {
-    //         obj.SetActive(true);
-    //         Debug.Log("Respawn: Reloaded Shrink Triangle");
-    //     }
-    // }
+    public void Rollback(Checkpoint checkpoint) {
+        foreach (var obj in checkpoint.GetChangedObjects()) {
+            obj.SetActive(true);
+        }
+        Debug.Log("Respawn: Collectibles collected after reaching the last checkpoint were restored.");
+    }
 
     public List<GameObject> GetDayNightMutableObjects() {
-        return dayNightVisibilityObjects;
+        return dayNightMutableObjects;
     }
 
     public void SetDayNightMutableObjects(List<GameObject> objects) {
-        dayNightVisibilityObjects = objects;
+        dayNightMutableObjects = objects;
+    }
+
+    public Checkpoint GetLastCheckPoint() {
+        return lastCheckPoint;
+    }
+
+    public void SetCheckpoint(Checkpoint checkpoint) {
+        lastCheckPoint = checkpoint;
     }
 }

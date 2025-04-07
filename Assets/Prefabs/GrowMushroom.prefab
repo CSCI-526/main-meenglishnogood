@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4180838648150511670}
   - component: {fileID: 6847346336971803064}
   m_Layer: 0
-  m_Name: GrowTriangle
+  m_Name: GrowMushroom
   m_TagString: GrowTriangle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

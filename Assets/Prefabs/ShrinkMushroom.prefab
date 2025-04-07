@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 458324169258307642}
   - component: {fileID: 1038890441731560698}
   m_Layer: 0
-  m_Name: ShrinkTriangle
+  m_Name: ShrinkMushroom
   m_TagString: ShrinkTriangle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

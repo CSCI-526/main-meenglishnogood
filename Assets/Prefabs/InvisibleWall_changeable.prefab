@@ -20,6 +20,18 @@ PrefabInstance:
       propertyPath: mode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7196522453245727088, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196522453245727088, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196522453245727088, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3686275
+      objectReference: {fileID: 0}
     - target: {fileID: 8724931781516093454, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.21

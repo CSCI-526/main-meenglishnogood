@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class Star : MonoBehaviour, ICollectible{
-    public void Collect(PlayerController playerController) {
+public class Star : BaseCollectible {
+    
+    public override void Collect(PlayerController playerController) {
         playerController.CollectStar();
         gameObject.SetActive(false);
     }

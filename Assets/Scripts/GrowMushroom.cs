@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class GrowMushroom : MonoBehaviour, ICollectible{
-    public void Collect(PlayerController playerController) {
+public class GrowMushroom : BaseCollectible {
+    
+    public override void Collect(PlayerController playerController) {
         playerController.Grow();
         gameObject.SetActive(false);
     }

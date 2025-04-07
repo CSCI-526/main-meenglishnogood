@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.Assertions;
 using static VisibilityMode;
 
-public class Ability : MonoBehaviour, ICollectible {
+public class Ability : BaseCollectible {
     
-    public void Collect(PlayerController playerController) {
+    public override void Collect(PlayerController playerController) {
         playerController.CollectAbility();
         gameObject.SetActive(false);
     }

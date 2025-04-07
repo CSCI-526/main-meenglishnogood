@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 3898976566448580660}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.004, y: -0.389, z: 0}
-  m_LocalScale: {x: 1.0297139, y: 0.89911216, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.85, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8793496999888288712}
@@ -110,8 +110,8 @@ Transform:
   m_GameObject: {fileID: 5758033034418634112}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.003, y: -0.373, z: 0}
-  m_LocalScale: {x: 0.3724, y: 0.3121, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.35, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8793496999888288712}
@@ -156,7 +156,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -178,7 +178,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8793496999888288712}
   - component: {fileID: 6349840720778056137}
-  - component: {fileID: 2471028517614483298}
   - component: {fileID: 4896232949111736311}
   m_Layer: 0
   m_Name: Checkpoint1
@@ -196,7 +195,7 @@ Transform:
   m_GameObject: {fileID: 6381159673065029844}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 26.29, y: -0.24, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.60433906, y: 0.69771093, z: 0.92929}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -257,18 +256,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2471028517614483298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6381159673065029844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6503899022df8e4089fa1c0541e2907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &4896232949111736311
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -340,7 +327,7 @@ Transform:
   m_GameObject: {fileID: 7922213655879320496}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

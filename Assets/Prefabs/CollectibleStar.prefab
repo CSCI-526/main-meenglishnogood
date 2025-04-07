@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1979628493455593743}
   - component: {fileID: 7902652495501684639}
   - component: {fileID: 5403322318711862460}
-  - component: {fileID: 7367525958875347228}
+  - component: {fileID: 5767457586525863647}
+  - component: {fileID: 8580538488813317081}
   m_Layer: 0
   m_Name: CollectibleStar
   m_TagString: Star
@@ -131,7 +132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &7367525958875347228
+--- !u!114 &5767457586525863647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,6 +141,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2153964248629498611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca7a9f7381dfd28458bd1033c9dbba84, type: 3}
+  m_Script: {fileID: 11500000, guid: d6afcefea3f8475eb0a4c7731a5f6788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8580538488813317081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153964248629498611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9795be0c73e44a728fd18f2b5b9413a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

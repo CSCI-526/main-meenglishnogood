@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 585815894178092481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.21, y: 3.21, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -97,10 +97,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e086152dfb3ac946b6cb168fc48b8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sunSprite: {fileID: 7495722321538554400}
-  dayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  nightColor: {r: 0.055001736, g: 0.0408409, b: 0.37106913, a: 1}
-  dayBackgroundColor: {r: 0.5, g: 0.8, b: 1, a: 1}
-  nightBackgroundColor: {r: 0.05, g: 0.05, b: 0.2, a: 1}
-  transitionDuration: 2
-  mainCamera: {fileID: 0}

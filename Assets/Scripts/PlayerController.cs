@@ -1,356 +1,243 @@
-﻿//Jump function tutorial: https://www.youtube.com/watch?v=XhwRYNie-aI
-//using System;
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
-
-// public class PlayerController : MonoBehaviour
-// {
-//     public float speed = 5f;
-//     public Transform groundCheck;
-//     public LayerMask groundLayer;
-
-
-//     private Rigidbody2D rb;
-//     private Vector2 movement;
-//     [SerializeField] private int jumpPower = 5;
-//     private bool isGrounded;
-//     [SerializeField] private float groundCheckRadius = 0.4f;
-
-//     // Start is called before the first frame update
-//     void Start()
-//     {
-//         rb = GetComponent<Rigidbody2D>();
-
-//         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-//     }
-
-//     // Update is called once per frame
-//     void Update()
-//     {
-//         float horizontalInput = Input.GetAxisRaw("Horizontal");
-//         //float verticalInput = Input.GetAxisRaw("Vertical");
-//         bool jumpInput = Input.GetButtonDown("Jump");
-//         //isGrounded = Physics2D.OverlapCapsule(GroundCheck.position, new Vector2(0.39f, 0.37f), CapsuleDirection2D.Horizontal, 0, groundLayer);
-//         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-
-//         // Set movement direction based on input
-//         movement = new Vector2(horizontalInput, 0);
-
-//         if (jumpInput && isGrounded)
-//         {
-//             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-//         }
-
-//     }
-
-//     void FixedUpdate()
-//     {
-//         // Apply movement to the player in FixedUpdate for physics consistency
-//         rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
-//     }
-
-
-// }
-// using UnityEngine;
-
-// public class PlayerController : MonoBehaviour
-// {
-//     public float speed = 5f;
-//     public Transform groundCheck;
-//     public LayerMask groundLayer;
-//     public LayerMask ceilingLayer; // 用于检测天花板
-
-//     private Rigidbody2D rb;
-//     private Vector2 movement;
-//     [SerializeField] private int jumpPower = 5;
-//     private bool isGrounded;
-//     private bool isCeiling; // 是否在天花板上（反重力地面）
-//     private bool isInAntiGravity = false; // 是否处于反重力区域
-//     private bool isFalling = false; // 记录玩家是否正在下落
-//     [SerializeField] private float groundCheckRadius = 0.8f;
-
-//     void Start()
-//     {
-//         rb = GetComponent<Rigidbody2D>();
-//         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-//     }
-
-//     void Update()
-//     {
-//         Debug.Log("isCeiling: " + isCeiling);
-//         float horizontalInput = Input.GetAxisRaw("Horizontal");
-//         bool jumpInput = Input.GetButtonDown("Jump");
-
-//         // **检测玩家是否正在下落**
-//         isFalling = rb.velocity.y < 0;
-
-//         // **普通重力状态：检测地面**
-//         if (!isInAntiGravity)
-//         {
-//             isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-//             isCeiling = false; // 普通模式不检测天花板
-//         }
-//         // **反重力状态：检测天花板作为“地面”**
-//         else
-//         {
-//             isGrounded = false; // 反重力时，不再检测地面
-//             isCeiling = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, ceilingLayer);
-//         }
-
-//         // **玩家水平移动**
-//         movement = new Vector2(horizontalInput, 0);
-
-//         // **玩家跳跃**
-//         if (jumpInput)
-//         {
-//             if (!isInAntiGravity && isGrounded) // **普通状态：正常跳跃**
-//             {
-//                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-//             }
-//             else if (isInAntiGravity && isCeiling) // **反重力状态：向下跳跃**
-//             {
-//                 rb.velocity = new Vector2(rb.velocity.x, -jumpPower);
-//             }
-//         }
-//     }
-
-//     void FixedUpdate()
-//     {
-//         // **玩家移动**
-//         rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
-//     }
-
-//     // **进入反重力区域**
-//     private void OnTriggerEnter2D(Collider2D other)
-//     {
-//         if (other.CompareTag("AntiGravityZone"))
-//         {
-//             isInAntiGravity = true;
-
-//             // **确保玩家是下落状态时才切换重力**
-//             if (isFalling)
-//             {
-//                 rb.gravityScale = -1f; // **重力反转**
-//                 FlipGroundCheck(); // **翻转 `groundCheck` 位置**
-//             }
-//         }
-//     }
-
-//     // **离开反重力区域**
-//     private void OnTriggerExit2D(Collider2D other)
-//     {
-//         if (other.CompareTag("AntiGravityZone"))
-//         {
-//             isInAntiGravity = false;
-//             rb.gravityScale = 1f; // **恢复正常重力**
-//             FlipGroundCheck(); // **恢复 `groundCheck` 位置**
-//         }
-//     }
-
-//     // **翻转 `groundCheck` 位置**
-//     private void FlipGroundCheck()
-//     {
-//         if (groundCheck == null)
-//         {
-//             Debug.LogError("groundCheck 未赋值！");
-//             return;
-//         }
-
-//         // **确保 groundCheck 在 `Player` 脚下或头顶**
-//         float newY = -groundCheck.localPosition.y; 
-//         groundCheck.localPosition = new Vector3(groundCheck.localPosition.x, newY, groundCheck.localPosition.z);
-        
-//         Debug.Log("groundCheck 翻转，当前 Y 位置: " + groundCheck.localPosition.y);
-//     }
-
-// }
+﻿using Unity.VisualScripting;
 using UnityEngine;
-using System.Collections.Generic;
+using static Constants;
+using static GravityMode;
+using static Size;
 
-public class PlayerController : MonoBehaviour
-{
-    public float speed = 5f;
-    public Transform groundCheck;
+public class PlayerController : MonoBehaviour {
+    
+    private Rigidbody2D rb;
+    private Vector2 movement;
+    private GameState gameState;
+    private PlayerState playerState;
+
+    public GameObject abilityPrefab;
     public LayerMask groundLayer;
     public LayerMask ceilingLayer;
 
-    private Rigidbody2D rb;
-    private Vector2 movement;
-    [SerializeField] private float jumpPower = 6.5f;
-    private bool isGrounded;
-    private bool isCeiling;
-    private bool isInAntiGravity = false;
-    private bool isSmall = false; 
-    private bool isFalling = false;
-    [SerializeField] private float groundCheckRadius = 0.8f;
-
-    private List<GameObject> shrinkTriangles = new List<GameObject>();
-    private List<GameObject> growTriangles = new List<GameObject>();
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-
-        // record all size changing objects for reload when respawn from checkpoint
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ShrinkTriangle")) 
-        {
-            shrinkTriangles.Add(obj);
-        }
-
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("GrowTriangle"))
-        {
-            growTriangles.Add(obj);
-        }
+    void Start() {
+        gameState = InitGameState();
+        playerState = InitPlayerState();
+        rb = InitRigidbody();
     }
 
-    void Update()
-    {
-        // Debug.Log("isCeiling: " + isCeiling + ", isSmall: " + isSmall);
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        bool jumpInput = Input.GetButtonDown("Jump");
-
-        isFalling = rb.velocity.y < 0;
-
-        if (!isInAntiGravity)
-        {
-            //This method causes the player jump twice when the player closes to obstacles
-            //isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-            //Use ray to detect ground vertically under the player
-            isGrounded = Physics2D.Raycast(transform.position + Vector3.down * 0.4f, Vector2.down, 0.1f, groundLayer);
-            isCeiling = false;
+    void Update() {
+        
+        if (Input.GetKeyDown(KeyCode.E)) {
+            DropAbility();
         }
-        else
-        {
-            isGrounded = false;
-            //isCeiling = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, ceilingLayer);
-            isCeiling = Physics2D.Raycast(transform.position + Vector3.up * 0.4f, Vector2.up, 0.1f, groundLayer); 
+        
+        var verticalInput = Input.GetButtonDown("Jump");
+        var horizontalInput = Input.GetAxisRaw("Horizontal");
+
+        if (playerState.GravityMode == NORMAL) {
+            playerState.IsGrounded = Physics2D.Raycast(transform.position + Vector3.down * 0.4f, Vector2.down, 0.1f, groundLayer);
+        } else {
+            playerState.IsGrounded = Physics2D.Raycast(transform.position + Vector3.up * 0.4f, Vector2.up, 0.1f, ceilingLayer); 
         }
 
         movement = new Vector2(horizontalInput, 0);
 
-        if (jumpInput)
-        {
-            if (!isInAntiGravity && isGrounded)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-            }
-            else if (isInAntiGravity && isCeiling && isSmall)
-            //else if (isInAntiGravity && isSmall)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, -jumpPower);
+        if (verticalInput) {
+            if (playerState.GravityMode == NORMAL && playerState.IsGrounded) {
+                rb.velocity = new Vector2(rb.velocity.x, PlayerJumpVerticalVelocity);
+            } else if (playerState.GravityMode == ANTIGRAVITY && playerState.IsGrounded && playerState.IsSmall()) {
+                rb.velocity = new Vector2(rb.velocity.x, -PlayerJumpVerticalVelocity);
             }
         }
     }
 
-    void FixedUpdate()
-    {
-        rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
+    void FixedUpdate() {
+        rb.velocity = new Vector2(movement.x * PlayerHorizontalVelocity, rb.velocity.y);
     }
-
-    // Enter anti-gravity zone
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("AntiGravityZone"))
-        {
-            if (isSmall) 
-            {
-                isInAntiGravity = true;
-                rb.gravityScale = -1f;
-                FlipGroundCheck();
-                rb.velocity = new Vector2(rb.velocity.x, 5f); // be pulled up
-                Debug.Log("The player has shrinked. Enter anti-gravity zone.");
-            }
-            else
-            {
-                Debug.Log("The player is too big to enter anti-gravity zone.");
-            }
+    
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.TryGetComponent<ICollectible>(out var collectible)) {
+            collectible.Collect(this);
+        } else if (other.CompareTag("AntiGravityZone")) {
+            EnterAntiGravityZone();
+        } else if (other.CompareTag("Destination")) {
+            ReachDestination();
+        } else if (other.CompareTag("Checkpoint")) {
+            // SaveCheckpoint();
+        } else if (other.CompareTag("Portal")) {
+            EnterPortal(other.GetComponent<Portal>());
+        }
+    }
+    
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.collider.CompareTag("Spike")) {
+            // Invoke(nameof(Respawn), RespawnDelay); 
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.CompareTag("AntiGravityZone")) {
+            ExitAntiGravityZone();
+        } else if (other.CompareTag("Portal")) {
+            ExitPortal();
         }
     }
 
+    // Refactor drop ability, essentially keep the list of ability objects
+    // and maintain that list dynamically, create a new ability object only when
+    // the list is empty so we don't create a new instance every time, that's too expensive
+    private void DropAbility() {
+        if (playerState.NumAbilities == 0) return;
+        Debug.Log("Place ability.");
 
-
-    // Leave anti-gravity zone
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("AntiGravityZone") && isSmall)
-        {
-            isInAntiGravity = false;
-            rb.gravityScale = 1f;
-            FlipGroundCheck();
-        }
+        var newAbility = Instantiate(abilityPrefab, transform.position + transform.right * AbilityInstantiateDistance, Quaternion.identity);
+        
+        newAbility.GetComponent<Rigidbody2D>().gravityScale = rb.gravityScale;
+        --playerState.NumAbilities;
     }
-
-    // flip groundCheck's position
-    private void FlipGroundCheck()
-    {
-        if (groundCheck == null)
-        {
-            Debug.LogError("groundCheck is None！");
-            return;
-        }
-
-        float newY = -groundCheck.localPosition.y; 
-        groundCheck.localPosition = new Vector3(groundCheck.localPosition.x, newY, groundCheck.localPosition.z);
-        //Debug.Log("groundCheck flips，current Y is: " + groundCheck.localPosition.y);
-    }
-
-    public void SetSmallState(bool small)
-    {
-        isSmall = small;
-    }
-
-    public bool IsSmall()
-    {
-        return isSmall;
-    }
-    public void ResetGravity()
-    {
-        isInAntiGravity = false;
-        rb.gravityScale = 1f; // Restore gravity 
-        FlipGroundCheck(); // Restore groundCheck 
+    
+    public void ResetGravity() {
+        // Restore gravity 
+        playerState.GravityMode = NORMAL;
+        rb.gravityScale = NormalGravityScale; 
+        
         Debug.Log("ResetGravity() is using. Gravity is normal！");
     }
-    public void Respawn()
-    {
-        if (CheckpointManager.Instance != null)
-        {
-            transform.position = CheckpointManager.Instance.GetLastCheckpoint(); // respawn from checkpoint
 
-            transform.localScale = CheckpointManager.Instance.GetLastLocalScale(); // get last size
-            if(transform.localScale.x > 0.5f)  // if not shrinking
-            {
-                PlayerSizeControll2D controller = GetComponent<PlayerSizeControll2D>();
-                controller.hasShrunk = false;
-            }
-            
-
-            if(CheckpointManager.Instance.GetLastGravityScale() == 1f)
-            {
-                ResetGravity();
-                SetSmallState(false);
-            }
-            Debug.Log("Respawn: Get last gravity scale: " + CheckpointManager.Instance.GetLastGravityScale());
-            //Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            //rb.gravityScale = CheckpointManager.Instance.GetLastGravityScale(); 
-
-
-            // reload all size changing items
-            foreach (GameObject obj in shrinkTriangles)
-            {
-                obj.SetActive(true);
-                Debug.Log("Respawn: Reloaded Shrink Triangle");
-            }
-            foreach (GameObject obj in growTriangles)
-            {
-                obj.SetActive(true);
-            }
-
-
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            Debug.Log("🔁 Player Respawned at checkpoint!");
+    private void EnterAntiGravityZone() {
+        Debug.Log("The player enters the anti-gravity zone.");
+        playerState.GravityMode = ANTIGRAVITY;
+        
+        if (playerState.IsBig()) {
+            Debug.Log("The player is too big to be affected by the anti-gravity zone.");
+            return;
         }
+        
+        rb.gravityScale = AntiGravityScale;
+        rb.velocity = new Vector2(rb.velocity.x, 5f);
+        Debug.Log("Gravity mode switched.");
     }
 
+    private void ExitAntiGravityZone() {
+        Debug.Log("The player leaves the anti-gravity zone.");
+        playerState.GravityMode = NORMAL;
+        
+        if (playerState.IsBig()) return;
+        
+        rb.gravityScale = NormalGravityScale;
+        rb.velocity = new Vector2(rb.velocity.x, 0f);
+    }
+
+    private void EnterPortal(Portal portal) {
+        Debug.Log("The player enters the portal zone.");
+        playerState.InPortal = true;
+        playerState.CurrentPortal = portal;
+    }
+
+    private void ExitPortal() {
+        Debug.Log("The player exits the portal zone.");
+        playerState.InPortal = false;
+        playerState.CurrentPortal = null;
+    }
+    
+    private void ReachDestination() {
+        
+        Destroy(gameObject);
+
+        // Time.timeScale = 0f;
+        // endUI.SetActive(true);
+        // grayOut.SetActive(true);
+        // if (starTracking.starCount > 0) {
+        //     leftStar.SetActive(true);
+        // }
+        // if (starTracking.starCount > 1) {
+        //     midStar.SetActive(true);
+        // }
+        // if (starTracking.starCount > 2) {
+        //     rightStar.SetActive(true);
+        // }
+        // menuUI.SetActive(true);
+        // settingsButton.SetActive(false);
+    }
+    
+    // private void SaveCheckpoint() {
+    //     Debug.Log("🟢 Checkpoint Activated at: " + transform.position);
+    //
+    //     var offsetPosition = transform.position + new Vector3(0f, 0f, 0f);  // record position, a littl offset can be added to avoid bugs
+    //     CheckpointManager.Instance.SetCheckpoint(offsetPosition);
+    //
+    //     var playerRb = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();  // record gravity status
+    //     CheckpointManager.Instance.SetGravityScale(playerRb.gravityScale);
+    //
+    //     var playerLocalScale = GameObject.FindWithTag("Player").transform.localScale;
+    //     CheckpointManager.Instance.SetLastLocalScale(transform.localScale); // record size status
+    // }
+    
+    public void Shrink() {
+        if (playerState.IsBig()) {
+            transform.localScale *= ShrinkFactor;
+            playerState.Size = SMALL;
+            if (playerState.GravityMode == ANTIGRAVITY) {
+                rb.gravityScale = AntiGravityScale;
+                rb.velocity = new Vector2(rb.velocity.x, 5f); 
+            }
+        }
+        Debug.Log("Player has shrunk.");
+    }
+
+    public void Grow() {
+        if (playerState.IsSmall()) {
+            transform.localScale *= GrowFactor;
+            playerState.Size = BIG;
+            if (playerState.GravityMode == ANTIGRAVITY) {
+                rb.gravityScale = NormalGravityScale;
+                rb.velocity = new Vector2(rb.velocity.x, 0f); 
+            }
+        }
+        Debug.Log("Player has grown.");
+    }
+
+    public void CollectAbility() {
+        ++playerState.NumAbilities;
+    }
+
+    public void CollectStar() {
+        ++playerState.NumStars;
+    }
+    
+    // public void Respawn() {
+    //     gameState.RollBack();
+    //     playerState.RollBack();
+    //     if (CheckpointManager.Instance != null) {
+    //         transform.position = CheckpointManager.Instance.GetLastCheckpoint(); // Respawn from checkpoint
+    //
+    //         transform.localScale = CheckpointManager.Instance.GetLastLocalScale(); // get last size
+    //         // If not shrinking
+    //         if(transform.localScale.x > 0.5f) {
+    //             var controller = GetComponent<PlayerSizeControll2D>();
+    //             controller.hasShrunk = false;
+    //         }
+    //         
+    //         if(CheckpointManager.Instance.GetLastGravityScale() == 1f) {
+    //             ResetGravity();
+    //             playerState.Size = false;
+    //         }
+    //         
+    //         Debug.Log("Respawn: Get last gravity scale: " + CheckpointManager.Instance.GetLastGravityScale());
+    //         
+    //         rb.velocity = Vector2.zero;
+    //     }
+    //     Debug.Log("🔁 Player Respawned at checkpoint!");
+    // }
+
+    // initialization
+    private GameState InitGameState() {
+        return GameManager.Instance.GameState;
+    }
+
+    private PlayerState InitPlayerState() {
+        return GameManager.Instance.PlayerState;
+    }
+    
+    private Rigidbody2D InitRigidbody() {
+        var rb = GetComponent<Rigidbody2D>();
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        return rb;
+    }
 }

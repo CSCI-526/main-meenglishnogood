@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - InvisibleWall
   - ShrinkTriangle
   - GrowTriangle
   - AntiGravityZone
@@ -12,6 +11,10 @@ TagManager:
   - Ability
   - Star
   - Portal
+  - Platform
+  - Destination
+  - Checkpoint
+  - Spike
   layers:
   - Default
   - TransparentFX

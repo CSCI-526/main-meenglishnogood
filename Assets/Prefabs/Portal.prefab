@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5489690930398771461}
   - component: {fileID: 1458834361578151216}
   - component: {fileID: 6124988212135497191}
-  - component: {fileID: 3424442621396606710}
   m_Layer: 6
   m_Name: Portal
   m_TagString: Untagged
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 6422303707793072915}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.83, y: -2.89, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.802336, y: 0.393, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,21 +130,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &3424442621396606710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6422303707793072915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e8ae13d93b683443b08ba5abd638722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 1458834361578151216}
-  mode: 1
-  dayColor: {r: 0.5, g: 0.8, b: 1, a: 1}
-  nightColor: {r: 0.05, g: 0.05, b: 0.2, a: 1}
-  otherPortal: {fileID: 0}
-  teleportYOffset: 1

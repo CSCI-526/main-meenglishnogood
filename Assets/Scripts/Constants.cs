@@ -17,4 +17,5 @@ public static class Constants {
     public static readonly Color NightColor = Color.black;
     public static readonly Color DayBackgroundColor = new(0.5f, 0.8f, 1.0f);
     public static readonly Color NightBackgroundColor = new(0.05f, 0.05f, 0.2f);
+    public static readonly Color PersistentColor = new(0.3686275f, 0.3686275f, 0.3686275f);
 }

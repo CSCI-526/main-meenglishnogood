@@ -1,7 +1,9 @@
 using UnityEngine;
+using static Constants;
 
 public class Platform : MonoBehaviour, IDayNightMutable {
     
+    private SpriteRenderer spriteRenderer;
     [SerializeField] private VisibilityMode visibilityMode;
 
     private Platform() {}
@@ -22,5 +24,23 @@ public class Platform : MonoBehaviour, IDayNightMutable {
     
     public void SetVisibilityMode(VisibilityMode newVisibilityMode) {
         visibilityMode = newVisibilityMode;
+        UpdateColor();
+    }
+    
+    private void OnValidate() {
+        if (spriteRenderer == null) {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        if (spriteRenderer == null) return;
+        UpdateColor();
+    }
+    
+    private void UpdateColor() {
+        spriteRenderer.color = visibilityMode switch {
+            VisibilityMode.DAY => NightBackgroundColor,
+            VisibilityMode.NIGHT => DayBackgroundColor,
+            VisibilityMode.PERSISTENT => PersistentColor,
+            _ => spriteRenderer.color
+        };
     }
 }

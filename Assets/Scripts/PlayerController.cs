@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour {
         ++playerState.NumStars;
     }
     
-    public void Respawn() {
+    private void Respawn() {
         var checkpoint = gameState.GetLastCheckPoint();
         gameState.Rollback(checkpoint);
         playerState.Rollback(checkpoint);

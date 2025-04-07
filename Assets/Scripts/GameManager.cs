@@ -25,9 +25,8 @@ public class GameManager : MonoBehaviour  {
         GameState = new GameState(mainCamera, sunSprite);
         var dayNightMutableObjects = new List<GameObject>();
         foreach (var component in FindObjectsOfType<MonoBehaviour>(true)) {
-            if (component is IDayNightMutable) {
-                dayNightMutableObjects.Add(component.gameObject);
-            }
+            if (component is not IDayNightMutable) continue;
+            dayNightMutableObjects.Add(component.gameObject);
         }
         GameState.SetDayNightMutableObjects(dayNightMutableObjects);
         PlayerState = new PlayerState();

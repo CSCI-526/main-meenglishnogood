@@ -10,10 +10,14 @@ public class ShowMap : MonoBehaviour
     public Vector3 rightEdge;               //Camera end position
 
     private Camera mainCam;
+    private Vector3 originalPosition;
+    private float originalSize;
 
     void Start()
     {
         mainCam = Camera.main;
+        originalPosition = mainCam.transform.position;
+        originalSize = mainCam.orthographicSize;
         StartCoroutine(PanAcrossMap());
     }
 
@@ -22,8 +26,6 @@ public class ShowMap : MonoBehaviour
 
         float elapsed = 0f;
 
-        float originalSize = mainCam.orthographicSize;
-        //Set a larger size for the map overview
         float targetSize = originalSize + 4f;
         mainCam.orthographicSize = targetSize;
 
@@ -32,7 +34,7 @@ public class ShowMap : MonoBehaviour
         {
             float t = elapsed / panDuration;
             Vector3 camPos = Vector3.Lerp(leftEdge, rightEdge, t);
-            camPos.z = -10f;
+            camPos.z = originalPosition.z;
             mainCam.transform.position = camPos;
 
             elapsed += Time.deltaTime;
@@ -40,7 +42,9 @@ public class ShowMap : MonoBehaviour
         }
 
         //Move camera to player position and restore original size
-        mainCam.transform.position = new Vector3(player.position.x, player.position.y, -10f);
+        //mainCam.transform.position = new Vector3(player.position.x, player.position.y, -4f);
+        //mainCam.orthographicSize = originalSize;
+        mainCam.transform.position = originalPosition;
         mainCam.orthographicSize = originalSize;
     }
 }

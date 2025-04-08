@@ -6,7 +6,7 @@ using TMPro;
 
 public class PickupAndPlace : MonoBehaviour
 {
-    private int abilityNum = 0;
+    public int abilityNum = 0;
     public float instantiateDistance = 1.2f;
     public GameObject persistentAbilityPrefab;
     public GameObject player;
@@ -19,7 +19,6 @@ public class PickupAndPlace : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // UpdatePowerupUI();
     }
 
     // Update is called once per frame
@@ -27,17 +26,12 @@ public class PickupAndPlace : MonoBehaviour
     {
 
         // player push "E" to place
-
-        // press e to place powerup
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (persistentAbilityPrefab != null && abilityNum>0)
             {
-                Debug.Log("place ability");
+                Debug.Log("PickupAndPlace: place ability");
                 
-
-               // persistentAbilityPrefab.tag = "Ability"; 
 
                 GameObject newAbility = Instantiate(persistentAbilityPrefab, 
                     transform.position + transform.right * instantiateDistance, Quaternion.identity);
@@ -67,19 +61,20 @@ public class PickupAndPlace : MonoBehaviour
         // collect ability
         if (other.CompareTag("Ability")) 
         {
-            Debug.Log("Collide with ability");
+            Debug.Log("PickupAndPlace: Player collides with ability");
             abilityNum++;
             // UpdatePowerupUI();
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 
-    void UpdatePowerupUI()
-    {
-        if (powerupText != null)
-        {
-            powerupText.text = "Platform changing item: " + abilityNum;
-        }
-    }
+    //public void UpdatePowerupUI()
+    //{
+    //    if (powerupText != null)
+    //    {
+    //        powerupText.text = "Platform changing item: " + abilityNum;
+    //    }
+    //}
 
 }

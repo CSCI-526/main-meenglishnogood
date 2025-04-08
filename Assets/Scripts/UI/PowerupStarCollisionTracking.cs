@@ -83,4 +83,10 @@ public class PowerupStarCollisionTracking : MonoBehaviour
         }
     }
 
+    public void SetConsumCountAndUpdateUI(int count)
+    {
+        consumCount = count;
+        UpdateUI();
+    }
+
 }

@@ -12,6 +12,7 @@ TagManager:
   - Ability
   - Star
   - Portal
+  - PersistentBlock
   layers:
   - Default
   - TransparentFX

@@ -29,22 +29,16 @@ public class BlockChange : MonoBehaviour
             position = transform.position; // get the original size and position of blocks
             scale = transform.localScale;
 
-            // destroy original block
-            Destroy(gameObject);
-
-            // destroy used ability
-
-            position = transform.position; // get the position of the block
-            scale = transform.localScale;
-
-            // destroy the original block
-            Destroy(gameObject);
-
+            // make original block inactive
+            // Destroy(gameObject);
+            gameObject.SetActive(false);
+      
             // destroy the used ability
-
             Destroy(other.gameObject);
 
             // create new persistentblock
+            position = transform.position; // get the position of the block
+            scale = transform.localScale;
             GameObject newBlock = Instantiate(persistentBlockPrefab, position, Quaternion.identity);
             newBlock.transform.localScale = scale;
 

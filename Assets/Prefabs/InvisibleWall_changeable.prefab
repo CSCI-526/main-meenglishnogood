@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 747005968825850001, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       propertyPath: m_Name
-      value: InvisibleWall Variant
+      value: InvisibleWall_changeable
       objectReference: {fileID: 0}
     - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       propertyPath: mode
@@ -81,4 +81,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444ce001157c77e48936439df5ac5709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  persistentBlockPrefab: {fileID: 8450642845031803810, guid: 2bcea92db13dc9c45b19295ca7f4c36c, type: 3}
+  persistentBlockPrefab: {fileID: 8450642845031803810, guid: 899d16f4a756de14e81923da41a38b42, type: 3}

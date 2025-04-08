@@ -25,6 +25,18 @@ public class CheckpointManager : MonoBehaviour
     public Vector3 lastLocalScale = new Vector3(0.74f, 0.7f, 1f); // size of the object
     public float lastGravityScale = 1f;
 
+    // dictionary for different types of powerup status
+    private Dictionary<GameObject, bool> abilityStates = new Dictionary<GameObject, bool>();  // persistent powerup
+    private Dictionary<GameObject, bool> shrinkTriStatus = new Dictionary<GameObject, bool>(); // shrink powerup
+    private Dictionary<GameObject, bool> growTriStatus = new Dictionary<GameObject, bool>(); // grow powerup
+
+
+    private GameObject[] changedPersistentPlatforms = new GameObject[0];
+    private GameObject[] invisibleWalls;
+
+    private int abilityCount = 0;
+
+
     private void Awake()
     {
         // 
@@ -32,6 +44,14 @@ public class CheckpointManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject); // 
+
+            // initialization
+            SetLastLocalScale(new Vector3(0.74f, 0.7f, 1f));
+            SetGravityScale(1f);
+            SetCheckpoint(new Vector3(0f, 0f, 0f));
+            SetAbilityCount(0);
+            SavePowerupsStates();
+            invisibleWalls = GameObject.FindGameObjectsWithTag("InvisibleWall");
         }
         else
         {
@@ -69,4 +89,98 @@ public class CheckpointManager : MonoBehaviour
     {
         return lastCheckpointPosition;
     }
+
+    // Save the status of all powerups
+    public void SavePowerupsStates()
+    {
+        // clear previous data
+        abilityStates.Clear();
+        shrinkTriStatus.Clear();
+        growTriStatus.Clear();
+
+        GameObject[] abilityObjects = GameObject.FindGameObjectsWithTag("Ability");
+        GameObject[] shrinkObjects = GameObject.FindGameObjectsWithTag("ShrinkTriangle");
+        GameObject[] growObjects = GameObject.FindGameObjectsWithTag("GrowTriangle");
+
+        foreach (GameObject obj in abilityObjects)
+        {
+            abilityStates[obj] = obj.activeSelf;
+        }
+
+        foreach (GameObject obj in shrinkObjects)
+        {
+            shrinkTriStatus[obj] = obj.activeSelf;
+        }
+
+        foreach (GameObject obj in growObjects)
+        {
+            growTriStatus[obj] = obj.activeSelf;
+        }
+    }
+
+    // Restore powerup status
+    public void RestoreAbilityStates()
+    {
+        foreach (var kvp in abilityStates)
+        {
+            if (kvp.Key != null)
+                kvp.Key.SetActive(kvp.Value);
+        }
+
+        foreach (var kvp in shrinkTriStatus)
+        {
+            if (kvp.Key != null)
+                kvp.Key.SetActive(kvp.Value);
+        }
+
+        foreach (var kvp in growTriStatus)
+        {
+            if (kvp.Key != null)
+                kvp.Key.SetActive(kvp.Value);
+        }
+    }
+
+
+    // get the platforms that are changed into persistent
+    public void GetChangedPlatforms()
+    {
+        changedPersistentPlatforms = new GameObject[0];
+        changedPersistentPlatforms = GameObject.FindGameObjectsWithTag("PersistentBlock");
+    }
+
+
+    // Destroy persistent blocks, make all invisible walls active
+    public void RecoverChangedPlatforms()
+    {
+        // destroy persistent block
+        foreach (GameObject persistentBlock in changedPersistentPlatforms)
+        {
+            if (persistentBlock.activeSelf)
+            {
+                Destroy(persistentBlock);
+            }
+        }
+
+        // make all invisible walls active
+        foreach (GameObject wall in invisibleWalls)
+        {
+            if (!wall.activeSelf)
+            {
+                Debug.Log("Recover changed platforms");
+                wall.SetActive(true);
+            }
+        }
+
+    }
+
+    public void SetAbilityCount(int count)
+    {
+        abilityCount = count;
+    }
+
+    public int GetAbilityCount()
+    {
+        return abilityCount;
+    }
+
 }

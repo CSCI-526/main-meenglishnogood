@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
         {
             growTriangles.Add(obj);
         }
+
+        CheckpointManager.Instance.CheckpointInitialization();
+
     }
 
     void Update()

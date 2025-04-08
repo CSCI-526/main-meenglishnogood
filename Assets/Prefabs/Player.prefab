@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3374747622482415831, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.74
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 3374747622482415831, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_LocalScale.y
@@ -124,6 +124,7 @@ MonoBehaviour:
   growFactor: 2
   shrinkTag: ShrinkTriangle
   growTag: GrowTriangle
+  hasShrunk: 0
 --- !u!114 &4226886234001274065
 MonoBehaviour:
   m_ObjectHideFlags: 0

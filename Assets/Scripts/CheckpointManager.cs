@@ -42,21 +42,28 @@ public class CheckpointManager : MonoBehaviour
         // 
         if (Instance == null)
         {
+            Debug.Log("Checkpoint Manager instance initiated ");
             Instance = this;
             DontDestroyOnLoad(gameObject); // 
 
-            // initialization
-            SetLastLocalScale(new Vector3(0.74f, 0.7f, 1f));
-            SetGravityScale(1f);
-            SetCheckpoint(new Vector3(0f, 0f, 0f));
-            SetAbilityCount(0);
-            SavePowerupsStates();
-            invisibleWalls = GameObject.FindGameObjectsWithTag("InvisibleWall");
+            CheckpointInitialization();
+
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    public void CheckpointInitialization()
+    {
+        // initialization
+        SetLastLocalScale(new Vector3(0.74f, 0.7f, 1f));
+        SetGravityScale(1f);
+        SetCheckpoint(new Vector3(0f, 0f, 0f));
+        SetAbilityCount(0);
+        SavePowerupsStates();
+        invisibleWalls = GameObject.FindGameObjectsWithTag("InvisibleWall");
     }
 
     public void SetGravityScale(float scale)
@@ -73,6 +80,7 @@ public class CheckpointManager : MonoBehaviour
     public void SetLastLocalScale(Vector3 localScale)
     {
         lastLocalScale = localScale;
+        Debug.Log("Last Local Scale: " + lastLocalScale);
     }
 
     public Vector3 GetLastLocalScale()
@@ -146,6 +154,10 @@ public class CheckpointManager : MonoBehaviour
     {
         changedPersistentPlatforms = new GameObject[0];
         changedPersistentPlatforms = GameObject.FindGameObjectsWithTag("PersistentBlock");
+
+        invisibleWalls = new GameObject[0];
+        invisibleWalls = GameObject.FindGameObjectsWithTag("InvisibleWall");
+
     }
 
 
@@ -155,7 +167,7 @@ public class CheckpointManager : MonoBehaviour
         // destroy persistent block
         foreach (GameObject persistentBlock in changedPersistentPlatforms)
         {
-            if (persistentBlock.activeSelf)
+            if (persistentBlock!=null && persistentBlock.activeSelf)
             {
                 Destroy(persistentBlock);
             }
@@ -164,7 +176,7 @@ public class CheckpointManager : MonoBehaviour
         // make all invisible walls active
         foreach (GameObject wall in invisibleWalls)
         {
-            if (!wall.activeSelf)
+            if (wall!=null && !wall.activeSelf)
             {
                 Debug.Log("Recover changed platforms");
                 wall.SetActive(true);

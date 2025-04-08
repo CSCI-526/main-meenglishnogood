@@ -4443,8 +4443,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1638856258}
   panDuration: 3
-  leftEdge: {x: 10, y: 0, z: 0}
-  rightEdge: {x: 60, y: 0, z: 0}
+  leftEdge: {x: 10, y: 5, z: 0}
+  rightEdge: {x: 60, y: 5, z: 0}
 --- !u!4 &1426693533
 Transform:
   m_ObjectHideFlags: 0
@@ -6505,7 +6505,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2322718391680567665, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3169799935003459409, guid: 07d0432b5137417469900295a45b0053, type: 3}
+      propertyPath: m_Mass
+      value: 0.43008405
       objectReference: {fileID: 0}
     - target: {fileID: 3614250174601233693, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: m_LocalPosition.y

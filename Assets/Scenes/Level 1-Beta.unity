@@ -2029,8 +2029,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1721508420}
   panDuration: 4
-  leftEdge: {x: 10, y: 0, z: 0}
-  rightEdge: {x: 80, y: 0, z: 0}
+  leftEdge: {x: 10, y: 3, z: 0}
+  rightEdge: {x: 80, y: 3, z: 0}
 --- !u!4 &483482966
 Transform:
   m_ObjectHideFlags: 0

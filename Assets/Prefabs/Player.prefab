@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4511653065212897567, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: instantiateDistance
-      value: 0.5
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7898502166638945558, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_Color.b
@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7898502166638945558, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7898502166638945558, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_SortingLayerID

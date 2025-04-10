@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level_Selection.unity
     guid: 8753fc20ea9634cd8ae7fbe2ed5423a1
   - enabled: 0
-    path: Assets/Scenes/Game_Over.unity
+    path: Assets/Scenes/Alpha/Game_Over.unity
     guid: 4b456fb000f98401e8b5115a6a4ae9e2
   - enabled: 1
     path: Assets/Scenes/Level 1-Beta.unity
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 3-Beta.unity
     guid: 7cbecf39fe611dd4ab97095377c45b23
+  - enabled: 1
+    path: Assets/Scenes/Level 4-Beta.unity
+    guid: b329a876084858f4899504cb88d8dce9
   m_configObjects: {}

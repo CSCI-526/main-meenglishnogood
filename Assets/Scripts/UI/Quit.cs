@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Quit : MonoBehaviour
 {
     public void MainMenu() {
-        SceneManager.LoadScene("Level_Selection");
+        SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1f;
     }
 }

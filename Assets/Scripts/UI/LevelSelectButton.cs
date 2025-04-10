@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelectButton : MonoBehaviour
 {
-    public string levelName = "Level1_Alpha";
+    public string levelName = "Level 1-Beta";
 
     // Start is called before the first frame update
     void Start()

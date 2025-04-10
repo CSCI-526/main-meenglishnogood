@@ -45,6 +45,7 @@ public class ShowMap : MonoBehaviour
         //mainCam.transform.position = new Vector3(player.position.x, player.position.y, -4f);
         //mainCam.orthographicSize = originalSize;
         mainCam.transform.position = originalPosition;
+        Debug.Log("Camera back to original pos: " + originalPosition);
         mainCam.orthographicSize = originalSize;
     }
 }

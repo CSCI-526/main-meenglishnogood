@@ -56,10 +56,6 @@ public class PlayerController : MonoBehaviour
 
         isFalling = rb.velocity.y < 0;
 
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity -= VecGravity * fallMultiplier * Time.deltaTime;
-        }
 
         if (!isInAntiGravity)
         {
@@ -68,6 +64,10 @@ public class PlayerController : MonoBehaviour
             //Use ray to detect ground vertically under the player
             isGrounded = Physics2D.Raycast(transform.position + Vector3.down * 0.4f, Vector2.down, 0.1f, groundLayer);
             isCeiling = false;
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity -= VecGravity * fallMultiplier * Time.deltaTime;
+            }
         }
         else
         {

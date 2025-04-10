@@ -50,7 +50,7 @@ public class DayNightController : MonoBehaviour
             if (portal.otherPortal != null)
             {
 
-                portal.Update();
+                portal.TryTeleport();
             }
         }
         HiddenPathController[] hiddenPaths = FindObjectsByType<HiddenPathController>(FindObjectsSortMode.None);

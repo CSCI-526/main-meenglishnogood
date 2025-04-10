@@ -13,20 +13,35 @@ public class PortalController : MonoBehaviour
 
     private bool playerInPortal = false;
 
+    public float cooldownTime = 1.0f;
+    private float lastTeleportTime = -999f;
+
     void Start()
     {
         UpdateColor();
     }
 
-    public void Update()
+    void Update()
     {
-        if (playerInPortal && otherPortal != null && FindObjectOfType<DayNightController>().isTransitioning && !FindObjectOfType<DayNightController>().isDay && mode == 1)
+        TryTeleport();
+    }
+
+    public void TryTeleport()
+    {
+        var dayNight = FindObjectOfType<DayNightController>();
+        if (playerInPortal && otherPortal != null && dayNight.isTransitioning)
         {
-            TeleportPlayer();
-        }else if (playerInPortal && otherPortal != null && FindObjectOfType<DayNightController>().isTransitioning && FindObjectOfType<DayNightController>().isDay && mode == 2)
+            if (Time.time - lastTeleportTime < cooldownTime) return;
+
+            if ( mode == 1)
             {
                 TeleportPlayer();
             }
+            else if ( mode == 2)
+            {
+                TeleportPlayer();
+            }
+        }
     }
 
     public void SetMode(int newMode)
@@ -70,18 +85,19 @@ public class PortalController : MonoBehaviour
 
     private void TeleportPlayer()
     {
+
+        lastTeleportTime = Time.time;
+        if (otherPortal != null)
+        {
+            otherPortal.lastTeleportTime = Time.time;
+        }
+
         Vector3 teleportPosition = otherPortal.transform.position + Vector3.up * teleportYOffset;
         FindObjectOfType<PlayerController>().transform.position = teleportPosition;
     }
+
     public void UpdatePortalState(bool isDay)
     {
-        if (isDay)
-        {
-            spriteRenderer.color = dayColor;
-        }
-        else
-        {
-            spriteRenderer.color = nightColor;
-        }
+        spriteRenderer.color = isDay ? dayColor : nightColor;
     }
 }

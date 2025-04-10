@@ -13,6 +13,7 @@ public class AnalyticsManager : MonoBehaviour
         public float x;
         public float y;
         public string level;
+        public string notes;
         public float gameTime;
         public string sessionId;
     }
@@ -22,52 +23,50 @@ public class AnalyticsManager : MonoBehaviour
     public class CollectibleData {
         public string item;
         public string level;
+        public string notes;
         public float gameTime;
         public string sessionId;
     }
-    // [SerializeField] private string key = "lHPqSFZELuNPr1YR1jyCKQBJ4fNzpYnZZF022erF";
     private string sessionId;
 
     void Start()
     {
         sessionId = Guid.NewGuid().ToString();
-        // Initialize Firebase
-        // FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
-        //     if (task.Result == DependencyStatus.Available) {
-        //         db = FirebaseFirestore.DefaultInstance; // Access Firestore directly
-        //         Debug.Log("Firestore initialized successfully.");
-        //     } else {
-        //         Debug.LogError("Could not resolve Firebase dependencies: " + task.Result);
-        //     }
-        // });
     }
     
-    public void AddHeatmapData(float x, float y, string level) {
+    public void AddHeatmapData(float x, float y, string level, string notes = "") {
         float gameTime = Time.time;
         HeatmapData data = new HeatmapData {
             x = x,
             y = y,
             level = level,
+            notes = notes,
             gameTime = gameTime,
             sessionId = sessionId
         };
 
         string json = JsonUtility.ToJson(data);
-        StartCoroutine(SendPayload("positions", json));
+        if (notes != "") {
+            Debug.Log("Logging " + notes);
+        }
+        StartCoroutine(SendPayload("positionsbeta", json));
     }
 
-    public void AddCollectibleData(string item, string level) {
+    public void AddCollectibleData(string item, string level, string notes = "") {
         float gameTime = Time.time;
         CollectibleData data = new CollectibleData {
             item = item,
             level = level,
+            notes = notes,
             gameTime = gameTime,
             sessionId = sessionId
         };
 
-        //string json = JsonUtility.ToJson(collectibleData);
         string json = JsonUtility.ToJson(data);
-        StartCoroutine(SendPayload("collectibles", json));
+        if (notes != "") {
+            Debug.Log("Logging " + notes);
+        }
+        StartCoroutine(SendPayload("collectiblesbeta", json));
     }
 
     // Taken from class resources: how to send data to firebase real-time database
@@ -83,23 +82,6 @@ public class AnalyticsManager : MonoBehaviour
             uwr.timeout = 5;
             //Send the request then wait here until it returns
             yield return uwr.SendWebRequest();
-
-            // if (uwr.result != UnityWebRequest.Result.Success)
-            // {
-            //     Debug.Log("Error While Sending: " + uwr.error);
-            // }
-            // else
-            // {
-            //     Debug.Log("Data Received: " + uwr.downloadHandler.text);
-            // }
         }
     }
-        // Add the document to the 'playerheatmap' collection
-    //     db.Collection("playerheatmap").Document(sessionId + "+" + gameTime.ToString()).SetAsync(heatmapData).ContinueWith(task => {
-    //         if (task.IsCompleted) {
-    //         } else {
-    //             Debug.LogError("AddHeatMapData at " + gameTime.ToString() + " failed: " + task.Exception);
-    //         }
-    //     });
-    // }
 }

@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 public class PositionRecorder : MonoBehaviour
 {
     public AnalyticsManager db;
+    private float x;
+    private float y;
     // Start is called before the first frame update
     void Start()
     {
+        x = transform.position.x;
+        y = transform.position.y;
         StartCoroutine(LogPlayerPosition());
     }
 
@@ -20,8 +24,12 @@ public class PositionRecorder : MonoBehaviour
 
     IEnumerator LogPlayerPosition() {
         while (true) {
-            db.AddHeatmapData(transform.position.x, transform.position.y, SceneManager.GetActiveScene().name);
-            
+            // Added to prevent excessive logging of idle players
+            if (x != transform.position.x || y != transform.position.y) {
+                db.AddHeatmapData(transform.position.x, transform.position.y, SceneManager.GetActiveScene().name);
+                x = transform.position.x;
+                y = transform.position.y;
+            }
             // Logs every second
             yield return new WaitForSeconds(1f);
         }

@@ -1,6 +1,7 @@
 ﻿//Jump function tutorial: https://www.youtube.com/watch?v=XhwRYNie-aI
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     private List<GameObject> shrinkTriangles = new List<GameObject>();
     private List<GameObject> growTriangles = new List<GameObject>();
+
+    public AnalyticsManager db;
 
     void Start()
     {
@@ -161,6 +164,7 @@ public class PlayerController : MonoBehaviour
     {
         if (CheckpointManager.Instance != null)
         {
+            db.AddHeatmapData(transform.position.x, transform.position.y, SceneManager.GetActiveScene().name, "Checkpoint Restart");
             transform.position = CheckpointManager.Instance.GetLastCheckpoint(); // respawn from checkpoint
 
             // Abilty on the map and platforms recover

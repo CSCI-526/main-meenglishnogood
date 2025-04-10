@@ -62,7 +62,8 @@ public class PlayerController : MonoBehaviour
             //This method causes the player jump twice when the player closes to obstacles
             //isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
             //Use ray to detect ground vertically under the player
-            isGrounded = Physics2D.Raycast(transform.position + Vector3.down * 0.4f, Vector2.down, 0.1f, groundLayer);
+            //isGrounded = Physics2D.Raycast(transform.position + Vector3.down * 0.4f, Vector2.down, 0.1f, groundLayer);
+            isGrounded = IsGrounded();
             isCeiling = false;
             if (rb.velocity.y < 0)
             {
@@ -213,5 +214,20 @@ public class PlayerController : MonoBehaviour
             Debug.Log("🔁 Player Respawned at checkpoint!");
         }
     }
+
+    private bool IsGrounded()
+    {
+        float rayLength = 0.1f;
+        Vector3 leftRayStart = transform.position + new Vector3(-0.32f, -0.4f, 0);
+        Vector3 centerRayStart = transform.position + new Vector3(0f, -0.4f, 0);
+        Vector3 rightRayStart = transform.position + new Vector3(0.32f, -0.4f, 0);
+
+        bool leftHit = Physics2D.Raycast(leftRayStart, Vector2.down, rayLength, groundLayer);
+        bool centerHit = Physics2D.Raycast(centerRayStart, Vector2.down, rayLength, groundLayer);
+        bool rightHit = Physics2D.Raycast(rightRayStart, Vector2.down, rayLength, groundLayer);
+
+        return leftHit || centerHit || rightHit;
+    }
+
 
 }

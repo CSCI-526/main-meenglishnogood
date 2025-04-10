@@ -20,8 +20,8 @@ public class ControlHint : MonoBehaviour
     {
         rectTransform = ControlHintObject.gameObject.GetComponent<RectTransform>();
         originalPos = rectTransform.localPosition;  // initial position
-        shakeDirection = new Vector3(1, 1, 0).normalized;   
-        ControlHintObject.SetActive(false);
+        shakeDirection = new Vector3(1, 1, 0).normalized;
+        DeactivateSelf();
         StartCoroutine(ShakeThenHide()); 
     }
 
@@ -55,7 +55,7 @@ public class ControlHint : MonoBehaviour
             yield return null;
         }
 
-        ControlHintObject.SetActive(false); 
+        DeactivateSelf(); 
     }
 
     void DeactivateSelf()

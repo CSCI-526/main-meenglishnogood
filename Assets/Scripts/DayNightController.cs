@@ -10,7 +10,7 @@ public class DayNightController : MonoBehaviour
     public Color nightColor = Color.black; // Dark navy blue for night
     public Color dayBackgroundColor = new Color(0.5f, 0.8f, 1.0f); // Light blue sky
     public Color nightBackgroundColor = new Color(0.05f, 0.05f, 0.2f); // Dark night sky
-    public float transitionDuration = 2.0f; // Time for smooth transition
+    public float transitionDuration = 1.5f; // Time for smooth transition
 
     public bool isDay = true;
     //public PlayerHealth playerHealth;

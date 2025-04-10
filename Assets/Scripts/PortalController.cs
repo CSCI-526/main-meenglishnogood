@@ -13,7 +13,7 @@ public class PortalController : MonoBehaviour
 
     private bool playerInPortal = false;
 
-    public float cooldownTime = 1.0f;
+    public float cooldownTime = 1.5f;
     private float lastTeleportTime = -999f;
 
     void Start()

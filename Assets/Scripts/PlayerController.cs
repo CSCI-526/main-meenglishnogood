@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movement;
     [SerializeField] private float jumpPower = 6.5f;
+    [SerializeField] float fallMultiplier;
+    Vector2 VecGravity;
     private bool isGrounded;
     private bool isCeiling;
     private bool isInAntiGravity = false;
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        VecGravity = new Vector2(0, -Physics2D.gravity.y);
 
         // record all size changing objects for reload when respawn from checkpoint
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ShrinkTriangle")) 
@@ -49,6 +52,11 @@ public class PlayerController : MonoBehaviour
         bool jumpInput = Input.GetButtonDown("Jump");
 
         isFalling = rb.velocity.y < 0;
+
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity -= VecGravity * fallMultiplier * Time.deltaTime;
+        }
 
         if (!isInAntiGravity)
         {

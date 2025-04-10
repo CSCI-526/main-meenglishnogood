@@ -5893,7 +5893,7 @@ MonoBehaviour:
   player: {fileID: 1187061827}
   panDuration: 4
   leftEdge: {x: 10, y: 3, z: 0}
-  rightEdge: {x: 80, y: 3, z: 0}
+  rightEdge: {x: 70, y: 3, z: 0}
 --- !u!4 &1354054861
 Transform:
   m_ObjectHideFlags: 0

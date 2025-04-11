@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
             //isGrounded = Physics2D.Raycast(transform.position + Vector3.down * 0.4f, Vector2.down, 0.1f, groundLayer);
             isGrounded = IsGrounded();
             isCeiling = false;
+            //This gives an acceleration to the player when the player is falling
             if (rb.velocity.y < 0)
             {
                 rb.velocity -= VecGravity * fallMultiplier * Time.deltaTime;
@@ -74,7 +75,11 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
             //isCeiling = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, ceilingLayer);
-            isCeiling = Physics2D.Raycast(transform.position + Vector3.up * 0.4f, Vector2.up, 0.1f, groundLayer); 
+            isCeiling = Physics2D.Raycast(transform.position + Vector3.up * 0.4f, Vector2.up, 0.1f, groundLayer);
+            if (rb.velocity.y > 0)
+            {
+                rb.velocity += VecGravity * fallMultiplier * Time.deltaTime;
+            }
         }
 
         movement = new Vector2(horizontalInput, 0);

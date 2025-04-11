@@ -189,6 +189,10 @@ PrefabInstance:
       propertyPath: grayOutOverlay
       value: 
       objectReference: {fileID: 1230450387}
+    - target: {fileID: 1421981320496127296, guid: 1b392b38c4add3e49b7032754ca7e06b, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1626277149843596839, guid: 1b392b38c4add3e49b7032754ca7e06b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4583,7 +4587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

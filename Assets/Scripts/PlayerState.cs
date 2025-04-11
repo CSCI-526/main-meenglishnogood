@@ -2,14 +2,13 @@ using Unity.VisualScripting;
 
 public class PlayerState {
 
-    public int NumStars { get; set; } = 0;
-    public int NumAbilities { get; set; } = 0;
-    public Size Size { get; set; } = Size.BIG;
-    public Portal CurrentPortal { get; set; } = null;
-    public GravityMode GravityMode { get; set; } = GravityMode.NORMAL;
+    public int NumStars { get; set; }
+    public int NumAbilities { get; set; }
+    public Size Size { get; set; }
+    public Portal CurrentPortal { get; set; }
+    public GravityMode GravityMode { get; set; }
     
     public bool IsGrounded { get; set; } = false;
-    public bool IsFalling { get; set; } = false;
     public bool InPortal { get; set; } = false;
 
     public bool IsBig() {
@@ -25,5 +24,13 @@ public class PlayerState {
         NumAbilities = checkpoint.NumAbilities;
         Size = checkpoint.PlayerSize;
         GravityMode = checkpoint.PlayerGravityMode;
+    }
+
+    public void Init() {
+        NumStars = 0;
+        NumAbilities = 0;
+        Size = Size.BIG;
+        CurrentPortal = null;
+        GravityMode = GravityMode.NORMAL;
     }
 }

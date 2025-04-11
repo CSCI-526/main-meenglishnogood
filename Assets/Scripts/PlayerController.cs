@@ -1,5 +1,4 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using static Constants;
 using static GravityMode;
 using static Size;
@@ -8,15 +7,12 @@ public class PlayerController : MonoBehaviour {
     
     private Rigidbody2D rb;
     private Vector2 movement;
-    private GameState gameState;
+    private LevelState levelState;
     private PlayerState playerState;
-
     public GameObject abilityPrefab;
-    public LayerMask groundLayer;
-    public LayerMask ceilingLayer;
 
     void Start() {
-        gameState = InitGameState();
+        levelState = InitGameState();
         playerState = InitPlayerState();
         rb = InitRigidbody();
         SaveCheckpoint();
@@ -31,11 +27,7 @@ public class PlayerController : MonoBehaviour {
         var verticalInput = Input.GetButtonDown("Jump");
         var horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        if (playerState.GravityMode == NORMAL) {
-            playerState.IsGrounded = Physics2D.Raycast(transform.position + Vector3.down * 0.4f, Vector2.down, 0.1f, groundLayer);
-        } else {
-            playerState.IsGrounded = Physics2D.Raycast(transform.position + Vector3.up * 0.4f, Vector2.up, 0.1f, ceilingLayer); 
-        }
+        playerState.IsGrounded = GroundCheck(playerState.GravityMode == NORMAL ? Vector2.down : Vector2.up); 
 
         movement = new Vector2(horizontalInput, 0);
 
@@ -151,7 +143,7 @@ public class PlayerController : MonoBehaviour {
     
     private void SaveCheckpoint() {
         Debug.Log("🟢 Checkpoint Activated at: " + transform.position);
-        gameState.SetCheckpoint(new Checkpoint(playerState.NumStars, playerState.NumAbilities, playerState.Size,
+        levelState.SetCheckpoint(new Checkpoint(playerState.NumStars, playerState.NumAbilities, playerState.Size,
             transform.position, playerState.GravityMode));
     }
     
@@ -188,21 +180,31 @@ public class PlayerController : MonoBehaviour {
     }
     
     private void Respawn() {
-        var checkpoint = gameState.GetLastCheckPoint();
-        gameState.Rollback(checkpoint);
+        var checkpoint = levelState.GetLastCheckPoint();
+        levelState.Rollback(checkpoint);
         playerState.Rollback(checkpoint);
         rb.velocity = Vector2.zero;
         transform.position = checkpoint.PlayerPosition;
         Debug.Log("🔁 Player Respawned at checkpoint!");
     }
 
-    // initialization
-    private GameState InitGameState() {
-        return GameManager.Instance.GameState;
+    private bool IsCollectible(Collider2D other) {
+        return other.TryGetComponent<ICollectible>(out _);
+    }
+    
+    private bool GroundCheck(Vector2 dir) {
+        var origin = (Vector2)transform.position + dir * 0.4f;
+        var hit = Physics2D.Raycast(origin, dir, 0.1f);
+        return hit.collider && hit.collider.CompareTag("Platform");
+    }
+    
+    /// initialization //
+    private static LevelState InitGameState() {
+        return LevelManager.Instance.LevelState;
     }
 
-    private PlayerState InitPlayerState() {
-        return GameManager.Instance.PlayerState;
+    private static PlayerState InitPlayerState() {
+        return LevelManager.Instance.PlayerState;
     }
     
     private Rigidbody2D InitRigidbody() {

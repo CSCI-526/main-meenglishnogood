@@ -152,8 +152,8 @@ public class CheckpointManager : MonoBehaviour
     // get the platforms that are changed into persistent
     public void GetChangedPlatforms()
     {
-        changedPersistentPlatforms = new GameObject[0];
-        changedPersistentPlatforms = GameObject.FindGameObjectsWithTag("PersistentBlock");
+        //changedPersistentPlatforms = new GameObject[0];
+        //changedPersistentPlatforms = GameObject.FindGameObjectsWithTag("PersistentBlock");
 
         invisibleWalls = new GameObject[0];
         invisibleWalls = GameObject.FindGameObjectsWithTag("InvisibleWall");
@@ -164,6 +164,11 @@ public class CheckpointManager : MonoBehaviour
     // Destroy persistent blocks, make all invisible walls active
     public void RecoverChangedPlatforms()
     {
+
+        changedPersistentPlatforms = new GameObject[0];
+        changedPersistentPlatforms = GameObject.FindGameObjectsWithTag("PersistentBlock");
+
+
         // destroy persistent block
         foreach (GameObject persistentBlock in changedPersistentPlatforms)
         {

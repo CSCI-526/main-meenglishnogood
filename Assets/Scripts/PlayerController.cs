@@ -7,41 +7,69 @@ public class PlayerController : MonoBehaviour {
     
     private Rigidbody2D rb;
     private Vector2 movement;
-    private LevelState levelState;
     private PlayerState playerState;
     public GameObject abilityPrefab;
+    private LayerMask groundLayer;
 
     void Start() {
-        levelState = InitGameState();
         playerState = InitPlayerState();
         rb = InitRigidbody();
         SaveCheckpoint();
+        groundLayer = LayerMask.GetMask("Ground");
     }
 
+    private void OnEnable() {
+        InputHandler.JumpPressed += HandleJump;
+        InputHandler.DropAbilityPressed += HandleDropAbility;
+    }
+    
+    private void OnDisable() {
+        InputHandler.JumpPressed -= HandleJump;
+        InputHandler.DropAbilityPressed -= HandleDropAbility;
+    }
+    
+    private void HandleJump() {
+        if (!playerState.IsGrounded) return;
+        Jump();
+    }
+
+    private void HandleDropAbility() {
+        if (playerState.Abilities.Count == 0) return;
+        DropAbility();
+    }
+
+    private void Jump() {
+        if (playerState.GravityMode == NORMAL) {
+            rb.velocity = new Vector2(rb.velocity.x, PlayerJumpVerticalVelocity);
+        } else if (playerState.GravityMode == ANTIGRAVITY && playerState.IsSmall()) {
+            rb.velocity = new Vector2(rb.velocity.x, -PlayerJumpVerticalVelocity);
+        }
+    }
+    
+    // Refactor drop ability, essentially keep the list of ability objects
+    // and maintain that list dynamically, create a new ability object only when
+    // the list is empty so we don't create a new instance every time, that's too expensive
+    private void DropAbility() {
+        Debug.Log("Place ability.");
+
+        var abilityEntry = playerState.Abilities.Pop();
+        var ability = abilityEntry.GameObject;
+        var abilityRb = abilityEntry.Rb;
+        ability.transform.position = transform.position + transform.right * AbilityInstantiateDistance;
+        abilityRb.gravityScale = rb.gravityScale;
+        ability.SetActive(true);
+        
+        // var newAbility = Instantiate(abilityPrefab, transform.position + transform.right * AbilityInstantiateDistance, Quaternion.identity);
+        // newAbility.GetComponent<Rigidbody2D>().gravityScale = rb.gravityScale;
+        --playerState.NumAbilities;
+    }
+    
     void Update() {
-        
-        if (Input.GetKeyDown(KeyCode.E)) {
-            DropAbility();
-        }
-        
-        var verticalInput = Input.GetButtonDown("Jump");
-        var horizontalInput = Input.GetAxisRaw("Horizontal");
-
-        playerState.IsGrounded = GroundCheck(playerState.GravityMode == NORMAL ? Vector2.down : Vector2.up); 
-
-        movement = new Vector2(horizontalInput, 0);
-
-        if (verticalInput) {
-            if (playerState.GravityMode == NORMAL && playerState.IsGrounded) {
-                rb.velocity = new Vector2(rb.velocity.x, PlayerJumpVerticalVelocity);
-            } else if (playerState.GravityMode == ANTIGRAVITY && playerState.IsGrounded && playerState.IsSmall()) {
-                rb.velocity = new Vector2(rb.velocity.x, -PlayerJumpVerticalVelocity);
-            }
-        }
+        playerState.IsGrounded = GroundCheck(playerState.GravityMode == NORMAL ? Vector2.down : Vector2.up);
     }
 
     void FixedUpdate() {
-        rb.velocity = new Vector2(movement.x * PlayerHorizontalVelocity, rb.velocity.y);
+        rb.velocity = new Vector2(InputHandler.instance.Horizontal * PlayerHorizontalVelocity, rb.velocity.y);
     }
     
     private void OnTriggerEnter2D(Collider2D other) {
@@ -70,19 +98,6 @@ public class PlayerController : MonoBehaviour {
         } else if (other.CompareTag("Portal")) {
             ExitPortal();
         }
-    }
-
-    // Refactor drop ability, essentially keep the list of ability objects
-    // and maintain that list dynamically, create a new ability object only when
-    // the list is empty so we don't create a new instance every time, that's too expensive
-    private void DropAbility() {
-        if (playerState.NumAbilities == 0) return;
-        Debug.Log("Place ability.");
-
-        var newAbility = Instantiate(abilityPrefab, transform.position + transform.right * AbilityInstantiateDistance, Quaternion.identity);
-        
-        newAbility.GetComponent<Rigidbody2D>().gravityScale = rb.gravityScale;
-        --playerState.NumAbilities;
     }
 
     private void EnterAntiGravityZone() {
@@ -141,12 +156,6 @@ public class PlayerController : MonoBehaviour {
         // settingsButton.SetActive(false);
     }
     
-    private void SaveCheckpoint() {
-        Debug.Log("🟢 Checkpoint Activated at: " + transform.position);
-        levelState.SetCheckpoint(new Checkpoint(playerState.NumStars, playerState.NumAbilities, playerState.Size,
-            transform.position, playerState.GravityMode));
-    }
-    
     public void Shrink() {
         if (playerState.IsBig()) {
             transform.localScale *= ShrinkFactor;
@@ -171,17 +180,22 @@ public class PlayerController : MonoBehaviour {
         Debug.Log("Player has grown.");
     }
 
-    public void CollectAbility() {
+    public void CollectAbility(GameObject go) {
         ++playerState.NumAbilities;
+        playerState.PickAbility(go);
     }
 
     public void CollectStar() {
         ++playerState.NumStars;
     }
+
+    private void SaveCheckpoint() {
+        LevelManager.Instance.LevelState.SaveCheckpoint(playerState, transform.position);
+    }
     
     private void Respawn() {
-        var checkpoint = levelState.GetLastCheckPoint();
-        levelState.Rollback(checkpoint);
+        var checkpoint = LevelManager.Instance.LevelState.GetLastCheckPoint();
+        LevelManager.Instance.LevelState.Rollback(checkpoint);
         playerState.Rollback(checkpoint);
         rb.velocity = Vector2.zero;
         transform.position = checkpoint.PlayerPosition;
@@ -193,17 +207,13 @@ public class PlayerController : MonoBehaviour {
     }
     
     private bool GroundCheck(Vector2 dir) {
-        var origin = (Vector2)transform.position + dir * 0.4f;
-        var hit = Physics2D.Raycast(origin, dir, 0.1f);
-        return hit.collider && hit.collider.CompareTag("Platform");
+        var origin = (Vector2)transform.position + dir * 0.36f;
+        return Physics2D.Raycast(origin, dir, 0.02f, groundLayer);
     }
     
     /// initialization //
-    private static LevelState InitGameState() {
-        return LevelManager.Instance.LevelState;
-    }
 
-    private static PlayerState InitPlayerState() {
+    private PlayerState InitPlayerState() {
         return LevelManager.Instance.PlayerState;
     }
     

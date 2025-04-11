@@ -4,7 +4,7 @@ using static VisibilityMode;
 public class Ability : BaseCollectible {
     
     public override void Collect(PlayerController playerController) {
-        playerController.CollectAbility();
+        playerController.CollectAbility(gameObject);
         gameObject.SetActive(false);
     }
     

@@ -19,15 +19,20 @@ public class LevelManager : MonoBehaviour  {
         InitPlayerState();
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            StartCoroutine(ToggleDayNight());
-        }
+    private void OnEnable() {
+        InputHandler.ToggleDayNightPressed += HandleToggleDayNight;
+    }
+    
+    private void OnDisable() {
+        InputHandler.ToggleDayNightPressed -= HandleToggleDayNight;
+    }
+    
+    private void HandleToggleDayNight() {
+        if (LevelState.TimeOfDay == ECLIPSE) return;
+        StartCoroutine(ToggleDayNight());
     }
     
     IEnumerator ToggleDayNight() {
-        if (LevelState.TimeOfDay == ECLIPSE) yield break;
-        
         var newTimeOfDay = (LevelState.TimeOfDay == DAY) ? NIGHT : DAY;
         LevelState.TimeOfDay = ECLIPSE;
         

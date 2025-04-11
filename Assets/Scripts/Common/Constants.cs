@@ -7,6 +7,7 @@ public static class Constants {
     public const float AntiGravityScale = -1.0f;
     public const float NormalGravityScale = 1.0f;
     public const float TransitionDuration = 2.0f;
+    public const float StartCameraPanDuration = 7.0f;
     public const float AnalyticsLogCoolDownTime = 1.0f;
     public const float PlayerHorizontalVelocity = 5.0f;
     public const float PlayerJumpVerticalVelocity = 6.5f;

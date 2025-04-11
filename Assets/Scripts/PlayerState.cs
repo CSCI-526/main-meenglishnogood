@@ -1,4 +1,5 @@
-using Unity.VisualScripting;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerState {
 
@@ -7,10 +8,10 @@ public class PlayerState {
     public Size Size { get; set; }
     public Portal CurrentPortal { get; set; }
     public GravityMode GravityMode { get; set; }
-    
     public bool IsGrounded { get; set; } = false;
     public bool InPortal { get; set; } = false;
-
+    public Stack<AbilityEntry> Abilities { get; private set; }
+    
     public bool IsBig() {
         return Size == Size.BIG;
     }
@@ -19,6 +20,10 @@ public class PlayerState {
         return Size == Size.SMALL;
     }
 
+    public void PickAbility(GameObject gameObject) {
+        Abilities.Push(new AbilityEntry(gameObject));    
+    }
+    
     public void Rollback(Checkpoint checkpoint) {
         NumStars = checkpoint.NumStars;
         NumAbilities = checkpoint.NumAbilities;
@@ -32,5 +37,6 @@ public class PlayerState {
         Size = Size.BIG;
         CurrentPortal = null;
         GravityMode = GravityMode.NORMAL;
+        Abilities = new Stack<AbilityEntry>();
     }
 }

@@ -4,11 +4,15 @@ using static TimeOfDay;
 
 public class LevelState {
     
+    public bool IsPanning { get; set; }
     public TimeOfDay TimeOfDay { get; set; } = DAY;
     private Checkpoint lastCheckPoint;
     private List<DayNightMutableEntry> dayNightMutableObjects;
 
     public void Rollback(Checkpoint checkpoint) {
+        TimeOfDay = checkpoint.TimeOfDay;
+        Debug.Log("Respawn: Time of day restored to " + TimeOfDay + ".");
+        
         foreach (var obtainedCollectible in checkpoint.GetObtainedCollectibles()) {
             obtainedCollectible.SetActive(true);
         }
@@ -30,6 +34,12 @@ public class LevelState {
         return lastCheckPoint;
     }
 
+    public void SaveCheckpoint(PlayerState playerState, Vector3 playerPosition) {
+        Debug.Log("🟢 Checkpoint Activated at: " + playerPosition + ".");
+        lastCheckPoint = new Checkpoint(TimeOfDay, playerState.NumStars, playerState.NumAbilities, playerState.Size,
+            playerPosition, playerState.GravityMode);
+    }
+    
     public void SetCheckpoint(Checkpoint checkpoint) {
         lastCheckPoint = checkpoint;
     }

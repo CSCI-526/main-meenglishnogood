@@ -14,8 +14,6 @@ public class LevelState {
 
     public void Rollback(CheckpointData checkpointData) {
         TimeOfDay = checkpointData.TimeOfDay;
-        // TODO Here update the color of the SunSprite, MainCamera background, and blocks processing, etc
-        // so essentially mimic an instant ToggleDayNight();
         
         Debug.Log("Respawn: Time of day restored to " + TimeOfDay + ".");
         

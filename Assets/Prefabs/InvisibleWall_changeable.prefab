@@ -8,12 +8,80 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6630074031974948680, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: m_AutoTiling
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6630074031974948680, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: m_UsedByComposite
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6630074031974948680, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: m_SpriteTilingProperty.drawMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 747005968825850001, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       propertyPath: m_Name
       value: InvisibleWall_changeable
       objectReference: {fileID: 0}
     - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       propertyPath: mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: dayColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: dayColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: dayColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: dayColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: nightColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: nightColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: nightColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: nightColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196522453245727088, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196522453245727088, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196522453245727088, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196522453245727088, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196522453245727088, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724931781516093454, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
+      propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8724931781516093454, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}

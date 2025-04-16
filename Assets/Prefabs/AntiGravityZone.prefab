@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4432976482998038463}
   - component: {fileID: 9140394184583652152}
   - component: {fileID: 3094823568409327765}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: AntiGravityZone
   m_TagString: AntiGravityZone
   m_Icon: {fileID: 0}

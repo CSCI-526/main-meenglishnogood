@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9200833065322121375}
   - component: {fileID: 4180838648150511670}
   - component: {fileID: -1925018310804650483}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GrowTriangle
   m_TagString: GrowTriangle
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1533320607750326251}
   - component: {fileID: 5615659730041944956}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2370019730656122940}
   - component: {fileID: 8452099003372069358}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

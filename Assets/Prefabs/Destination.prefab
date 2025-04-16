@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5355668224459504229}
   - component: {fileID: 1327147915301360988}
   - component: {fileID: 310376337421565212}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Destination
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,6 +152,9 @@ MonoBehaviour:
   rightStar: {fileID: 0}
   grayOut: {fileID: 0}
   settingsButton: {fileID: 0}
+  tutorialTexts: {fileID: 0}
+  closeBtn: {fileID: 0}
+  starsWhenPlaying: {fileID: 0}
 --- !u!1 &7512938404406971769
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1471161739094959096}
   - component: {fileID: 6042221400234966494}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

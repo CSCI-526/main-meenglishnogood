@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7672929958339370051}
   - component: {fileID: 7495722321538554400}
   - component: {fileID: 8160708710321374330}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,9 @@ MonoBehaviour:
   sunSprite: {fileID: 7495722321538554400}
   dayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   nightColor: {r: 0.055001736, g: 0.0408409, b: 0.37106913, a: 1}
-  dayBackgroundColor: {r: 0.5, g: 0.8, b: 1, a: 1}
-  nightBackgroundColor: {r: 0.05, g: 0.05, b: 0.2, a: 1}
+  dayBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+  nightBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
   transitionDuration: 2
+  isDay: 1
   mainCamera: {fileID: 0}
+  isTransitioning: 0

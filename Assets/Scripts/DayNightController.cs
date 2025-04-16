@@ -39,6 +39,7 @@ public class DayNightController : MonoBehaviour
         isDay = !isDay;
         StartCoroutine(ChangeColor(isDay ? dayColor : nightColor));
         StartCoroutine(ChangeBackgroundColor(isDay ? dayBackgroundColor : nightBackgroundColor));
+        //StartCoroutine(ChanagePlatformVisibility(dayBackgroundColor, nightBackgroundColor));
 
         // Inform PlayerHealth about Day/Night Change
         //playerHealth.setNightTime(!isDay);
@@ -53,29 +54,30 @@ public class DayNightController : MonoBehaviour
                 portal.TryTeleport();
             }
         }
-        HiddenPathController[] hiddenPaths = FindObjectsByType<HiddenPathController>(FindObjectsSortMode.None);
-        foreach (HiddenPathController path in hiddenPaths)
-        {
-            path.SetNightMode(isDay);
-        }
 
-        LadderController[] climbablePlatforms = FindObjectsByType<LadderController>(FindObjectsSortMode.None);
-        foreach (LadderController platform in climbablePlatforms)
-        {
-            platform.SetNightMode(isDay);
-        }
+        //HiddenPathController[] hiddenPaths = FindObjectsByType<HiddenPathController>(FindObjectsSortMode.None);
+        //foreach (HiddenPathController path in hiddenPaths)
+        //{
+        //    path.SetNightMode(isDay);
+        //}
 
-        VisibleAtDay[] visibleObstacles = FindObjectsByType<VisibleAtDay>(FindObjectsSortMode.None);
-        foreach (VisibleAtDay obs in visibleObstacles)
-        {
-            obs.SetNightMode(isDay);
-        }
+        //LadderController[] climbablePlatforms = FindObjectsByType<LadderController>(FindObjectsSortMode.None);
+        //foreach (LadderController platform in climbablePlatforms)
+        //{
+        //    platform.SetNightMode(isDay);
+        //}
 
-        VisibleAtNight[] invisibleObstacles = FindObjectsByType<VisibleAtNight>(FindObjectsSortMode.None);
-        foreach (VisibleAtNight obs in invisibleObstacles)
-        {
-            obs.SetNightMode(isDay);
-        }
+        //VisibleAtDay[] visibleObstacles = FindObjectsByType<VisibleAtDay>(FindObjectsSortMode.None);
+        //foreach (VisibleAtDay obs in visibleObstacles)
+        //{
+        //    obs.SetNightMode(isDay);
+        //}
+
+        //VisibleAtNight[] invisibleObstacles = FindObjectsByType<VisibleAtNight>(FindObjectsSortMode.None);
+        //foreach (VisibleAtNight obs in invisibleObstacles)
+        //{
+        //    obs.SetNightMode(isDay);
+        //}
 
     }
 
@@ -86,7 +88,7 @@ public class DayNightController : MonoBehaviour
         PortalController[] portals = FindObjectsOfType<PortalController>();
         Color startColor = sunSprite.color;
         float elapsedTime = 0f;
-        if (!isDay)
+        if (!isDay)  // at night
         {
             foreach (InvisibleWalls wall in invisibleWalls)
             {
@@ -189,6 +191,41 @@ public class DayNightController : MonoBehaviour
 
         mainCamera.backgroundColor = targetColor;
     }
+
+    // too slow to do
+    //IEnumerator ChanagePlatformVisibility(Color transparentColor, Color nonTransColor)
+    //{
+    //    InvisibleWalls[] invisibleWalls = FindObjectsOfType<InvisibleWalls>();
+    //    foreach (InvisibleWalls wall in invisibleWalls)
+    //    {
+    //        SpriteRenderer renderer = wall.GetComponent<SpriteRenderer>();
+    //        Color startColor = renderer.color;
+    //        float elapsedTime = 0f;
+    //        if(startColor != transparentColor) // if the object is not transparent, make it transparent
+    //        {
+    //            while (elapsedTime < transitionDuration)
+    //            {
+    //                elapsedTime += Time.deltaTime;
+    //                renderer.color = Color.Lerp(startColor, transparentColor, elapsedTime / transitionDuration);
+    //                yield return null;
+    //            }
+    //            renderer.color = transparentColor;
+    //        }
+    //        else // if the object already transparent, make it visible
+    //        {
+    //            while (elapsedTime < transitionDuration)
+    //            {
+    //                elapsedTime += Time.deltaTime;
+    //                renderer.color = Color.Lerp(startColor, nonTransColor, elapsedTime / transitionDuration);
+    //                yield return null;
+    //            }
+    //            renderer.color = nonTransColor;
+    //        }
+          
+            
+    //    }
+        
+    //}
 
     void UpdateInvisibleWallsState()
     {

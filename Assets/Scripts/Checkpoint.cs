@@ -24,9 +24,9 @@ public class Checkpoint : MonoBehaviour
             Vector3 playerLocalScale = other.gameObject.transform.localScale;
             CheckpointManager.Instance.SetLastLocalScale(playerLocalScale); // record size status
 
-            // powerups and platforms
-            CheckpointManager.Instance.SavePowerupsStates();  // powerup
-            CheckpointManager.Instance.GetChangedPlatforms();
+            // platforms
+            // CheckpointManager.Instance.SavePowerupsStates();  // powerup
+            // CheckpointManager.Instance.GetChangedPlatforms();
 
             // ability num
             CheckpointManager.Instance.SetAbilityCount(other.gameObject.GetComponent<PickupAndPlace>().abilityNum);
@@ -40,20 +40,4 @@ public class Checkpoint : MonoBehaviour
         }
     }
 
-    //public void CheckPointSave()
-    //{
-
-    //    CheckpointManager.Instance.SetCheckpoint(new Vector3(0f, 0f, 0f));
-
-    //    CheckpointManager.Instance.SetGravityScale(1f);
-
-    //    CheckpointManager.Instance.SetLastLocalScale(new Vector3(0.74f, 0.7f, 1f)); // record size status
-
-    //    // powerups and platforms
-    //    CheckpointManager.Instance.SavePowerupsStates(); 
-    //    CheckpointManager.Instance.GetChangedPlatforms();
-
-    //    // ability num
-    //    CheckpointManager.Instance.SetAbilityCount(0);
-    //}
 }

@@ -19,7 +19,7 @@ using UnityEngine;
 
 public class CheckpointManager : MonoBehaviour
 {
-    public static CheckpointManager Instance { get; private set; }
+     public static CheckpointManager Instance { get; private set; }
 
     public Vector3 lastCheckpointPosition = new Vector3(0f, 0f, 0f);
     public Vector3 lastLocalScale = new Vector3(0.74f, 0.7f, 1f); // size of the object
@@ -63,7 +63,11 @@ public class CheckpointManager : MonoBehaviour
         SetCheckpoint(new Vector3(0f, 0f, 0f));
         SetAbilityCount(0);
         SavePowerupsStates();
-        invisibleWalls = GameObject.FindGameObjectsWithTag("InvisibleWall");
+
+
+
+        GetAllInvisibleWalls(); // store all the invisible walls for the current scene
+        //invisibleWalls = GameObject.FindGameObjectsWithTag("InvisibleWall");
     }
 
     public void SetGravityScale(float scale)
@@ -150,7 +154,7 @@ public class CheckpointManager : MonoBehaviour
 
 
     // get the platforms that are changed into persistent
-    public void GetChangedPlatforms()
+    public void GetAllInvisibleWalls()
     {
         //changedPersistentPlatforms = new GameObject[0];
         //changedPersistentPlatforms = GameObject.FindGameObjectsWithTag("PersistentBlock");

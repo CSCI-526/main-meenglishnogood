@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6324509614693449879}
   - component: {fileID: 2952218438264976414}
+  - component: {fileID: 2779351825009359576}
   m_Layer: 0
   m_Name: day-background2
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5314376607596955200}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.800936, y: -3.8232117, z: 0.38982883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -84,3 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2779351825009359576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314376607596955200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c03b6e29f0b1daa4ebd16b9a96c07f78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayColor: {r: 1, g: 1, b: 1, a: 1}
+  nightColor: {r: 0, g: 0, b: 0, a: 0}
+  transitionDuration: 1.5
+  isTransitioning: 0

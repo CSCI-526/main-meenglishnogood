@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2861095512305679093, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3269336297203451587, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: ceilingLayer.m_Bits
       value: 128
@@ -64,6 +68,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3571490903400597553, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4511653065212897567, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: powerupText
       value: 
@@ -71,6 +79,10 @@ PrefabInstance:
     - target: {fileID: 4511653065212897567, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: instantiateDistance
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672403124223355793, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7898502166638945558, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: m_Color.b

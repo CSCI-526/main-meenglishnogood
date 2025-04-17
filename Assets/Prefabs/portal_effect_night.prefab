@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5781628144441455130}
   - component: {fileID: 6931539799618730962}
   - component: {fileID: 4399857443981332241}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: portal_effect_night
   m_TagString: Untagged
   m_Icon: {fileID: 0}

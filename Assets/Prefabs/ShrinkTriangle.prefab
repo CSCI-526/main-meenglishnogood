@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5933590838101287773}
   - component: {fileID: 458324169258307642}
   - component: {fileID: 325670426932847293}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShrinkTriangle
   m_TagString: ShrinkTriangle
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3587330249492768792}
   - component: {fileID: 8739321960875225408}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4758553895667872012}
   - component: {fileID: 8783067545538299792}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}

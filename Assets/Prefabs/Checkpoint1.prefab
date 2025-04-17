@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1957870062808739807}
   - component: {fileID: 283858515626906450}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5866826264378035947}
   - component: {fileID: 6767050326580740843}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Circle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 6349840720778056137}
   - component: {fileID: 2471028517614483298}
   - component: {fileID: 4896232949111736311}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Checkpoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1505283799478533711}
   - component: {fileID: 963158778536702934}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

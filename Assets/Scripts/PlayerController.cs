@@ -28,12 +28,14 @@ public class PlayerController : MonoBehaviour
     public AnalyticsManager db;
 
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         VecGravity = new Vector2(0, -Physics2D.gravity.y);
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         // record all size changing objects for reload when respawn from checkpoint
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ShrinkTriangle")) 
@@ -61,8 +63,11 @@ public class PlayerController : MonoBehaviour
         isFalling = rb.velocity.y < 0;
 
 
-        if (!isInAntiGravity)
+        if (!isInAntiGravity) // not in antigravity some
         {
+
+            spriteRenderer.flipY = false;
+
             //This method causes the player jump twice when the player closes to obstacles
             //isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
             //Use ray to detect ground vertically under the player
@@ -75,8 +80,9 @@ public class PlayerController : MonoBehaviour
                 rb.velocity -= VecGravity * fallMultiplier * Time.deltaTime;
             }
         }
-        else
+        else // in anti gravity zone
         {
+            spriteRenderer.flipY = true;
             isGrounded = false;
             //isCeiling = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, ceilingLayer);
             isCeiling = Physics2D.Raycast(transform.position + Vector3.up * 0.4f, Vector2.up, 0.1f, groundLayer);
@@ -88,8 +94,23 @@ public class PlayerController : MonoBehaviour
 
         movement = new Vector2(horizontalInput, 0);
 
+
+        // player horizontal facing direction
+        if (movement.x < 0)
+        {
+            spriteRenderer.flipX = true;  // Go left should flip
+        }
+        else if (movement.x > 0)
+        {
+            spriteRenderer.flipX = false; // Go right, normal
+        }
+
+
         if (jumpInput)
         {
+            //Debug.Log("isGrounded:" + isGrounded + " isCeiling: " + isCeiling);
+            
+
             if (!isInAntiGravity && isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
@@ -103,6 +124,7 @@ public class PlayerController : MonoBehaviour
 
         // Set Animation Parameter 'Speed'
         animator.SetFloat("Speed", movement.sqrMagnitude);
+        animator.SetBool("IsJumping", !isGrounded && !isCeiling); // Jump animation trigger
     }
 
     void FixedUpdate()

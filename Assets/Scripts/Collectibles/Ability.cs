@@ -12,6 +12,7 @@ public class Ability : BaseCollectible {
         if (!other.collider.CompareTag("Platform")) return; 
         var platform = other.gameObject.GetComponent<Platform>();
         if (platform.IsPersistent()) return;
+        LevelManager.Instance.LevelState.AddPlatformRestoreEntry(new PlatformRestoreEntry(platform));
         platform.SetVisibilityMode(PERSISTENT);
         gameObject.SetActive(false);
     }

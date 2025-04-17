@@ -4,7 +4,7 @@ using static Constants;
 public class Platform : MonoBehaviour, IDayNightMutable {
     
     private SpriteRenderer spriteRenderer;
-    [SerializeField] private VisibilityMode visibilityMode;
+    [SerializeField] public VisibilityMode visibilityMode;
 
     private Platform() {}
     

@@ -8,14 +8,13 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb;
     private Vector2 movement;
     private PlayerState playerState;
-    public GameObject abilityPrefab;
     private LayerMask groundLayer;
 
     void Start() {
-        playerState = InitPlayerState();
         rb = InitRigidbody();
-        SaveCheckpoint();
-        groundLayer = LayerMask.GetMask("Ground");
+        playerState = InitPlayerState();
+        groundLayer = InitGroundLayer();
+        SaveStartCheckpointData();
     }
 
     private void OnEnable() {
@@ -52,16 +51,13 @@ public class PlayerController : MonoBehaviour {
     private void DropAbility() {
         Debug.Log("Place ability.");
 
+        --playerState.NumAbilities;
         var abilityEntry = playerState.Abilities.Pop();
         var ability = abilityEntry.GameObject;
         var abilityRb = abilityEntry.Rb;
         ability.transform.position = transform.position + transform.right * AbilityInstantiateDistance;
         abilityRb.gravityScale = rb.gravityScale;
         ability.SetActive(true);
-        
-        // var newAbility = Instantiate(abilityPrefab, transform.position + transform.right * AbilityInstantiateDistance, Quaternion.identity);
-        // newAbility.GetComponent<Rigidbody2D>().gravityScale = rb.gravityScale;
-        --playerState.NumAbilities;
     }
     
     void Update() {
@@ -73,14 +69,14 @@ public class PlayerController : MonoBehaviour {
     }
     
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.TryGetComponent<ICollectible>(out var collectible)) {
-            collectible.Collect(this);
+        if (other.TryGetComponent<BaseCollectible>(out var collectible)) {
+            collectible.Process(this);
         } else if (other.CompareTag("AntiGravityZone")) {
             EnterAntiGravityZone();
         } else if (other.CompareTag("Destination")) {
             ReachDestination();
         } else if (other.CompareTag("Checkpoint")) {
-            SaveCheckpoint();
+            ActivateCheckpoint(other.GetComponent<Checkpoint>());
         } else if (other.CompareTag("Portal")) {
             EnterPortal(other.GetComponent<Portal>());
         }
@@ -189,8 +185,18 @@ public class PlayerController : MonoBehaviour {
         ++playerState.NumStars;
     }
 
-    private void SaveCheckpoint() {
+    private void ActivateCheckpoint(Checkpoint checkpoint) {
+        if (checkpoint.IsActivated) return;
+        checkpoint.Activate();
+        SaveCheckpointData();
+    }
+
+    private void SaveCheckpointData() {
         LevelManager.Instance.LevelState.SaveCheckpoint(playerState, transform.position);
+    }
+
+    private void SaveStartCheckpointData() {
+        LevelManager.Instance.LevelState.SaveStartCheckpoint(playerState, transform.position);
     }
     
     private void Respawn() {
@@ -200,10 +206,6 @@ public class PlayerController : MonoBehaviour {
         rb.velocity = Vector2.zero;
         transform.position = checkpoint.PlayerPosition;
         Debug.Log("🔁 Player Respawned at checkpoint!");
-    }
-
-    private bool IsCollectible(Collider2D other) {
-        return other.TryGetComponent<ICollectible>(out _);
     }
     
     private bool GroundCheck(Vector2 dir) {
@@ -221,5 +223,9 @@ public class PlayerController : MonoBehaviour {
         var rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         return rb;
+    }
+
+    private LayerMask InitGroundLayer() {
+        return LayerMask.GetMask("Ground");
     }
 }

@@ -8,4 +8,13 @@ public abstract class BaseCollectible : MonoBehaviour, ICollectible {
     }
 
     public abstract void Collect(PlayerController playerController);
+
+    private void RegisterCollectibleRestoreEntry() {
+        LevelManager.Instance.LevelState.AddCollectibleRestoreEntry(new CollectibleRestoreEntry(gameObject));
+    }
+
+    public void Process(PlayerController playerController) {
+        Collect(playerController);
+        RegisterCollectibleRestoreEntry();
+    }
 }

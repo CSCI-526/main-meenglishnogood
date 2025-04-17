@@ -24,11 +24,11 @@ public class PlayerState {
         Abilities.Push(new AbilityEntry(gameObject));    
     }
     
-    public void Rollback(Checkpoint checkpoint) {
-        NumStars = checkpoint.NumStars;
-        NumAbilities = checkpoint.NumAbilities;
-        Size = checkpoint.PlayerSize;
-        GravityMode = checkpoint.PlayerGravityMode;
+    public void Rollback(CheckpointData checkpointData) {
+        NumStars = checkpointData.NumStars;
+        NumAbilities = checkpointData.NumAbilities;
+        Size = checkpointData.PlayerSize;
+        GravityMode = checkpointData.PlayerGravityMode;
     }
 
     public void Init() {

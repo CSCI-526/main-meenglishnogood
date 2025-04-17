@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour, IDayNightMutable {
 
-    private Portal pairedPortal;
+    public Portal pairedPortal;
     private readonly VisibilityMode visibilityMode;
 
     private Portal() {}

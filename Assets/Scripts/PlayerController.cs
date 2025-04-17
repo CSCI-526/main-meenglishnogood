@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     public AnalyticsManager db;
 
+    private Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -45,6 +47,8 @@ public class PlayerController : MonoBehaviour
         }
 
         CheckpointManager.Instance.CheckpointInitialization();
+
+        animator = GetComponent<Animator>();
 
     }
 
@@ -96,6 +100,9 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, -jumpPower);
             }
         }
+
+        // Set Animation Parameter 'Speed'
+        animator.SetFloat("Speed", movement.sqrMagnitude);
     }
 
     void FixedUpdate()

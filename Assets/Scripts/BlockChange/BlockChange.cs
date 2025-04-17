@@ -9,6 +9,9 @@ public class BlockChange : MonoBehaviour
     Vector3 position;
     Vector3 scale;
 
+    SpriteRenderer sourceRenderer;
+    SpriteRenderer newRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,21 +29,30 @@ public class BlockChange : MonoBehaviour
         if (other.CompareTag("Ability") && gameObject.CompareTag("InvisibleWall"))
         {
 
-            position = transform.position; // get the original size and position of blocks
-            scale = transform.localScale;
+            sourceRenderer = gameObject.GetComponent<SpriteRenderer>();
+            
 
-            // make original block inactive
+            //position = transform.position; // get the original size and position of blocks
+            //scale = transform.localScale;
+
+            // Make original block inactive
             // Destroy(gameObject);
             gameObject.SetActive(false);
-      
             // destroy the used ability
             Destroy(other.gameObject);
 
             // create new persistentblock
-            position = transform.position; // get the position of the block
-            scale = transform.localScale;
+            position = transform.position; // get the position of the original block
+            //scale = transform.localScale;
             GameObject newBlock = Instantiate(persistentBlockPrefab, position, Quaternion.identity);
-            newBlock.transform.localScale = scale;
+
+            newRenderer = newBlock.GetComponent<SpriteRenderer>();
+
+            // Copy the tile size but not scale
+            newRenderer.size = sourceRenderer.size;
+
+            // make sure the scale is 1
+            newBlock.transform.localScale = gameObject.transform.localScale;
 
 
         }

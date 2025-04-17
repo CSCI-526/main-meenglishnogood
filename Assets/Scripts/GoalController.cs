@@ -60,6 +60,14 @@ public class GoalController : MonoBehaviour
             closeBtn.SetActive(false);
             starsWhenPlaying.SetActive(false);
 
+            string levelName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            int previousStars = PlayerPrefs.GetInt(levelName + "_Stars", 0);
+            int currentStars = starTracking.starCount;
+            if (currentStars > previousStars)
+            {
+                PlayerPrefs.SetInt(levelName + "_Stars", currentStars);
+                PlayerPrefs.Save();
+            }
         }
     }
 }

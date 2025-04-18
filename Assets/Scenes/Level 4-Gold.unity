@@ -5331,6 +5331,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 668913995
       objectReference: {fileID: 0}
+    - target: {fileID: 6382553446560422260, guid: 07d0432b5137417469900295a45b0053, type: 3}
+      propertyPath: db
+      value: 
+      objectReference: {fileID: 6884363}
     - target: {fileID: 7090774303873617285, guid: 07d0432b5137417469900295a45b0053, type: 3}
       propertyPath: orthographic size
       value: 4.4

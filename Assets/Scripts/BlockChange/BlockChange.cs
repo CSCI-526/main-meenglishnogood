@@ -48,7 +48,7 @@ public class BlockChange : MonoBehaviour
 
             newRenderer = newBlock.GetComponent<SpriteRenderer>();
 
-            // Copy the tile size but not scale
+            // Copy the tile size 
             newRenderer.size = sourceRenderer.size;
 
             // make sure the scale is 1

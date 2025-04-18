@@ -100,8 +100,8 @@ MonoBehaviour:
   sunSprite: {fileID: 7495722321538554400}
   dayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   nightColor: {r: 0.055001736, g: 0.0408409, b: 0.37106913, a: 1}
-  dayBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  nightBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  dayBackgroundColor: {r: 0.5019608, g: 0.8, b: 1, a: 1}
+  nightBackgroundColor: {r: 0.050980393, g: 0.050980393, b: 0.2, a: 1}
   transitionDuration: 2
   isDay: 1
   mainCamera: {fileID: 0}

@@ -50,27 +50,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       propertyPath: nightColor.b
-      value: 1
+      value: 0.754717
       objectReference: {fileID: 0}
     - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       propertyPath: nightColor.g
-      value: 1
+      value: 0.25987896
       objectReference: {fileID: 0}
     - target: {fileID: 858245582159124644, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       propertyPath: nightColor.r
-      value: 1
+      value: 0.25987896
       objectReference: {fileID: 0}
     - target: {fileID: 7196522453245727088, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.4716981
       objectReference: {fileID: 0}
     - target: {fileID: 7196522453245727088, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.4716981
       objectReference: {fileID: 0}
     - target: {fileID: 7196522453245727088, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.4716981
       objectReference: {fileID: 0}
     - target: {fileID: 7196522453245727088, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       propertyPath: m_DrawMode
@@ -130,14 +130,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 747005968825850001, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2690834889325983697}
+      addedObject: {fileID: 6068946228967843158}
   m_SourcePrefab: {fileID: 100100000, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
 --- !u!1 &2296833798467324761 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 747005968825850001, guid: 6d8bba6a8116ca949b141dba42def146, type: 3}
   m_PrefabInstance: {fileID: 1549831815378211784}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2690834889325983697
+--- !u!114 &6068946228967843158
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -50,6 +50,10 @@ public class PowerupStarCollisionTracking : MonoBehaviour
     {
         // Change blocks to persistent consumable
         if (collision.CompareTag("Ability")) {
+            bool ifUsed = collision.gameObject.GetComponent<AbilityFeature>().ifUsed;
+            Debug.Log("PowerupStarTracking; collide with ability ifUsed = " + ifUsed);
+            if (ifUsed) return;
+
             if (consumColor != collision.GetComponent<Consumable>().c) {
                 consumCount = 1;
                 consumColor = collision.GetComponent<Consumable>().c;

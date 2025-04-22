@@ -12,6 +12,9 @@ public class BlockChange : MonoBehaviour
     SpriteRenderer sourceRenderer;
     SpriteRenderer newRenderer;
 
+    //private bool hasTriggered = false;
+    //public float cooldownTime = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +27,15 @@ public class BlockChange : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other) 
     {
+        
+
+
         if (other.CompareTag("Ability") && gameObject.CompareTag("InvisibleWall"))
         {
+            
+            other.gameObject.GetComponent<AbilityFeature>().ifUsed = true;
 
             sourceRenderer = gameObject.GetComponent<SpriteRenderer>();
             
@@ -40,6 +48,7 @@ public class BlockChange : MonoBehaviour
             gameObject.SetActive(false);
             // destroy the used ability
             Destroy(other.gameObject);
+            Debug.Log("BlockChange: ability destroyed.");
 
             // create new persistentblock
             position = transform.position; // get the position of the original block
@@ -54,7 +63,15 @@ public class BlockChange : MonoBehaviour
             // make sure the scale is 1
             newBlock.transform.localScale = gameObject.transform.localScale;
 
+            //StartCoroutine(ResetTrigger());
+
 
         }
     }
+
+    //IEnumerator ResetTrigger()
+    //{
+    //    yield return new WaitForSeconds(cooldownTime);
+    //    hasTriggered = false;
+    //}
 }

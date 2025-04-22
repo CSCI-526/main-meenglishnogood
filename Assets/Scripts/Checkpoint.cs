@@ -22,7 +22,9 @@ public class Checkpoint : MonoBehaviour
             CheckpointManager.Instance.SetGravityScale(playerRb.gravityScale);
 
             Vector3 playerLocalScale = other.gameObject.transform.localScale;
-            CheckpointManager.Instance.SetLastLocalScale(playerLocalScale); // record size status
+            bool hasShrunk = other.gameObject.GetComponent<PlayerSizeControll2D>().hasShrunk;
+            bool isSmall = other.gameObject.GetComponent<PlayerController>().isSmall;
+            CheckpointManager.Instance.SetLastLocalScale(playerLocalScale, isSmall, hasShrunk); // record size status
 
             // platforms
             // CheckpointManager.Instance.SavePowerupsStates();  // powerup

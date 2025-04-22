@@ -59,15 +59,32 @@ public class InvisibleWalls : MonoBehaviour
     }
 
 
-    private void UpdateColor()
+    public void UpdateColor()
     {
+        GameObject sun = GameObject.Find("Sun");
+        DayNightController dnctrl = sun.GetComponent<DayNightController>();
         switch (mode)
         {
             case 1:
-                spriteRenderer.color = nightColor;
+                if (dnctrl.isDay)
+                {
+                    spriteRenderer.color = nightColor;
+                }
+                else
+                {
+                    spriteRenderer.color = dayColor;
+                }
+                //spriteRenderer.color = nightColor;
                 break;
             case 2:
-                spriteRenderer.color = dayColor;
+                if (dnctrl.isDay)
+                {
+                    spriteRenderer.color = dayColor;
+                }
+                else
+                {
+                    spriteRenderer.color = nightColor;
+                }
                 break;
             case 3:
                 spriteRenderer.color = isDaytime ? nightColor : dayColor;
@@ -77,5 +94,6 @@ public class InvisibleWalls : MonoBehaviour
                 spriteRenderer.color = dayColor;
                 break;
         }
+
     }
 }

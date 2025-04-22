@@ -37,9 +37,9 @@ public class PowerupStarCollisionTracking : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E)) {
             if (consumCount > 0) {
-            consumCount--;
-            db.AddCollectibleData("Use " + consumColor.ToString(), SceneManager.GetActiveScene().name);
-            UpdateUI();
+                consumCount--;
+                db.AddCollectibleData("Use " + consumColor.ToString(), SceneManager.GetActiveScene().name);
+                UpdateUI();
             }
         } else if (Input.GetKeyDown(KeyCode.Q)) {
             db.AddCollectibleData("Q", SceneManager.GetActiveScene().name);

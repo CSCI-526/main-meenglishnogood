@@ -15,7 +15,7 @@ public class Checkpoint : MonoBehaviour
         {
             Debug.Log("Checkpoint Activated at: " + transform.position);
 
-            Vector3 offsetPosition = transform.position + new Vector3(0f, 0f, 0f);  // record position, a littl offset can be added to avoid bugs
+            Vector3 offsetPosition = transform.position + new Vector3(0f, 0f, 0f);  // record position, a little offset can be added to avoid bugs
             CheckpointManager.Instance.SetCheckpoint(offsetPosition);
 
             Rigidbody2D playerRb = other.gameObject.GetComponent<Rigidbody2D>();  // record gravity status

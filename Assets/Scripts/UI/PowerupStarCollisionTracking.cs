@@ -9,6 +9,7 @@ public class PowerupStarCollisionTracking : MonoBehaviour
 {
     private int consumCount = 0;
     private Color consumColor = Color.black;
+    public Color abilityColor;
 
     // public GameObject consumUI;
     public GameObject slotImageObject;
@@ -73,8 +74,9 @@ public class PowerupStarCollisionTracking : MonoBehaviour
     private void UpdateUI()
     {
         if (consumCount > 0) {
-            slotImage.color = consumColor;
+            slotImage.color = abilityColor;
             consumText.text = consumCount.ToString();
+            Debug.Log("PowerupTracking: >0  - text and color updated");
         } else {
             consumColor = Color.black;
             consumCount = 0;
@@ -85,7 +87,9 @@ public class PowerupStarCollisionTracking : MonoBehaviour
 
     public void SetConsumCountAndUpdateUI(int count)
     {
+        
         consumCount = count;
+        Debug.Log("PowerupTracking: SetConsumCountAndUpdateUI called - consumCount: " + consumCount);
         UpdateUI();
     }
 

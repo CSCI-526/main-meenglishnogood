@@ -4,107 +4,118 @@ using static GravityMode;
 using static Size;
 
 public class PlayerController : MonoBehaviour {
-    
+
     private Rigidbody2D rb;
     private Vector2 movement;
     private PlayerState playerState;
     private LayerMask groundLayer;
 
-    void Start() {
-        rb = InitRigidbody();
-        playerState = InitPlayerState();
-        groundLayer = InitGroundLayer();
-        SaveStartCheckpointData();
+    private void Start() {
+        rb = InitializeRigidbody();
+        playerState = LevelManager.Instance.PlayerState;
+        groundLayer = LayerMask.GetMask("Ground");
+        SaveStartCheckpoint();
     }
 
     private void OnEnable() {
         InputHandler.JumpPressed += HandleJump;
         InputHandler.DropAbilityPressed += HandleDropAbility;
     }
-    
+
     private void OnDisable() {
         InputHandler.JumpPressed -= HandleJump;
         InputHandler.DropAbilityPressed -= HandleDropAbility;
     }
-    
+
+    private void Update() {
+        playerState.IsGrounded = IsGrounded(playerState.GravityMode == NORMAL ? Vector2.down : Vector2.up);
+    }
+
+    private void FixedUpdate() {
+        rb.velocity = new Vector2(InputHandler.instance.Horizontal * PlayerHorizontalVelocity, rb.velocity.y);
+    }
+
     private void HandleJump() {
-        if (!playerState.IsGrounded) return;
-        Jump();
+        if (playerState.IsGrounded) {
+            PerformJump();
+        }
     }
 
     private void HandleDropAbility() {
-        if (playerState.Abilities.Count == 0) return;
-        DropAbility();
-    }
-
-    private void Jump() {
-        if (playerState.GravityMode == NORMAL) {
-            rb.velocity = new Vector2(rb.velocity.x, PlayerJumpVerticalVelocity);
-        } else if (playerState.GravityMode == ANTIGRAVITY && playerState.IsSmall()) {
-            rb.velocity = new Vector2(rb.velocity.x, -PlayerJumpVerticalVelocity);
+        if (playerState.Abilities.Count > 0) {
+            DropAbility();
         }
     }
-    
-    // Refactor drop ability, essentially keep the list of ability objects
-    // and maintain that list dynamically, create a new ability object only when
-    // the list is empty so we don't create a new instance every time, that's too expensive
+
+    private void PerformJump() {
+        float direction = (playerState.GravityMode == NORMAL) ? 1f : -1f;
+        if (playerState.GravityMode == NORMAL || (playerState.GravityMode == ANTIGRAVITY && playerState.IsSmall())) {
+            rb.velocity = new Vector2(rb.velocity.x, direction * PlayerJumpVerticalVelocity);
+        }
+    }
+
     private void DropAbility() {
         Debug.Log("Place ability.");
 
-        --playerState.NumAbilities;
+        playerState.NumAbilities--;
         var abilityEntry = playerState.Abilities.Pop();
+
         var ability = abilityEntry.GameObject;
         var abilityRb = abilityEntry.Rb;
+
         ability.transform.position = transform.position + transform.right * AbilityInstantiateDistance;
         abilityRb.gravityScale = rb.gravityScale;
         ability.SetActive(true);
     }
-    
-    void Update() {
-        playerState.IsGrounded = GroundCheck(playerState.GravityMode == NORMAL ? Vector2.down : Vector2.up);
-    }
 
-    void FixedUpdate() {
-        rb.velocity = new Vector2(InputHandler.instance.Horizontal * PlayerHorizontalVelocity, rb.velocity.y);
-    }
-    
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.TryGetComponent<BaseCollectible>(out var collectible)) {
-            collectible.Process(this);
-        } else if (other.CompareTag("AntiGravityZone")) {
-            EnterAntiGravityZone();
-        } else if (other.CompareTag("Destination")) {
-            ReachDestination();
-        } else if (other.CompareTag("Checkpoint")) {
-            ActivateCheckpoint(other.GetComponent<Checkpoint>());
-        } else if (other.CompareTag("Portal")) {
-            EnterPortal(other.GetComponent<Portal>());
+        switch (other.tag) {
+            case "AntiGravityZone":
+                EnterAntiGravityZone();
+                break;
+            case "Destination":
+                ReachDestination();
+                break;
+            case "Checkpoint":
+                ActivateCheckpoint(other.GetComponent<Checkpoint>());
+                break;
+            case "Portal":
+                EnterPortal(other.GetComponent<Portal>());
+                break;
+            default:
+                if (other.TryGetComponent(out BaseCollectible collectible)) {
+                    collectible.Process(this);
+                }
+                break;
         }
     }
-    
+
+    private void OnTriggerExit2D(Collider2D other) {
+        switch (other.tag) {
+            case "AntiGravityZone":
+                ExitAntiGravityZone();
+                break;
+            case "Portal":
+                ExitPortal();
+                break;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.collider.CompareTag("Spike")) {
             Respawn();
-        }
-    }
-    
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.CompareTag("AntiGravityZone")) {
-            ExitAntiGravityZone();
-        } else if (other.CompareTag("Portal")) {
-            ExitPortal();
         }
     }
 
     private void EnterAntiGravityZone() {
         Debug.Log("The player enters the anti-gravity zone.");
         playerState.GravityMode = ANTIGRAVITY;
-        
+
         if (playerState.IsBig()) {
             Debug.Log("The player is too big to be affected by the anti-gravity zone.");
             return;
         }
-        
+
         rb.gravityScale = AntiGravityScale;
         rb.velocity = new Vector2(rb.velocity.x, 5f);
         Debug.Log("Gravity mode switched.");
@@ -113,11 +124,11 @@ public class PlayerController : MonoBehaviour {
     private void ExitAntiGravityZone() {
         Debug.Log("The player leaves the anti-gravity zone.");
         playerState.GravityMode = NORMAL;
-        
-        if (playerState.IsBig()) return;
-        
-        rb.gravityScale = NormalGravityScale;
-        rb.velocity = new Vector2(rb.velocity.x, 0f);
+
+        if (!playerState.IsBig()) {
+            rb.gravityScale = NormalGravityScale;
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+        }
     }
 
     private void EnterPortal(Portal portal) {
@@ -131,49 +142,34 @@ public class PlayerController : MonoBehaviour {
         playerState.InPortal = false;
         playerState.CurrentPortal = null;
     }
-    
-    private void ReachDestination() {
-        
-        // Destroy(gameObject);
 
-        // Time.timeScale = 0f;
-        // endUI.SetActive(true);
-        // grayOut.SetActive(true);
-        // if (starTracking.starCount > 0) {
-        //     leftStar.SetActive(true);
-        // }
-        // if (starTracking.starCount > 1) {
-        //     midStar.SetActive(true);
-        // }
-        // if (starTracking.starCount > 2) {
-        //     rightStar.SetActive(true);
-        // }
-        // menuUI.SetActive(true);
-        // settingsButton.SetActive(false);
+    private void ReachDestination() {
+        // Placeholder for end-level logic
     }
-    
+
     public void Shrink() {
         if (playerState.IsBig()) {
             transform.localScale *= ShrinkFactor;
             playerState.Size = SMALL;
-            if (playerState.GravityMode == ANTIGRAVITY) {
-                rb.gravityScale = AntiGravityScale;
-                rb.velocity = new Vector2(rb.velocity.x, 5f); 
-            }
+            AdjustGravityForSize();
+            Debug.Log("Player has shrunk.");
         }
-        Debug.Log("Player has shrunk.");
     }
 
     public void Grow() {
         if (playerState.IsSmall()) {
             transform.localScale *= GrowFactor;
             playerState.Size = BIG;
-            if (playerState.GravityMode == ANTIGRAVITY) {
-                rb.gravityScale = NormalGravityScale;
-                rb.velocity = new Vector2(rb.velocity.x, 0f); 
-            }
+            AdjustGravityForSize();
+            Debug.Log("Player has grown.");
         }
-        Debug.Log("Player has grown.");
+    }
+
+    private void AdjustGravityForSize() {
+        if (playerState.GravityMode == ANTIGRAVITY) {
+            rb.gravityScale = playerState.IsSmall() ? AntiGravityScale : NormalGravityScale;
+            rb.velocity = new Vector2(rb.velocity.x, playerState.IsSmall() ? 5f : 0f);
+        }
     }
 
     public void CollectAbility(GameObject go) {
@@ -186,19 +182,20 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void ActivateCheckpoint(Checkpoint checkpoint) {
-        if (checkpoint.IsActivated) return;
-        checkpoint.Activate();
-        SaveCheckpointData();
+        if (!checkpoint.IsActivated) {
+            checkpoint.Activate();
+            SaveCheckpoint();
+        }
     }
 
-    private void SaveCheckpointData() {
+    private void SaveCheckpoint() {
         LevelManager.Instance.LevelState.SaveCheckpoint(playerState, transform.position);
     }
 
-    private void SaveStartCheckpointData() {
+    private void SaveStartCheckpoint() {
         LevelManager.Instance.LevelState.SaveStartCheckpoint(playerState, transform.position);
     }
-    
+
     private void Respawn() {
         var checkpoint = LevelManager.Instance.LevelState.GetLastCheckPoint();
         LevelManager.Instance.LevelState.Rollback(checkpoint);
@@ -207,25 +204,15 @@ public class PlayerController : MonoBehaviour {
         transform.position = checkpoint.PlayerPosition;
         Debug.Log("🔁 Player Respawned at checkpoint!");
     }
-    
-    private bool GroundCheck(Vector2 dir) {
+
+    private bool IsGrounded(Vector2 dir) {
         var origin = (Vector2)transform.position + dir * 0.36f;
         return Physics2D.Raycast(origin, dir, 0.02f, groundLayer);
     }
-    
-    /// initialization //
 
-    private PlayerState InitPlayerState() {
-        return LevelManager.Instance.PlayerState;
-    }
-    
-    private Rigidbody2D InitRigidbody() {
-        var rb = GetComponent<Rigidbody2D>();
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        return rb;
-    }
-
-    private LayerMask InitGroundLayer() {
-        return LayerMask.GetMask("Ground");
+    private Rigidbody2D InitializeRigidbody() {
+        var body = GetComponent<Rigidbody2D>();
+        body.constraints = RigidbodyConstraints2D.FreezeRotation;
+        return body;
     }
 }

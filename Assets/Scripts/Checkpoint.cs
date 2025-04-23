@@ -11,9 +11,6 @@ public class Checkpoint : MonoBehaviour{
         foreach (var spriteRenderer in spriteRenderers) {
             spriteRenderer.color = CheckpointActiveColor;
         }
-        // Debug.Log("Activating checkpoint: " + gameObject.name + " spriteRenderer = " + spriteRenderer.name);
-        // spriteRenderer.color = CheckpointActiveColor;
-        // Debug.Log(spriteRenderer.color);
     }
     
 }

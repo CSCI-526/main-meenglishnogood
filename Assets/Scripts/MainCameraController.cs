@@ -2,63 +2,75 @@ using System.Collections;
 using UnityEngine;
 using static Constants;
 
-public class MainCameraController : MonoBehaviour {
-
+[RequireComponent(typeof(Camera))]
+public class MainCameraController : MonoBehaviour
+{
     private Camera mainCamera;
     private Vector3 leftEdge;
     private Vector3 rightEdge;
-    
-    private void Start() {
-        mainCamera = GetComponent<Camera>();
-        LevelManager.Instance.mainCamera = mainCamera;
-        CalculateCameraBoundsFromScene();
-        StartCoroutine(PanAcrossMap());
+
+    private void Start()
+    {
+        InitializeCamera();
+        SetCameraBoundsFromScene();
+        StartCoroutine(PanAcrossMapRoutine());
     }
 
-    private void CalculateCameraBoundsFromScene() {
+    private void InitializeCamera()
+    {
+        mainCamera = GetComponent<Camera>();
+        LevelManager.Instance.mainCamera = mainCamera;
+    }
+
+    private void SetCameraBoundsFromScene()
+    {
         var renderers = FindObjectsOfType<Renderer>();
-        if (renderers.Length == 0) {
-            Debug.LogError("No renderers found to calculate bounds!");
+        if (renderers.Length == 0)
+        {
+            Debug.LogError("No renderers found in scene to calculate camera bounds.");
             return;
         }
 
-        // Initialize bounds
-        var combinedBounds = renderers[0].bounds;
-        foreach (var rend in renderers) {
-            combinedBounds.Encapsulate(rend.bounds);
+        var bounds = renderers[0].bounds;
+        foreach (var rend in renderers)
+        {
+            bounds.Encapsulate(rend.bounds);
         }
 
-        leftEdge = new Vector3(combinedBounds.min.x + 20f, transform.position.y + 2f, transform.position.z);
-        rightEdge = new Vector3(combinedBounds.max.x - 20f, transform.position.y + 2f, transform.position.z);
-    }
-    
-    IEnumerator PanAcrossMap() {
+        float edgeOffset = 20f;
+        float heightOffset = 2f;
+        float y = transform.position.y + heightOffset;
+        float z = transform.position.z;
 
-        LevelManager.Instance.LevelState.IsPanning = true;
-        
-        var elapsed = 0f;
-        var originalSize = mainCamera.orthographicSize;
-        var originalPosition = mainCamera.transform.position;
-        
-        //Set a larger size for the map overview
-        var newSize = originalSize + 6f;
-        mainCamera.orthographicSize = newSize;
- 
-        while (elapsed < StartCameraPanDuration) {
-            var t = elapsed / StartCameraPanDuration;
-            var camPos = Vector3.Lerp(leftEdge, rightEdge, t);
-            camPos.z = originalPosition.z;
-            mainCamera.transform.position = camPos;
- 
+        leftEdge = new Vector3(bounds.min.x + edgeOffset, y, z);
+        rightEdge = new Vector3(bounds.max.x - edgeOffset, y, z);
+    }
+
+    private IEnumerator PanAcrossMapRoutine()
+    {
+        var levelState = LevelManager.Instance.LevelState;
+        levelState.IsPanning = true;
+
+        float elapsed = 0f;
+        float originalSize = mainCamera.orthographicSize;
+        Vector3 originalPosition = mainCamera.transform.position;
+
+        float zoomedOutSize = originalSize + 6f;
+        mainCamera.orthographicSize = zoomedOutSize;
+
+        while (elapsed < StartCameraPanDuration)
+        {
+            float t = elapsed / StartCameraPanDuration;
+            mainCamera.transform.position = Vector3.Lerp(leftEdge, rightEdge, t);
             elapsed += Time.deltaTime;
             yield return null;
         }
- 
+
         yield return new WaitForSeconds(1f);
-        
+
         mainCamera.orthographicSize = originalSize;
         mainCamera.transform.position = originalPosition;
-        
-        LevelManager.Instance.LevelState.IsPanning = false;
+
+        levelState.IsPanning = false;
     }
 }

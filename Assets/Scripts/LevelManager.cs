@@ -1,91 +1,108 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static Constants;
 using static TimeOfDay;
-using System.Collections;
-using System.Collections.Generic;
 
-public class LevelManager : MonoBehaviour  {
-    
+public class LevelManager : MonoBehaviour
+{
     public static LevelManager Instance { get; private set; }
+
     public LevelState LevelState { get; private set; }
     public PlayerState PlayerState { get; private set; }
+
     public Camera mainCamera;
     public SpriteRenderer sunSprite;
-    
-    private void Awake() {
+
+    private void Awake()
+    {
         Instance = this;
-        InitLevelState();
-        InitPlayerState();
+        InitializeLevelState();
+        InitializePlayerState();
     }
 
-    private void OnEnable() {
+    private void OnEnable()
+    {
         InputHandler.ToggleDayNightPressed += HandleToggleDayNight;
     }
-    
-    private void OnDisable() {
+
+    private void OnDisable()
+    {
         InputHandler.ToggleDayNightPressed -= HandleToggleDayNight;
     }
-    
-    private void HandleToggleDayNight() {
+
+    private void HandleToggleDayNight()
+    {
         if (LevelState.TimeOfDay == ECLIPSE) return;
-        StartCoroutine(ToggleDayNight());
+        StartCoroutine(ToggleDayNightRoutine());
     }
-    
-    IEnumerator ToggleDayNight() {
-        var newTimeOfDay = (LevelState.TimeOfDay == DAY) ? NIGHT : DAY;
+
+    private IEnumerator ToggleDayNightRoutine()
+    {
+        var current = LevelState.TimeOfDay;
+        var next = (current == DAY) ? NIGHT : DAY;
+
         LevelState.TimeOfDay = ECLIPSE;
-        
-        var dayNightMutableObjects = LevelState.GetDayNightMutableObjects();
-        ActivateVisibleMutables(newTimeOfDay, dayNightMutableObjects);
-        
-        var a = StartCoroutine(FadeToColor(color => sunSprite.color = color, sunSprite.color, (newTimeOfDay == DAY) ? DayColor : NightColor, TransitionDuration));
-        var b = StartCoroutine(FadeToColor(color => mainCamera.backgroundColor = color, mainCamera.backgroundColor, (newTimeOfDay == DAY) ? DayBackgroundColor : NightBackgroundColor, TransitionDuration));
 
-        yield return a;
-        yield return b;
-        
-        DeactivateInvisibleMutables(newTimeOfDay, dayNightMutableObjects);
-        LevelState.TimeOfDay = newTimeOfDay;
+        var mutables = LevelState.GetDayNightMutableObjects();
+        SetMutablesVisibility(mutables, next, true);
+
+        var sunTargetColor = GetTargetColor(next, true);
+        var bgTargetColor = GetTargetColor(next, false);
+
+        var sunFade = StartCoroutine(ApplyColorTransition(sunSprite.color, sunTargetColor, TransitionDuration, c => sunSprite.color = c));
+        var bgFade = StartCoroutine(ApplyColorTransition(mainCamera.backgroundColor, bgTargetColor, TransitionDuration, c => mainCamera.backgroundColor = c));
+
+        yield return sunFade;
+        yield return bgFade;
+
+        SetMutablesVisibility(mutables, next, false);
+        LevelState.TimeOfDay = next;
     }
 
-    private static IEnumerator FadeToColor(Action<Color> applyColor, Color start, Color target, float duration) {
-        var elapsed = 0f;
-        while (elapsed < duration) {
+    private IEnumerator ApplyColorTransition(Color start, Color end, float duration, Action<Color> apply)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
             elapsed += Time.deltaTime;
-            applyColor(Color.Lerp(start, target, elapsed / duration));
+            apply(Color.Lerp(start, end, elapsed / duration));
             yield return null;
         }
-        applyColor(target);
+        apply(end);
     }
 
-    private void ActivateVisibleMutables(TimeOfDay timeOfDay, List<DayNightMutableEntry> dayNightMutableEntries) {
-        foreach (var dayNightMutableEntry in dayNightMutableEntries) {
-            var go = dayNightMutableEntry.GameObject;
-            var mutable = dayNightMutableEntry.Mutable;
-            if (mutable.IsVisible(timeOfDay)) {
-                go.SetActive(true);
+    private Color GetTargetColor(TimeOfDay timeOfDay, bool isSun)
+    {
+        return timeOfDay == DAY
+            ? (isSun ? DayColor : DayBackgroundColor)
+            : (isSun ? NightColor : NightBackgroundColor);
+    }
+
+    private void SetMutablesVisibility(List<DayNightMutableEntry> entries, TimeOfDay timeOfDay, bool activating)
+    {
+        foreach (var entry in entries)
+        {
+            bool shouldBeActive = entry.Mutable.IsVisible(timeOfDay);
+            if (shouldBeActive == activating)
+            {
+                entry.GameObject.SetActive(activating);
             }
         }
     }
 
-    private void DeactivateInvisibleMutables(TimeOfDay timeOfDay, List<DayNightMutableEntry> dayNightMutableEntries) { 
-        foreach (var dayNightMutableEntry in dayNightMutableEntries) {
-            var go = dayNightMutableEntry.GameObject;
-            var mutable = dayNightMutableEntry.Mutable;
-            if (!mutable.IsVisible(timeOfDay)) {
-                go.SetActive(false);
-            }
-        }
-    }
-    
-    /// initialization //
-    private void InitLevelState() {
+    /// <summary>
+    /// Initialization
+    /// </summary>
+    private void InitializeLevelState()
+    {
         LevelState = new LevelState();
         LevelState.Init();
     }
-    
-    private void InitPlayerState() {
+
+    private void InitializePlayerState()
+    {
         PlayerState = new PlayerState();
         PlayerState.Init();
     }

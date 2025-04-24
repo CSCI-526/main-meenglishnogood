@@ -42,14 +42,22 @@ public class PickupAndPlace : MonoBehaviour
                 //GameObject newAbility = Instantiate(persistentAbilityPrefab, 
                 //    transform.position + transform.right * instantiateDistance, Quaternion.identity);
 
-                GameObject newAbility = Instantiate(persistentAbilityPrefab,
-                    transform.position - transform.up * instantiateDistance, Quaternion.identity);
-
-
                 // Get the player's gravity type. Game items need to follow the player's gravity.
                 playerRb = player.GetComponent<Rigidbody2D>();
-                targetRb = newAbility.GetComponent<Rigidbody2D>();
+                GameObject newAbility = null;
+                if (playerRb.gravityScale > 0)
+                {
+                    newAbility = Instantiate(persistentAbilityPrefab,
+                        transform.position - transform.up * instantiateDistance, Quaternion.identity);
+                }
+                else
+                {
+                    newAbility = Instantiate(persistentAbilityPrefab,
+                        transform.position + transform.up * instantiateDistance, Quaternion.identity);
+                }
 
+
+                targetRb = newAbility.GetComponent<Rigidbody2D>();
                 targetRb.gravityScale = playerRb.gravityScale; // Give gravity value to game items
 
                 //// get the current gravity of player, the powerup should have same gravity

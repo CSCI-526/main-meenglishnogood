@@ -37,28 +37,42 @@ public class AbilityTutorialHint : MonoBehaviour
 
     void ShowTutorial()
     {
-        if(CountHint!=null && DescHint != null && PressToContinue!=null)
+        if(CountHint!=null)
         {
             CountHint.SetActive(true);
-            DescHint.SetActive(true);
-            PressToContinue.SetActive(true);
-            Time.timeScale = 0f;
-            tutorialActive = true;
         }
+        if(DescHint != null)
+        {
+            DescHint.SetActive(true);
+        }
+        if(PressToContinue != null)
+        {
+            PressToContinue.SetActive(true);
+        }
+        Time.timeScale = 0f;
+        tutorialActive = true;
 
     }
 
     void ResumeGame()
     {
-        if (CountHint != null && DescHint != null && PressToContinue!=null)
+        if (CountHint != null )
         {
             CountHint.SetActive(false);
-            DescHint.SetActive(false);
-            PressToContinue.SetActive(false);
-            Time.timeScale = 1f;
-            tutorialActive = false;
-            Destroy(gameObject);
         }
-                     
+        if(DescHint != null)
+        {
+           DescHint.SetActive(false);
+        }
+        if(PressToContinue != null)
+        {
+            PressToContinue.SetActive(false);
+        }
+
+        Time.timeScale = 1f;
+        tutorialActive = false;
+        Destroy(gameObject);
+
+
     }
 }

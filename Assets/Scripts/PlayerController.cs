@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isCeiling;
     private bool isInAntiGravity = false;
-    private bool isSmall = false; 
+    public bool isSmall = false; 
     private bool isFalling = false;
     //[SerializeField] private float groundCheckRadius = 0.8f;
 
@@ -204,7 +204,7 @@ public class PlayerController : MonoBehaviour
 
             // Abilty on the map and platforms recover
             CheckpointManager.Instance.RestoreAbilityStates(); // restore the consumed abilities
-            CheckpointManager.Instance.RecoverChangedPlatforms(); // destroy all the platforms changed and se the previous platforms active
+            CheckpointManager.Instance.RecoverChangedPlatforms(); // destroy all the platforms changed and set the previous platforms active
 
             // Set last ability num
             PickupAndPlace pickScript = GetComponent<PickupAndPlace>(); // get the pickup and place script
@@ -215,17 +215,31 @@ public class PlayerController : MonoBehaviour
 
 
             transform.localScale = CheckpointManager.Instance.GetLastLocalScale(); // get last size
-            if(transform.localScale.x > 0.5f)  // if not shrinking
-            {
-                PlayerSizeControll2D controller = GetComponent<PlayerSizeControll2D>();
-                controller.hasShrunk = false;
-            }
-            
+            isSmall = CheckpointManager.Instance.GetLastIsSmall(); // isSmall - anti gravity status
+            gameObject.GetComponent<PlayerSizeControll2D>().hasShrunk = CheckpointManager.Instance.GetLastHasShrunk();  // hasShrunk - anti gravity status
+            Debug.Log("Respawn: isSmall: " + isSmall);
+            Debug.Log("Respawn: hasShrunk: " + gameObject.GetComponent<PlayerSizeControll2D>().hasShrunk);
 
-            if(CheckpointManager.Instance.GetLastGravityScale() == 1f)
+            //if (transform.localScale.x > 0.5f)  // if not shrinking
+            //{
+            //    Debug.Log("Respawn status check: not shrinking");
+            //    PlayerSizeControll2D controller = GetComponent<PlayerSizeControll2D>();
+            //    controller.hasShrunk = false;
+            //    isSmall = false;
+            //}
+            //else
+            //{
+            //    PlayerSizeControll2D controller = GetComponent<PlayerSizeControll2D>();
+            //    controller.hasShrunk = true;
+            //    isSmall = true;
+
+            //}
+
+
+            if (CheckpointManager.Instance.GetLastGravityScale() == 1f)
             {
                 ResetGravity();
-                SetSmallState(false);
+                //SetSmallState(false);
             }
             Debug.Log("Respawn: Get last gravity scale: " + CheckpointManager.Instance.GetLastGravityScale());
             //Rigidbody2D rb = GetComponent<Rigidbody2D>();

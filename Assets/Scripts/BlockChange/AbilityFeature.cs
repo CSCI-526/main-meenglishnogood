@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AbilityFeature : MonoBehaviour
 {
+    public bool ifUsed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +21,24 @@ public class AbilityFeature : MonoBehaviour
 
     private void onTriggerEnter2D(Collider2D other)
     {
-         // if placed on persistent block, it can be reused again
-         if (!other.CompareTag("Invisible"))
-         {
-            gameObject.tag = "Ability";
-         }
+        //if (ifUsed)
+        //{
+        //    return;
+        //}
+
+        //// if placed on persistent block, it can be reused again
+        ////if (!other.CompareTag("InvisibleWall"))
+        ////{
+        ////    Debug.Log("Ability Feature");
+        ////    gameObject.tag = "Ability";
+        ////}
+        
+        //if(other.CompareTag("InvisibleWall"))// placed on changeable platform
+        //{
+        //    ifUsed = true;
+        //    Debug.Log("AbilityFeature: ifUsed = true");
+        //}
+
+            
     }
 }

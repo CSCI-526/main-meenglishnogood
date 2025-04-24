@@ -11,14 +11,20 @@ public class PickupAndPlace : MonoBehaviour
     public GameObject persistentAbilityPrefab;
     public GameObject player;
 
-    public TextMeshProUGUI powerupText;
+    //public TextMeshProUGUI powerupText;
 
     private Rigidbody2D playerRb;
     private Rigidbody2D targetRb;
 
+    private Animator animator;
+
+    //private bool hasTriggered = false;
+    //public float cooldownTime = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,11 +37,14 @@ public class PickupAndPlace : MonoBehaviour
             if (persistentAbilityPrefab != null && abilityNum>0)
             {
                 Debug.Log("PickupAndPlace: place ability");
-                
 
-                GameObject newAbility = Instantiate(persistentAbilityPrefab, 
-                    transform.position + transform.right * instantiateDistance, Quaternion.identity);
-                
+
+                //GameObject newAbility = Instantiate(persistentAbilityPrefab, 
+                //    transform.position + transform.right * instantiateDistance, Quaternion.identity);
+
+                GameObject newAbility = Instantiate(persistentAbilityPrefab,
+                    transform.position - transform.up * instantiateDistance, Quaternion.identity);
+
 
                 // Get the player's gravity type. Game items need to follow the player's gravity.
                 playerRb = player.GetComponent<Rigidbody2D>();
@@ -56,18 +65,40 @@ public class PickupAndPlace : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
-    {   
+    {
+        
         // collect ability
         if (other.CompareTag("Ability")) 
         {
+            
+            bool ifUsed = other.gameObject.GetComponent<AbilityFeature>().ifUsed;
+            Debug.Log("PickupAndPlace; collide with ability ifUsed = " + ifUsed);
+            if (ifUsed) // if the ability is not used, then can be picked up by player
+            {
+                
+                Debug.Log("PickupAndPlace: ability used, cannot pickup again");
+                return;
+            }
+
             Debug.Log("PickupAndPlace: Player collides with ability");
             abilityNum++;
             // UpdatePowerupUI();
             //Destroy(other.gameObject);
             other.gameObject.SetActive(false);
+            //StartCoroutine(ResetTrigger());
+
+            animator.SetTrigger("GetAbility");
         }
     }
+
+    //IEnumerator ResetTrigger()
+    //{
+    //    yield return new WaitForSeconds(cooldownTime);
+    //    hasTriggered = false;
+    //}
+
 
     //public void UpdatePowerupUI()
     //{

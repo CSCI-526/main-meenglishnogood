@@ -23,6 +23,8 @@ public class CheckpointManager : MonoBehaviour
 
     public Vector3 lastCheckpointPosition = new Vector3(0f, 0f, 0f);
     public Vector3 lastLocalScale = new Vector3(0.74f, 0.7f, 1f); // size of the object
+    public bool isSmall;
+    public bool hasShrunk;
     public float lastGravityScale = 1f;
 
     // dictionary for different types of powerup status
@@ -58,7 +60,7 @@ public class CheckpointManager : MonoBehaviour
     public void CheckpointInitialization()
     {
         // initialization
-        SetLastLocalScale(new Vector3(0.74f, 0.7f, 1f));
+        SetLastLocalScale(new Vector3(0.74f, 0.7f, 1f), false, false);
         SetGravityScale(1f);
         SetCheckpoint(new Vector3(0f, 0f, 0f));
         SetAbilityCount(0);
@@ -81,15 +83,28 @@ public class CheckpointManager : MonoBehaviour
         return lastGravityScale;
     }
 
-    public void SetLastLocalScale(Vector3 localScale)
+    public void SetLastLocalScale(Vector3 localScale, bool isSmallInput, bool hasShrunkInput)
     {
         lastLocalScale = localScale;
-        Debug.Log("Last Local Scale: " + lastLocalScale);
+        Debug.Log("CheckpointManager: Last Local Scale: " + lastLocalScale);
+        isSmall = isSmallInput;
+        hasShrunk = hasShrunkInput;
+        Debug.Log("CheckpointManager: Last isSmall: " + isSmall);
     }
 
     public Vector3 GetLastLocalScale()
     {
         return lastLocalScale;
+    }
+
+    public bool GetLastIsSmall()
+    {
+        return isSmall;
+    }
+
+    public bool GetLastHasShrunk()
+    {
+        return hasShrunk;
     }
 
     public void SetCheckpoint(Vector3 position)
@@ -187,8 +202,9 @@ public class CheckpointManager : MonoBehaviour
         {
             if (wall!=null && !wall.activeSelf)
             {
-                Debug.Log("Recover changed platforms");
+                Debug.Log("CheckpointManager: Recover changed platforms");
                 wall.SetActive(true);
+                wall.GetComponent<InvisibleWalls>().UpdateColor();
             }
         }
 

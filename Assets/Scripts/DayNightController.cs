@@ -86,6 +86,7 @@ public class DayNightController : MonoBehaviour
         isTransitioning = true;
         InvisibleWalls[] invisibleWalls = FindObjectsOfType<InvisibleWalls>();
         PortalController[] portals = FindObjectsOfType<PortalController>();
+
         Color startColor = sunSprite.color;
         float elapsedTime = 0f;
         if (!isDay)  // at night

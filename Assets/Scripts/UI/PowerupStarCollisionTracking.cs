@@ -9,6 +9,7 @@ public class PowerupStarCollisionTracking : MonoBehaviour
 {
     private int consumCount = 0;
     private Color consumColor = Color.black;
+    public Color abilityColor;
 
     // public GameObject consumUI;
     public GameObject slotImageObject;
@@ -36,9 +37,9 @@ public class PowerupStarCollisionTracking : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E)) {
             if (consumCount > 0) {
-            consumCount--;
-            db.AddCollectibleData("Use " + consumColor.ToString(), SceneManager.GetActiveScene().name);
-            UpdateUI();
+                consumCount--;
+                db.AddCollectibleData("Use " + consumColor.ToString(), SceneManager.GetActiveScene().name);
+                UpdateUI();
             }
         } else if (Input.GetKeyDown(KeyCode.Q)) {
             db.AddCollectibleData("Q", SceneManager.GetActiveScene().name);
@@ -49,6 +50,10 @@ public class PowerupStarCollisionTracking : MonoBehaviour
     {
         // Change blocks to persistent consumable
         if (collision.CompareTag("Ability")) {
+            bool ifUsed = collision.gameObject.GetComponent<AbilityFeature>().ifUsed;
+            Debug.Log("PowerupStarTracking; collide with ability ifUsed = " + ifUsed);
+            if (ifUsed) return;
+
             if (consumColor != collision.GetComponent<Consumable>().c) {
                 consumCount = 1;
                 consumColor = collision.GetComponent<Consumable>().c;
@@ -73,8 +78,9 @@ public class PowerupStarCollisionTracking : MonoBehaviour
     private void UpdateUI()
     {
         if (consumCount > 0) {
-            slotImage.color = consumColor;
+            slotImage.color = abilityColor;
             consumText.text = consumCount.ToString();
+            Debug.Log("PowerupTracking: >0  - text and color updated");
         } else {
             consumColor = Color.black;
             consumCount = 0;
@@ -85,7 +91,9 @@ public class PowerupStarCollisionTracking : MonoBehaviour
 
     public void SetConsumCountAndUpdateUI(int count)
     {
+        
         consumCount = count;
+        Debug.Log("PowerupTracking: SetConsumCountAndUpdateUI called - consumCount: " + consumCount);
         UpdateUI();
     }
 

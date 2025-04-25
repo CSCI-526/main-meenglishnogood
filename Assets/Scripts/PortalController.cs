@@ -14,7 +14,8 @@ public class PortalController : MonoBehaviour
 
     private bool playerInPortal = false;
 
-    public float cooldownTime = 1.5f;
+    public float cooldownTime = 2f;
+    public float colorchangingTime = 1f;
     private float lastTeleportTime = -999f;
 
     public bool isTransitioningColorChange = false;
@@ -119,7 +120,7 @@ public class PortalController : MonoBehaviour
         Color startColor = spriteRenderer.color;
         if (startColor != dayColor) // if the object is not transparent, make it transparent
         {
-            while (elapsedTime < cooldownTime)
+            while (elapsedTime < colorchangingTime)
             {
                 elapsedTime += Time.deltaTime;
                 spriteRenderer.color = Color.Lerp(startColor, dayColor, elapsedTime / cooldownTime);
@@ -129,7 +130,7 @@ public class PortalController : MonoBehaviour
         }
         else // if the object already transparent, make it visible
         {
-            while (elapsedTime < cooldownTime)
+            while (elapsedTime < colorchangingTime)
             {
                 elapsedTime += Time.deltaTime;
                 spriteRenderer.color = Color.Lerp(startColor, nightColor, elapsedTime / cooldownTime);

@@ -9051,7 +9051,7 @@ MonoBehaviour:
   nightColor: {r: 0.055001736, g: 0.0408409, b: 0.37106913, a: 1}
   dayBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   nightBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
-  transitionDuration: 1.5
+  transitionDuration: 1
   isDay: 1
   mainCamera: {fileID: 2045196317}
   isTransitioning: 0

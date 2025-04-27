@@ -15,6 +15,9 @@ TagManager:
   - PersistentBlock
   - Destination
   - CameraTrigger
+  - ZoomInTrigger
+  - ZoomOutTrigger
+  - Ability_Use
   layers:
   - Default
   - TransparentFX

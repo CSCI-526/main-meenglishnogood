@@ -12010,7 +12010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityNum: 0
   instantiateDistance: 0.6
-  persistentAbilityPrefab: {fileID: 731280617574466116, guid: 67d6421638e5327458d28b0aa5ab2476, type: 3}
+  persistentAbilityPrefab: {fileID: 731280617574466116, guid: 5a24786d1041974438e7399962e660bd, type: 3}
   player: {fileID: 2026359898735096237}
 --- !u!1 &737403618083816297
 GameObject:

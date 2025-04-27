@@ -211,6 +211,7 @@ public class PlayerController : MonoBehaviour
             // Abilty on the map and platforms recover
             CheckpointManager.Instance.RestoreAbilityStates(); // restore the consumed abilities
             CheckpointManager.Instance.RecoverChangedPlatforms(); // destroy all the platforms changed and set the previous platforms active
+            CheckpointManager.Instance.DestroyRemainingAbilities(); // destroy the abilities player placed but not used on platforms;
 
             // Set last ability num
             PickupAndPlace pickScript = GetComponent<PickupAndPlace>(); // get the pickup and place script

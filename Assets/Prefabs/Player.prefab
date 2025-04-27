@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: instantiateDistance
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 4511653065212897567, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
+      propertyPath: persistentAbilityPrefab
+      value: 
+      objectReference: {fileID: 731280617574466116, guid: 5a24786d1041974438e7399962e660bd, type: 3}
     - target: {fileID: 6470767816832837277, guid: 26eb7954e439d2740a46b04640c3e2da, type: 3}
       propertyPath: orthographic size
       value: 4.4

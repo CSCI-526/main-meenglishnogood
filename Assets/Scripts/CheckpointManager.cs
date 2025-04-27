@@ -167,6 +167,19 @@ public class CheckpointManager : MonoBehaviour
         }
     }
 
+    public void DestroyRemainingAbilities()
+    {
+        GameObject[] usedAbilities = GameObject.FindGameObjectsWithTag("Ability_Use");
+
+        foreach (GameObject obj in usedAbilities)
+        {
+            if (obj != null)
+            {
+                Destroy(obj);
+            }
+        }
+    }
+
 
     // get the platforms that are changed into persistent
     public void GetAllInvisibleWalls()

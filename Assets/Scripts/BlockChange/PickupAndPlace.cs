@@ -78,7 +78,7 @@ public class PickupAndPlace : MonoBehaviour
     {
         
         // collect ability
-        if (other.CompareTag("Ability")) 
+        if (other.CompareTag("Ability") || other.CompareTag("Ability_Use")) 
         {
             
             bool ifUsed = other.gameObject.GetComponent<AbilityFeature>().ifUsed;

@@ -32,7 +32,7 @@ public class BlockChange : MonoBehaviour
         
 
 
-        if (other.CompareTag("Ability") && gameObject.CompareTag("InvisibleWall"))
+        if ((other.CompareTag("Ability") || other.CompareTag("Ability_Use")) && gameObject.CompareTag("InvisibleWall"))
         {
             
             other.gameObject.GetComponent<AbilityFeature>().ifUsed = true;

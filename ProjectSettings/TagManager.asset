@@ -13,9 +13,8 @@ TagManager:
   - Star
   - Portal
   - PersistentBlock
-  - ZoomOutTrigger
-  - ZoomInTrigger
   - Destination
+  - CameraTrigger
   layers:
   - Default
   - TransparentFX

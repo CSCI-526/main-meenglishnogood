@@ -7,8 +7,6 @@ public class CameraController : MonoBehaviour
     public Transform player;
     private Vector3 offset = new Vector3(2f, 1f, -10f); // offset when following player
 
-
-    
     public bool isLockX = false;
     public bool isLockY = false;
     public float moveSpeed = 2.0f;
@@ -23,6 +21,10 @@ public class CameraController : MonoBehaviour
     private float fixedX;
     private float startSize;
     private bool isLockTrigger;
+
+
+    public PlayerController playerController;
+    //public Animator playerAnimator;  
 
     void Start()
     {
@@ -72,12 +74,14 @@ public class CameraController : MonoBehaviour
         //}
         Debug.Log("Camera: position changed");
         targetSize = sizeIn;
-        targetPos = new Vector3(player.position.x, targetPosIn.y, targetPosIn.z);
+        targetPos = new Vector3(targetPosIn.x, targetPosIn.y, transform.position.z);
         
 
         isTransitioning = true;
         isLockTrigger = true;
 
+        playerController.DisableControl();
+      
         StartCoroutine(LerpCameraToTarget());
     }
 
@@ -85,10 +89,11 @@ public class CameraController : MonoBehaviour
     {
         
         isLockTrigger = false;
-        targetSize = 5;
-        targetPos = player.position;
-        //isTransitioning = false;
-        
+        targetSize = 4.4f;
+        targetPos = player.position + offset;
+        isTransitioning = true;
+        playerController.DisableControl();
+
         Debug.Log("Camera: camera follow player, isLockTrigger: " + isLockTrigger);
         StartCoroutine(LerpCameraToTarget());
     }
@@ -110,12 +115,14 @@ public class CameraController : MonoBehaviour
 
 
 
-            transform.position = targetPos;
-            cam.orthographicSize = targetSize;
-            fixedY = transform.position.y;
-            fixedX = targetPos.x;
-            isTransitioning = false;
-            Debug.Log("Camera: Reached Lerp Position");
-            yield break; // 结束这个协程
+        transform.position = targetPos;
+        cam.orthographicSize = targetSize;
+        fixedY = transform.position.y;
+        fixedX = targetPos.x;
+        isTransitioning = false;
+        Debug.Log("Camera: Reached Lerp Position");
+
+        playerController.EnableControl();
+        yield break; // 结束这个协程
     }
 }

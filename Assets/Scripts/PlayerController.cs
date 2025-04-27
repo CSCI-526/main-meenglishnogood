@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
+    private bool canMove = true; // is allowed to move
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -56,6 +58,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!canMove) return; // all movements are forbidden
+
         // Debug.Log("isCeiling: " + isCeiling + ", isSmall: " + isSmall);
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         bool jumpInput = Input.GetButtonDown("Jump");
@@ -129,6 +133,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!canMove) return;
+
         rb.velocity = new Vector2(movement.x * speed, rb.velocity.y);
     }
 
@@ -275,6 +281,31 @@ public class PlayerController : MonoBehaviour
         bool rightHit = Physics2D.Raycast(rightRayStart, Vector2.down, rayLength, groundLayer);
 
         return leftHit || centerHit || rightHit;
+    }
+
+    // 禁止玩家移动和动作
+    public void DisableControl()
+    {
+        canMove = false;
+
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero; // velocity goes zero
+        }
+
+        if (animator != null)
+        {
+            //animator.Play("Idle");  // switch to idle animation
+            animator.SetFloat("Speed", 0f);
+        }
+        Debug.Log("PlayerController: Input Disasbled");
+    }
+
+    // 允许玩家重新移动
+    public void EnableControl()
+    {
+        canMove = true;
+        Debug.Log("PlayerController: Input Enabled");
     }
 
 

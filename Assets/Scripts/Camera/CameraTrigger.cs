@@ -33,6 +33,8 @@ public class CameraTrigger : MonoBehaviour
             {
                 cameraController.CameraFollowPlayer();
             }
+
+            //Destroy(gameObject);
             
         }
     }

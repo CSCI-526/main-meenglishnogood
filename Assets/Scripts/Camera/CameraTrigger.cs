@@ -20,9 +20,9 @@ public class CameraTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            CameraLock cameraLock = Camera.main.GetComponent<CameraLock>();
+            CameraController cameraController = Camera.main.GetComponent<CameraController>();
 
-            cameraLock.TriggerCameraLockBehavior();
+            cameraController.TriggerCameraLockBehavior();
         }
     }
 }

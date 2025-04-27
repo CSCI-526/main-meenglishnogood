@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7902652495501684639}
   - component: {fileID: 5403322318711862460}
   - component: {fileID: 7367525958875347228}
+  - component: {fileID: 2957879923076261823}
   m_Layer: 0
   m_Name: CollectibleStar
   m_TagString: Star
@@ -129,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &7367525958875347228
 MonoBehaviour:
@@ -143,3 +144,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7a9f7381dfd28458bd1033c9dbba84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2957879923076261823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153964248629498611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0717a8fcc2e3964d95b4a0ca6d05964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatAmplitude: 0.1
+  floatSpeed: 2

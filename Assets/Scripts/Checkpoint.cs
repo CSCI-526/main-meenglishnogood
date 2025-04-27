@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+    public Sprite activatedSprite;
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class Checkpoint : MonoBehaviour
             SpriteRenderer[] childRenderers = GetComponentsInChildren<SpriteRenderer>();
             foreach (SpriteRenderer renderer in childRenderers)
             {
-                renderer.color = Color.green;
+                renderer.sprite = activatedSprite; // »»³ÉÐÂµÄsprite
             }
         }
     }

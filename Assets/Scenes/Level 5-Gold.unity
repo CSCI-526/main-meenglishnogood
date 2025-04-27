@@ -300,6 +300,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 0.6548966
       objectReference: {fileID: 0}
+    - target: {fileID: 5709058830170386711, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7586430226429253464, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
       propertyPath: m_Size.x
       value: 6
@@ -741,6 +745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NightBlock (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -814,6 +822,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NightBlock (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -885,6 +897,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2191847964800125804, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
       propertyPath: nightColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191847964800125804, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
+      propertyPath: transitionDuration
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2296833798467324761, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
@@ -1268,6 +1284,10 @@ PrefabInstance:
       propertyPath: nightColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1320023077988243796, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.3
@@ -1278,7 +1298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -243.38254
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1310,19 +1330,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1876,6 +1896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: night-background-no_moon (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1320023077988243796, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 55.24
@@ -1886,7 +1910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -243.38254
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1918,19 +1942,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2159,6 +2183,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 0.62835026
       objectReference: {fileID: 0}
+    - target: {fileID: 5709058830170386711, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7586430226429253464, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
       propertyPath: m_Size.x
       value: 2
@@ -2236,6 +2264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NightBlock (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 80.88
@@ -2309,6 +2341,10 @@ PrefabInstance:
     - target: {fileID: 4372504197987934588, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 1.8452137
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709058830170386711, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7586430226429253464, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
       propertyPath: m_Size.x
@@ -2466,6 +2502,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 849924566}
     m_Modifications:
+    - target: {fileID: 2779351825009359576, guid: fdf17f66685418545a2847f894c0c717, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5314376607596955200, guid: fdf17f66685418545a2847f894c0c717, type: 3}
       propertyPath: m_Name
       value: day-background2
@@ -2523,6 +2563,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 849924566}
     m_Modifications:
+    - target: {fileID: 2779351825009359576, guid: fdf17f66685418545a2847f894c0c717, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5314376607596955200, guid: fdf17f66685418545a2847f894c0c717, type: 3}
       propertyPath: m_Name
       value: day-background2 (1)
@@ -2585,6 +2629,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 849924566}
     m_Modifications:
+    - target: {fileID: 2779351825009359576, guid: fdf17f66685418545a2847f894c0c717, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5314376607596955200, guid: fdf17f66685418545a2847f894c0c717, type: 3}
       propertyPath: m_Name
       value: day-background2 (5)
@@ -2652,6 +2700,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2191847964800125804, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
       propertyPath: nightColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191847964800125804, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
+      propertyPath: transitionDuration
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2296833798467324761, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
@@ -2969,6 +3021,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NightBlock
       objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.9
@@ -3055,6 +3111,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2191847964800125804, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
       propertyPath: nightColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191847964800125804, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
+      propertyPath: transitionDuration
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2296833798467324761, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
@@ -3166,6 +3226,10 @@ PrefabInstance:
       propertyPath: nightColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1320023077988243796, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.3
@@ -3176,7 +3240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -243.38254
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3208,19 +3272,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3411,6 +3475,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 849924566}
     m_Modifications:
+    - target: {fileID: 2779351825009359576, guid: fdf17f66685418545a2847f894c0c717, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5314376607596955200, guid: fdf17f66685418545a2847f894c0c717, type: 3}
       propertyPath: m_Name
       value: day-background2 (2)
@@ -4700,6 +4768,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: night-background-no_moon
       objectReference: {fileID: 0}
+    - target: {fileID: 1320023077988243796, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.7
@@ -4710,7 +4782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -243.38254
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4742,19 +4814,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4848,6 +4920,10 @@ PrefabInstance:
     - target: {fileID: 4702004560209915749, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_Name
       value: NightBlock (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5061,6 +5137,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 1.6623232
       objectReference: {fileID: 0}
+    - target: {fileID: 5709058830170386711, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7586430226429253464, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
       propertyPath: m_Size.x
       value: 1
@@ -5133,6 +5213,10 @@ PrefabInstance:
     - target: {fileID: 4372504197987934588, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 0.54871106
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709058830170386711, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7586430226429253464, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
       propertyPath: m_Size.x
@@ -6240,6 +6324,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NightBlock (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 65.4862
@@ -6340,6 +6428,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 849924566}
     m_Modifications:
+    - target: {fileID: 2779351825009359576, guid: fdf17f66685418545a2847f894c0c717, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5314376607596955200, guid: fdf17f66685418545a2847f894c0c717, type: 3}
       propertyPath: m_Name
       value: day-background2 (3)
@@ -6413,6 +6505,10 @@ PrefabInstance:
     - target: {fileID: 4702004560209915749, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_Name
       value: NightBlock (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6620,6 +6716,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 1.8479224
       objectReference: {fileID: 0}
+    - target: {fileID: 5709058830170386711, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7586430226429253464, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
       propertyPath: m_Size.x
       value: 0.5845337
@@ -6702,6 +6802,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NightBlock (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.9
@@ -6774,6 +6878,10 @@ PrefabInstance:
     - target: {fileID: 4702004560209915749, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_Name
       value: NightBlock (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6953,6 +7061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NightBlock (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 55.2231
@@ -7025,6 +7137,10 @@ PrefabInstance:
     - target: {fileID: 4702004560209915749, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_Name
       value: NightBlock (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7431,6 +7547,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 849924566}
     m_Modifications:
+    - target: {fileID: 2779351825009359576, guid: fdf17f66685418545a2847f894c0c717, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5314376607596955200, guid: fdf17f66685418545a2847f894c0c717, type: 3}
       propertyPath: m_Name
       value: day-background2 (4)
@@ -7491,6 +7611,10 @@ PrefabInstance:
     - target: {fileID: 4372504197987934588, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709058830170386711, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7586430226429253464, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
       propertyPath: m_Size.x
@@ -7677,6 +7801,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: night-background-no_moon (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1320023077988243796, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.299999
@@ -7687,7 +7815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -243.38254
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7719,19 +7847,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7868,6 +7996,10 @@ PrefabInstance:
     - target: {fileID: 4702004560209915749, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_Name
       value: NightBlock (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8156,6 +8288,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NightBlock (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.1000004
@@ -8442,6 +8578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: night-background-no_moon (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1320023077988243796, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.700001
@@ -8452,7 +8592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -243.38254
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8484,19 +8624,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7583983588223866046, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8811,6 +8951,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NightBlock (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.93
@@ -8883,6 +9027,10 @@ PrefabInstance:
     - target: {fileID: 4702004560209915749, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_Name
       value: NightBlock (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9240,6 +9388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NightBlock (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.699999
@@ -9309,6 +9461,10 @@ PrefabInstance:
     - target: {fileID: 4702004560209915749, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_Name
       value: NightBlock (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10056,6 +10212,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 1.6392429
       objectReference: {fileID: 0}
+    - target: {fileID: 5709058830170386711, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7586430226429253464, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
       propertyPath: m_Size.x
       value: 1
@@ -10204,13 +10364,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sun
       objectReference: {fileID: 0}
+    - target: {fileID: 7495722321538554400, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7672929958339370051, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.87
+      value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: 7672929958339370051, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.8720455
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 7672929958339370051, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10251,6 +10415,34 @@ PrefabInstance:
     - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
       propertyPath: transitionDuration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: dayBackgroundColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: dayBackgroundColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: dayBackgroundColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: nightBackgroundColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: nightBackgroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: nightBackgroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: nightBackgroundColor.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10553,6 +10745,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NightBlock (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.6
@@ -10624,6 +10820,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2191847964800125804, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
       propertyPath: nightColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2191847964800125804, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
+      propertyPath: transitionDuration
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2296833798467324761, guid: fb0a4d5f9a11ac34e8d8fcd00cfd2b7f, type: 3}
@@ -11170,6 +11370,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NightBlock (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 25.2726
@@ -11355,6 +11559,10 @@ PrefabInstance:
     - target: {fileID: 4702004560209915749, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_Name
       value: NightBlock (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5392859435471269142, guid: 49356b72319141748bedd99475b90c3b, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5853523931355682551, guid: 49356b72319141748bedd99475b90c3b, type: 3}
       propertyPath: m_LocalPosition.x

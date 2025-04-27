@@ -1530,6 +1530,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1984397024}
     m_Modifications:
+    - target: {fileID: 2779351825009359576, guid: fdf17f66685418545a2847f894c0c717, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5314376607596955200, guid: fdf17f66685418545a2847f894c0c717, type: 3}
       propertyPath: m_Name
       value: day-background2 (3)
@@ -2014,6 +2018,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1984397024}
     m_Modifications:
+    - target: {fileID: 2779351825009359576, guid: fdf17f66685418545a2847f894c0c717, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5314376607596955200, guid: fdf17f66685418545a2847f894c0c717, type: 3}
       propertyPath: m_Name
       value: day-background2
@@ -3394,6 +3402,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1984397024}
     m_Modifications:
+    - target: {fileID: 2779351825009359576, guid: fdf17f66685418545a2847f894c0c717, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5314376607596955200, guid: fdf17f66685418545a2847f894c0c717, type: 3}
       propertyPath: m_Name
       value: day-background2 (5)
@@ -3801,6 +3813,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1984397024}
     m_Modifications:
+    - target: {fileID: 2779351825009359576, guid: fdf17f66685418545a2847f894c0c717, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5314376607596955200, guid: fdf17f66685418545a2847f894c0c717, type: 3}
       propertyPath: m_Name
       value: day-background2 (1)
@@ -3979,6 +3995,10 @@ PrefabInstance:
     - target: {fileID: 266248946402654445, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Name
       value: night-background-no_moon (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1320023077988243796, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5317,6 +5337,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1984397024}
     m_Modifications:
+    - target: {fileID: 2779351825009359576, guid: fdf17f66685418545a2847f894c0c717, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5314376607596955200, guid: fdf17f66685418545a2847f894c0c717, type: 3}
       propertyPath: m_Name
       value: day-background2 (2)
@@ -7613,6 +7637,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: night-background-no_moon (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1320023077988243796, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.3
@@ -9120,6 +9148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: night-background-no_moon (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1320023077988243796, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.700001
@@ -9565,6 +9597,10 @@ PrefabInstance:
       propertyPath: nightColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1320023077988243796, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 39.3
@@ -9908,6 +9944,10 @@ PrefabInstance:
     - target: {fileID: 266248946402654445, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_Name
       value: night-background-no_moon (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1320023077988243796, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
+      propertyPath: transitionDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10791,6 +10831,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: night-background-no_moon
       objectReference: {fileID: 0}
+    - target: {fileID: 1320023077988243796, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6895143588934628797, guid: b35562460988cce48a2e4da3941b45cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.7
@@ -10916,6 +10960,34 @@ PrefabInstance:
     - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
       propertyPath: transitionDuration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: dayBackgroundColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: dayBackgroundColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: dayBackgroundColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: nightBackgroundColor.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: nightBackgroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: nightBackgroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160708710321374330, guid: 562c8a095b927fd418307b1f478e5c00, type: 3}
+      propertyPath: nightBackgroundColor.r
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11398,6 +11470,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1984397024}
     m_Modifications:
+    - target: {fileID: 2779351825009359576, guid: fdf17f66685418545a2847f894c0c717, type: 3}
+      propertyPath: transitionDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5314376607596955200, guid: fdf17f66685418545a2847f894c0c717, type: 3}
       propertyPath: m_Name
       value: day-background2 (4)

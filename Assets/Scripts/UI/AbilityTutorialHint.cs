@@ -71,7 +71,7 @@ public class AbilityTutorialHint : MonoBehaviour
 
         Time.timeScale = 1f;
         tutorialActive = false;
-        Destroy(gameObject);
+        //Destroy(gameObject);
 
 
     }

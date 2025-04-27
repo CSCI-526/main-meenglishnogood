@@ -9,7 +9,7 @@ public class InvisibleWalls : MonoBehaviour
     public Color dayColor = new Color(0.5f, 0.8f, 1.0f);
     public Color nightColor = new Color(0.05f, 0.05f, 0.2f, 1f);
     public bool isDaytime = true;
-    public float transitionDuration = 1.5f;
+    public float transitionDuration = 1f;
 
     public bool isTransitioning = false;
 

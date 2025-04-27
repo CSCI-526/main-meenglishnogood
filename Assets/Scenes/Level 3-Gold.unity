@@ -674,7 +674,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0
+  orthographic size: 4
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -5730,6 +5730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52a21e7b36a128499e9b93508ccb5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPos: {x: 34.59, y: 3.8, z: -7}
+  targetSize: 7
+  backToOrgPos: 0
 --- !u!1001 &1378547055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9024,12 +9027,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1548736584349677161}
-  targetPos: {x: 30.46, y: 5.27, z: -7}
   isLockX: 0
   isLockY: 1
   moveSpeed: 2
   sizeChangeSpeed: 2
-  targetSize: 7
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

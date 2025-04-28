@@ -3180,7 +3180,7 @@ MonoBehaviour:
   mode: 2
   dayColor: {r: 0, g: 0, b: 0, a: 0}
   nightColor: {r: 0.8113208, g: 0.4018334, b: 0.7556494, a: 1}
-  otherPortal: {fileID: 0}
+  otherPortal: {fileID: 699709779}
   teleportYOffset: 1
   cooldownTime: 1.5
   colorchangingTime: 1
@@ -5053,6 +5053,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dbe3e9dd883b384f9ebd494e8bbd0c0, type: 3}
+--- !u!114 &998942340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2488165005763557772, guid: 62528b8dd98c7da4e9480b3542c3d656, type: 3}
+  m_PrefabInstance: {fileID: 909491581}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8ae13d93b683443b08ba5abd638722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1004437931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9808,7 +9819,7 @@ MonoBehaviour:
   mode: 1
   dayColor: {r: 0, g: 0, b: 0, a: 0}
   nightColor: {r: 0.23921569, g: 0.23921569, b: 0.69803923, a: 1}
-  otherPortal: {fileID: 0}
+  otherPortal: {fileID: 998942340}
   teleportYOffset: 1
   cooldownTime: 1.5
   colorchangingTime: 1

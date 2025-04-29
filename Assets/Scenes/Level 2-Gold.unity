@@ -7526,11 +7526,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8201582898205079570, guid: 1b392b38c4add3e49b7032754ca7e06b, type: 3}
       propertyPath: m_fontSize
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 8201582898205079570, guid: 1b392b38c4add3e49b7032754ca7e06b, type: 3}
       propertyPath: m_fontSizeBase
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7539,15 +7539,15 @@ PrefabInstance:
       insertIndex: 0
       addedObject: {fileID: 1784668974}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2817325171398466003, guid: 1b392b38c4add3e49b7032754ca7e06b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1129594548}
     - targetCorrespondingSourceObject: {fileID: 5604263128025589476, guid: 1b392b38c4add3e49b7032754ca7e06b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1885000925}
     - targetCorrespondingSourceObject: {fileID: 5993391797110571961, guid: 1b392b38c4add3e49b7032754ca7e06b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1766107297}
-    - targetCorrespondingSourceObject: {fileID: 2817325171398466003, guid: 1b392b38c4add3e49b7032754ca7e06b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1129594548}
   m_SourcePrefab: {fileID: 100100000, guid: 1b392b38c4add3e49b7032754ca7e06b, type: 3}
 --- !u!1 &2132985987 stripped
 GameObject:

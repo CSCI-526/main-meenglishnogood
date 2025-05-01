@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask ceilingLayer;
 
+    public AudioClip jumpSound;
+    private AudioSource audioSource;
+
     private Rigidbody2D rb;
     private Vector2 movement;
     [SerializeField] private float jumpPower = 6.5f;
@@ -34,6 +37,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         rb = GetComponent<Rigidbody2D>();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         VecGravity = new Vector2(0, -Physics2D.gravity.y);
@@ -118,11 +123,14 @@ public class PlayerController : MonoBehaviour
             if (!isInAntiGravity && isGrounded)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+                audioSource.PlayOneShot(jumpSound);
+
             }
             else if (isInAntiGravity && isCeiling && isSmall)
             //else if (isInAntiGravity && isSmall)
             {
                 rb.velocity = new Vector2(rb.velocity.x, -jumpPower);
+                audioSource.PlayOneShot(jumpSound);
             }
         }
 

@@ -1,16 +1,17 @@
 using System;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 using UnityEngine.Networking;
-using static AnalyticsManager;
 
-public class AnalyticsManager : MonoBehaviour {
-    
+public class AnalyticsManager : MonoBehaviour
+{
+    [SerializeField] private string databaseUrl = "https://darklight-escape-default-rtdb.firebaseio.com/";
+
     private string sessionId;
-    [SerializeField] private string URL = "https://darklight-escape-default-rtdb.firebaseio.com/";
-    
+
     [Serializable]
-    public class HeatmapData {
+    private class HeatmapData
+    {
         public float x;
         public float y;
         public string level;
@@ -19,57 +20,64 @@ public class AnalyticsManager : MonoBehaviour {
     }
 
     [Serializable]
-    public class CollectibleData {
+    private class CollectibleData
+    {
         public string item;
         public string level;
         public float gameTime;
         public string sessionId;
     }
 
-    void Start() {
+    private void Start()
+    {
         sessionId = Guid.NewGuid().ToString();
     }
-    
-    public void AddHeatmapData(float x, float y, string level) {
-        var gameTime = Time.time;
-        var data = new HeatmapData {
+
+    public void AddHeatmapData(float x, float y, string level)
+    {
+        var data = new HeatmapData
+        {
             x = x,
             y = y,
             level = level,
-            gameTime = gameTime,
+            gameTime = Time.time,
             sessionId = sessionId
         };
 
-        var json = JsonUtility.ToJson(data);
-        StartCoroutine(SendPayload("positions", json));
+        CreatePayloadAndSend("positions", data);
     }
 
-    public void AddCollectibleData(string item, string level) {
-        var gameTime = Time.time;
-        var data = new CollectibleData {
+    public void AddCollectibleData(string item, string level)
+    {
+        var data = new CollectibleData
+        {
             item = item,
             level = level,
-            gameTime = gameTime,
+            gameTime = Time.time,
             sessionId = sessionId
         };
 
-        var json = JsonUtility.ToJson(data);
-        StartCoroutine(SendPayload("collectibles", json));
+        CreatePayloadAndSend("collectibles", data);
     }
 
-    // Taken from class resources: how to send data to firebase real-time database
-    private IEnumerator SendPayload(string extension, string json) {
-        using (var uwr = new UnityWebRequest(URL + extension + ".json", "POST")) {
-            var jsonToSend = new System.Text.UTF8Encoding().GetBytes(json);
-            using var uploadHandler = new UploadHandlerRaw(jsonToSend);
-            uwr.uploadHandler = uploadHandler;
-            uwr.downloadHandler = new DownloadHandlerBuffer();
-            uwr.disposeUploadHandlerOnDispose = true;
-            uwr.disposeDownloadHandlerOnDispose = true;
-            uwr.SetRequestHeader("Content-Type", "application/json");
-            uwr.timeout = 5;
-            //Send the request then wait here until it returns
-            yield return uwr.SendWebRequest();
-        }
+    private void CreatePayloadAndSend(string endpoint, object data)
+    {
+        var json = JsonUtility.ToJson(data);
+        StartCoroutine(SendPayload(endpoint, json));
+    }
+
+    private IEnumerator SendPayload(string endpoint, string json)
+    {
+        using var request = new UnityWebRequest($"{databaseUrl}{endpoint}.json", "POST");
+        byte[] bodyRaw = new System.Text.UTF8Encoding().GetBytes(json);
+
+        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = new DownloadHandlerBuffer();
+        request.disposeUploadHandlerOnDispose = true;
+        request.disposeDownloadHandlerOnDispose = true;
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.timeout = 5;
+
+        yield return request.SendWebRequest();
     }
 }
